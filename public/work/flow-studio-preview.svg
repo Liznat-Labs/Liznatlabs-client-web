@@ -1,0 +1,132 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="500" viewBox="0 0 800 500">
+  <defs>
+    <linearGradient id="flowBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#F0FBF8;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#E8F6F2;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="cardGrad1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#00B4A6;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#008C80;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="cardGrad2" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#6C63FF;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#5048D4;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="cardGrad3" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#FF6B6B;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#D94F4F;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="heroBg" x1="0%" y1="0%" x2="60%" y2="100%">
+      <stop offset="0%" style="stop-color:#00B4A6;stop-opacity:0.12" />
+      <stop offset="100%" style="stop-color:#00B4A6;stop-opacity:0" />
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="800" height="500" fill="url(#flowBg)"/>
+  <rect width="800" height="500" fill="url(#heroBg)"/>
+
+  <!-- Nav -->
+  <rect width="800" height="58" fill="white" opacity="0.95"/>
+  <rect y="57" width="800" height="1" fill="#D1F0EB"/>
+
+  <!-- Logo -->
+  <circle cx="36" cy="29" r="12" fill="#00B4A6"/>
+  <text x="36" y="34" font-family="Arial" font-size="10" font-weight="700" fill="white" text-anchor="middle">FS</text>
+  <text x="56" y="34" font-family="Arial, sans-serif" font-size="15" font-weight="700" fill="#0D2E2B" letter-spacing="0.5">Flow Studio</text>
+
+  <!-- Nav links -->
+  <text x="340" y="34" font-family="Arial" font-size="12" fill="#4A6E6A">Classes</text>
+  <text x="410" y="34" font-family="Arial" font-size="12" fill="#4A6E6A">Schedule</text>
+  <text x="488" y="34" font-family="Arial" font-size="12" fill="#4A6E6A">Instructors</text>
+  <text x="575" y="34" font-family="Arial" font-size="12" fill="#4A6E6A">Pricing</text>
+
+  <!-- CTA nav button -->
+  <rect x="648" y="14" width="120" height="30" rx="15" fill="#00B4A6"/>
+  <text x="708" y="34" font-family="Arial" font-size="11" font-weight="700" fill="white" text-anchor="middle">Book a Class</text>
+
+  <!-- Hero left content -->
+  <text x="48" y="110" font-family="Arial" font-size="11" fill="#00B4A6" letter-spacing="3" font-weight="600">BOUTIQUE FITNESS · BENGALURU</text>
+
+  <text x="48" y="160" font-family="Arial, sans-serif" font-size="44" font-weight="800" fill="#0D2E2B">Find Your</text>
+  <text x="48" y="212" font-family="Arial, sans-serif" font-size="44" font-weight="800" fill="#00B4A6">Flow.</text>
+
+  <text x="48" y="248" font-family="Arial, sans-serif" font-size="13" fill="#4A6E6A">Yoga · Pilates · HIIT · Dance</text>
+  <text x="48" y="268" font-family="Arial, sans-serif" font-size="13" fill="#4A6E6A">Expert instructors. Small batches. Real results.</text>
+
+  <!-- Stats row -->
+  <text x="48" y="310" font-family="Arial" font-size="24" font-weight="800" fill="#0D2E2B">1,200+</text>
+  <text x="48" y="328" font-family="Arial" font-size="10" fill="#4A6E6A" letter-spacing="1">MEMBERS</text>
+
+  <rect x="148" y="295" width="1" height="40" fill="#D1F0EB"/>
+
+  <text x="162" y="310" font-family="Arial" font-size="24" font-weight="800" fill="#0D2E2B">48</text>
+  <text x="162" y="328" font-family="Arial" font-size="10" fill="#4A6E6A" letter-spacing="1">CLASSES/WEEK</text>
+
+  <rect x="262" y="295" width="1" height="40" fill="#D1F0EB"/>
+
+  <text x="276" y="310" font-family="Arial" font-size="24" font-weight="800" fill="#0D2E2B">4.9★</text>
+  <text x="276" y="328" font-family="Arial" font-size="10" fill="#4A6E6A" letter-spacing="1">RATING</text>
+
+  <!-- CTA buttons -->
+  <rect x="48" y="350" width="160" height="44" rx="22" fill="#00B4A6"/>
+  <text x="128" y="377" font-family="Arial" font-size="12" font-weight="700" fill="white" text-anchor="middle">Start Free Trial</text>
+
+  <rect x="222" y="350" width="140" height="44" rx="22" fill="none" stroke="#00B4A6" stroke-width="2"/>
+  <text x="292" y="377" font-family="Arial" font-size="12" font-weight="600" fill="#00B4A6" text-anchor="middle">View Schedule</text>
+
+  <!-- Right side - Class cards UI -->
+  <!-- Today's schedule panel -->
+  <rect x="430" y="68" width="342" height="420" rx="16" fill="white" opacity="0.9"/>
+  <rect x="430" y="68" width="342" height="420" rx="16" fill="none" stroke="#D1F0EB" stroke-width="1.5"/>
+
+  <text x="452" y="102" font-family="Arial" font-size="13" font-weight="700" fill="#0D2E2B">Today's Classes</text>
+  <text x="680" y="102" font-family="Arial" font-size="11" fill="#00B4A6" text-anchor="middle">See all →</text>
+
+  <!-- Date tabs -->
+  <rect x="448" y="112" width="60" height="28" rx="14" fill="#00B4A6"/>
+  <text x="478" y="130" font-family="Arial" font-size="10" font-weight="700" fill="white" text-anchor="middle">Today</text>
+  <rect x="514" y="112" width="50" height="28" rx="14" fill="#F0FBF8"/>
+  <text x="539" y="130" font-family="Arial" font-size="10" fill="#4A6E6A" text-anchor="middle">Tue</text>
+  <rect x="570" y="112" width="50" height="28" rx="14" fill="#F0FBF8"/>
+  <text x="595" y="130" font-family="Arial" font-size="10" fill="#4A6E6A" text-anchor="middle">Wed</text>
+  <rect x="626" y="112" width="50" height="28" rx="14" fill="#F0FBF8"/>
+  <text x="651" y="130" font-family="Arial" font-size="10" fill="#4A6E6A" text-anchor="middle">Thu</text>
+  <rect x="682" y="112" width="50" height="28" rx="14" fill="#F0FBF8"/>
+  <text x="707" y="130" font-family="Arial" font-size="10" fill="#4A6E6A" text-anchor="middle">Fri</text>
+
+  <!-- Class card 1 -->
+  <rect x="448" y="152" width="306" height="76" rx="12" fill="url(#cardGrad1)"/>
+  <text x="466" y="176" font-family="Arial" font-size="13" font-weight="700" fill="white">Morning Yoga Flow</text>
+  <text x="466" y="194" font-family="Arial" font-size="10" fill="rgba(255,255,255,0.8)">6:30 AM · 60 min · Priya Sharma</text>
+  <rect x="466" y="204" width="60" height="16" rx="8" fill="rgba(255,255,255,0.2)"/>
+  <text x="496" y="215" font-family="Arial" font-size="9" fill="white" text-anchor="middle">4 spots left</text>
+  <rect x="700" y="160" width="46" height="26" rx="13" fill="white"/>
+  <text x="723" y="177" font-family="Arial" font-size="10" font-weight="700" fill="#00B4A6" text-anchor="middle">Book</text>
+
+  <!-- Class card 2 -->
+  <rect x="448" y="238" width="306" height="76" rx="12" fill="url(#cardGrad2)"/>
+  <text x="466" y="262" font-family="Arial" font-size="13" font-weight="700" fill="white">Power Pilates</text>
+  <text x="466" y="280" font-family="Arial" font-size="10" fill="rgba(255,255,255,0.8)">9:00 AM · 45 min · Arun Kapoor</text>
+  <rect x="466" y="290" width="52" height="16" rx="8" fill="rgba(255,255,255,0.2)"/>
+  <text x="492" y="301" font-family="Arial" font-size="9" fill="white" text-anchor="middle">Full ✓</text>
+  <rect x="700" y="246" width="46" height="26" rx="13" fill="rgba(255,255,255,0.3)"/>
+  <text x="723" y="263" font-family="Arial" font-size="10" font-weight="700" fill="white" text-anchor="middle">Wait</text>
+
+  <!-- Class card 3 -->
+  <rect x="448" y="324" width="306" height="76" rx="12" fill="url(#cardGrad3)"/>
+  <text x="466" y="348" font-family="Arial" font-size="13" font-weight="700" fill="white">HIIT Burn</text>
+  <text x="466" y="366" font-family="Arial" font-size="10" fill="rgba(255,255,255,0.8)">6:00 PM · 45 min · Meera Nair</text>
+  <rect x="466" y="376" width="68" height="16" rx="8" fill="rgba(255,255,255,0.2)"/>
+  <text x="500" y="387" font-family="Arial" font-size="9" fill="white" text-anchor="middle">12 spots left</text>
+  <rect x="700" y="332" width="46" height="26" rx="13" fill="white"/>
+  <text x="723" y="349" font-family="Arial" font-size="10" font-weight="700" fill="#FF6B6B" text-anchor="middle">Book</text>
+
+  <!-- Bottom membership strip -->
+  <rect x="448" y="412" width="306" height="62" rx="12" fill="#F0FBF8"/>
+  <rect x="448" y="412" width="306" height="62" rx="12" fill="none" stroke="#D1F0EB" stroke-width="1"/>
+  <text x="466" y="436" font-family="Arial" font-size="11" font-weight="700" fill="#0D2E2B">Monthly Pass</text>
+  <text x="466" y="453" font-family="Arial" font-size="10" fill="#4A6E6A">Unlimited classes · ₹2,499/mo</text>
+  <rect x="668" y="422" width="78" height="28" rx="14" fill="#00B4A6"/>
+  <text x="707" y="440" font-family="Arial" font-size="10" font-weight="700" fill="white" text-anchor="middle">Get Pass</text>
+</svg>

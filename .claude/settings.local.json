@@ -1,0 +1,19 @@
+{
+  "permissions": {
+    "allow": [
+      "PowerShell($src = \"C:\\\\Users\\\\khanf\\\\OneDrive\\\\Pictures\\\\Screenshots\\\\Screenshot 2026-05-14 112925.png\"; $dst = \"D:\\\\Liznatlabs\\\\public\\\\work\\\\azha-packaging.png\"; \\(Get-Item $src\\).Length; \\(Get-Item $dst\\).Length)",
+      "PowerShell($bytes = [System.IO.File]::ReadAllBytes\\(\"D:\\\\Liznatlabs\\\\public\\\\work\\\\azha-packaging.png\"\\); $bytes[0..7] | ForEach-Object { \"{0:X2}\" -f $_ })",
+      "Bash(npm run *)",
+      "Read(//tmp/**)",
+      "Bash(curl -I http://localhost:3000/work/azha-packaging.png)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" http://localhost:3000/work/azha-packaging.png)",
+      "PowerShell($bytes = [System.IO.File]::ReadAllBytes\\(\"D:\\\\Liznatlabs\\\\public\\\\work\\\\azha-packaging.png\"\\); $b64 = [Convert]::ToBase64String\\($bytes\\); $b64.Length)",
+      "PowerShell($bytes = [System.IO.File]::ReadAllBytes\\(\"D:\\\\Liznatlabs\\\\public\\\\work\\\\azha-packaging.png\"\\); $b64 = [Convert]::ToBase64String\\($bytes\\); $content = \"export const azhaPackagingImg = `\"data:image/png;base64,$b64`\";\"; [System.IO.File]::WriteAllText\\(\"D:\\\\Liznatlabs\\\\src\\\\assets\\\\azha-packaging.ts\", $content, [System.Text.Encoding]::UTF8\\); Write-Host \"Written OK\")",
+      "PowerShell(New-Item -ItemType Directory -Path \"D:\\\\Liznatlabs\\\\src\\\\assets\" -Force | Out-Null; $bytes = [System.IO.File]::ReadAllBytes\\(\"C:\\\\Users\\\\khanf\\\\OneDrive\\\\Pictures\\\\Screenshots\\\\Screenshot 2026-05-14 112612.png\"\\); $b64 = [Convert]::ToBase64String\\($bytes\\); $content = \"export const azhaPackagingImg = `\"data:image/png;base64,$b64`\";\"; [System.IO.File]::WriteAllText\\(\"D:\\\\Liznatlabs\\\\src\\\\assets\\\\azha-packaging.ts\", $content, [System.Text.Encoding]::UTF8\\); Write-Host \"Done, size: $\\($bytes.Length\\) bytes\")",
+      "PowerShell(Copy-Item -Path \"C:\\\\Users\\\\khanf\\\\OneDrive\\\\Pictures\\\\Screenshots\\\\Screenshot 2026-05-14 112612.png\" -Destination \"D:\\\\Liznatlabs\\\\public\\\\work\\\\azha-packaging.png\" -Force; Write-Host \"Copied: $\\(\\(Get-Item 'D:\\\\Liznatlabs\\\\public\\\\work\\\\azha-packaging.png'\\).Length\\) bytes\")",
+      "PowerShell([System.IO.File]::WriteAllText\\(\"D:\\\\Liznatlabs\\\\src\\\\assets\\\\azha-packaging.ts\", 'export const azhaPackagingImg = \"/work/azha-packaging.png\";' + \"`n\", [System.Text.Encoding]::UTF8\\); Write-Host \"Done\")",
+      "Bash(curl -s -o /dev/null -w \"%{http_code} %{size_download}\" \"http://localhost:3000/work/azha-packaging.png\")",
+      "PowerShell(Stop-Process -Name \"node\" -Force -ErrorAction SilentlyContinue)"
+    ]
+  }
+}

@@ -1,0 +1,329 @@
+// Central content store — edit copy here, never in components.
+
+export type NavLink = { label: string; href: string };
+export type Segment = { text: string; italic?: boolean; accent?: boolean };
+export type HeadlineLine = { segments: Segment[]; indent?: boolean };
+export type MetaCell = { label: string; value: string };
+export type ServiceTag = string;
+
+export type Service = {
+  number: string;
+  category: string;
+  title: string;
+  body: string;
+  tags: ServiceTag[];
+};
+
+export type WorkItem = {
+  title: string;
+  category: string;
+  type: string;
+  description: string;
+  accentHue: string;
+  image?: string;
+};
+
+export type ProcessStep = {
+  number: string;
+  title: string;
+  body: string;
+};
+
+export type PricingTier = {
+  name: string;
+  price: string;
+  featured?: boolean;
+  features: string[];
+  cta: string;
+};
+
+export type FAQItem = {
+  question: string;
+  answer: string;
+};
+
+// ─── Navigation ───────────────────────────────────────────────────────────────
+
+export const navContent = {
+  logo: "Liznat Labs",
+  links: [
+    { label: "Services", href: "#services" },
+    { label: "Work", href: "#work" },
+    { label: "Process", href: "#process" },
+    { label: "Pricing", href: "#pricing" },
+    { label: "Contact", href: "#contact" },
+  ] satisfies NavLink[],
+  cta: { label: "Book a call →", href: "#contact" },
+};
+
+// ─── Hero ─────────────────────────────────────────────────────────────────────
+
+export const heroContent = {
+  status: "Now booking · Q3 2026",
+  headlineLines: [
+    {
+      segments: [
+        { text: "Software" },
+        { text: " /", italic: false },
+        { text: " crafted" },
+      ],
+    },
+    {
+      indent: true,
+      segments: [
+        { text: "with " },
+        { text: "intent,", italic: true, accent: true },
+      ],
+    },
+    {
+      segments: [
+        { text: "shipped with " },
+        { text: "speed.", italic: true, accent: true },
+      ],
+    },
+  ] satisfies HeadlineLine[],
+  subhead:
+    "Liznat Labs is a Bengaluru-based dev studio building modern websites, Android apps, and custom software for ambitious teams. Solo-founder care. Fixed pricing. Real results.",
+  ctas: [
+    { label: "Start a project →", href: "#contact", primary: true },
+    { label: "See our work", href: "#work", primary: false },
+  ],
+  meta: [
+    { label: "Based in", value: "Bengaluru" },
+    { label: "Avg. delivery", value: "2–4 wks" },
+    { label: "Starting at", value: "₹15k" },
+    { label: "Built with", value: "Care" },
+  ] satisfies MetaCell[],
+};
+
+// ─── Marquee ──────────────────────────────────────────────────────────────────
+
+export const marqueeItems = [
+  "WEBSITES",
+  "ANDROID APPS",
+  "CUSTOM SOFTWARE",
+  "DASHBOARDS",
+  "APIs",
+  "AUTOMATIONS",
+  "MVPs",
+  "LANDING PAGES",
+  "ECOMMERCE",
+];
+
+// ─── Services ─────────────────────────────────────────────────────────────────
+
+export const servicesContent: Service[] = [
+  {
+    number: "01",
+    category: "Web",
+    title: "Modern Websites",
+    body:
+      "Fast, conversion-focused websites that actually represent your brand. From sharp landing pages to full multi-page sites — built for performance, not bloat.",
+    tags: ["Next.js", "React", "Tailwind", "CMS-ready"],
+  },
+  {
+    number: "02",
+    category: "Mobile",
+    title: "Android Apps",
+    body:
+      "Native-quality Android apps built with Kotlin or React Native. Clean architecture, offline-first where it matters, and shipped to the Play Store.",
+    tags: ["Kotlin", "React Native", "Play Store", "Offline-first"],
+  },
+  {
+    number: "03",
+    category: "Custom",
+    title: "Custom Software",
+    body:
+      "Bespoke tools, internal dashboards, APIs, and automation systems. If you have a workflow problem, we build the exact thing that solves it.",
+    tags: ["Node.js", "PostgreSQL", "REST / GraphQL", "Automation"],
+  },
+];
+
+// ─── Work ─────────────────────────────────────────────────────────────────────
+
+export const workContent: WorkItem[] = [
+  {
+    title: "Spice & Smoke",
+    category: "Restaurant",
+    type: "Web",
+    description:
+      "Complete redesign of a Bengaluru restaurant's digital presence — rich photography, online table booking, and a menu that loads in under a second.",
+    accentHue: "rgba(233, 110, 51, 0.15)",
+    image: "/work/spice-and-smoke-preview.svg",
+  },
+  {
+    title: "Flow Studio",
+    category: "Wellness",
+    type: "App",
+    description:
+      "Android booking app for a boutique fitness studio — class scheduling, instructor profiles, and in-app payments in a single polished experience.",
+    accentHue: "rgba(233, 110, 51, 0.10)",
+    image: "/work/flow-studio-preview.svg",
+  },
+  {
+    title: "Azha Packaging",
+    category: "E-Commerce",
+    type: "Web",
+    description:
+      "Full-stack e-commerce platform for a custom packaging business — product catalog, custom order requests, customer portal, and admin dashboard. Built with React, Node.js, and MongoDB.",
+    accentHue: "rgba(8, 145, 178, 0.12)",
+    image: "/work/azha-packaging.png",
+  },
+];
+
+// ─── Process ──────────────────────────────────────────────────────────────────
+
+export const processContent: ProcessStep[] = [
+  {
+    number: "01",
+    title: "Discover",
+    body: "30-minute call. We dig into the problem, the users, and what success actually looks like.",
+  },
+  {
+    number: "02",
+    title: "Plan",
+    body: "Fixed scope, fixed price, fixed timeline — sent to you as a plain-English document, no jargon.",
+  },
+  {
+    number: "03",
+    title: "Build",
+    body: "Working software shipped in weekly increments. You see real progress, not Jira tickets.",
+  },
+  {
+    number: "04",
+    title: "Launch",
+    body: "Deploy to production, hand over all credentials, and stay on for two weeks of free support.",
+  },
+];
+
+// ─── About ────────────────────────────────────────────────────────────────────
+
+export const aboutContent = {
+  pullQuote:
+    "I started Liznat Labs because the best work happens when one person cares end-to-end. No handoffs. No diluted vision.",
+  paragraphs: [
+    "Founded by Faizan Khan in 2026. The name 'Liznat' is drawn from people who shaped who I am — that same care goes into every line of code.",
+    "Before starting the studio, I spent years building products across fintech, e-commerce, and consumer apps. I know what good software feels like to build and to use. Every project here gets that standard.",
+  ],
+  signature: "— Faizan Khan, Founder",
+};
+
+// ─── Pricing ──────────────────────────────────────────────────────────────────
+
+export const pricingContent: PricingTier[] = [
+  {
+    name: "Launch",
+    price: "₹15k+",
+    features: [
+      "One-page landing site",
+      "5-day delivery",
+      "Mobile responsive",
+      "1 round of revisions",
+      "Vercel deployment",
+    ],
+    cta: "Get started →",
+  },
+  {
+    name: "Studio",
+    price: "₹40k+",
+    featured: true,
+    features: [
+      "Multi-page website",
+      "Custom design system",
+      "CMS optional",
+      "2-week delivery",
+      "3 rounds of revisions",
+      "30 days of post-launch support",
+    ],
+    cta: "Get started →",
+  },
+  {
+    name: "Build",
+    price: "₹1.5L+",
+    features: [
+      "Android app or custom software MVP",
+      "Full design + development",
+      "4–6 week delivery",
+      "Fixed scope contract",
+      "60 days of post-launch support",
+    ],
+    cta: "Get started →",
+  },
+];
+
+// ─── FAQ ──────────────────────────────────────────────────────────────────────
+
+export const faqContent: FAQItem[] = [
+  {
+    question: "How long does a typical project take?",
+    answer:
+      "Landing pages are done in 5 days. Multi-page websites take 2 weeks. Android apps and custom software typically run 4–6 weeks. Every project starts with a scoped proposal, so there are no surprises.",
+  },
+  {
+    question: "Do you work with non-Indian clients?",
+    answer:
+      "Absolutely. Around a third of my clients are based outside India. Payments work via international transfer or Stripe, and I accommodate timezone overlap for async collaboration.",
+  },
+  {
+    question: "What if I only have an idea, not a spec?",
+    answer:
+      "That's actually the ideal starting point. The 30-minute discovery call is free and is exactly the tool for turning a rough idea into a scoped proposal. Bring a problem, not a spec.",
+  },
+  {
+    question: "What happens after launch?",
+    answer:
+      "Every project includes a free support window — 2 weeks for websites, 30–60 days for apps and software. I also offer retainer packages if you need ongoing development or maintenance.",
+  },
+  {
+    question: "Why fixed pricing instead of hourly?",
+    answer:
+      "Hourly billing creates misaligned incentives — it rewards slow work and punishes efficiency. Fixed pricing means you know the cost upfront, I'm incentivized to build cleanly, and we both focus on outcomes.",
+  },
+];
+
+// ─── Final CTA ────────────────────────────────────────────────────────────────
+
+export const ctaContent = {
+  headlineLines: [
+    { segments: [{ text: "Let's build" }] },
+    {
+      segments: [
+        { text: "something " },
+        { text: "real.", italic: true, accent: true },
+      ],
+    },
+  ] satisfies HeadlineLine[],
+  subhead:
+    "Have a project in mind? Send a short brief and I'll get back to you within 24 hours.",
+  email: "hello@liznatlabs.com",
+  calendlyLabel: "Book a free 30-min call →",
+  calendlyHref: "#contact",
+  whatsappLabel: "Message on WhatsApp",
+  whatsappHref: "https://wa.me/919999999999",
+};
+
+// ─── Footer ───────────────────────────────────────────────────────────────────
+
+export const footerContent = {
+  brand: {
+    name: "Liznat Labs",
+    tagline: "Modern software, shipped with intent.",
+  },
+  studioLinks: [
+    { label: "Services", href: "#services" },
+    { label: "Selected Work", href: "#work" },
+    { label: "Our Process", href: "#process" },
+    { label: "Pricing", href: "#pricing" },
+  ],
+  connectLinks: [
+    { label: "Book a Call", href: "#contact" },
+    { label: "Email Us", href: "mailto:hello@liznatlabs.com" },
+    { label: "WhatsApp", href: "https://wa.me/919999999999" },
+    { label: "LinkedIn", href: "#" },
+  ],
+  legalLinks: [
+    { label: "Privacy Policy", href: "/privacy" },
+    { label: "Terms of Service", href: "/terms" },
+  ],
+  copyright: "© 2026 Liznat Labs · Bengaluru, India",
+};
