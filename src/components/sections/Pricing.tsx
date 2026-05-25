@@ -2,6 +2,7 @@
 
 import { motion, useReducedMotion } from "framer-motion";
 import { pricingContent } from "@/content/site";
+import { TiltCard } from "@/components/ui/TiltCard";
 
 export function Pricing() {
   const shouldReduceMotion = useReducedMotion();
@@ -21,17 +22,20 @@ export function Pricing() {
         <div className="h-px max-w-xs flex-1" style={{ background: "var(--border)" }} aria-hidden="true" />
       </motion.div>
 
-      <motion.h2
-        id="pricing-heading"
-        initial={shouldReduceMotion ? false : { opacity: 0, y: 16 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, margin: "-100px" }}
-        transition={{ duration: 0.55, delay: 0.05 }}
-        className="mb-4 font-fraunces text-cream"
-        style={{ fontSize: "clamp(2rem, 4vw, 2.75rem)", fontWeight: 600, lineHeight: 1.1 }}
-      >
-        No surprises. Ever.
-      </motion.h2>
+      <div className="relative overflow-visible">
+        <span className="section-num pointer-events-none absolute -top-2 right-0 select-none" aria-hidden="true">03</span>
+        <motion.h2
+          id="pricing-heading"
+          initial={shouldReduceMotion ? false : { opacity: 0, y: 16 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 0.55, delay: 0.05 }}
+          className="mb-4 font-fraunces text-cream"
+          style={{ fontSize: "clamp(2rem, 4vw, 2.75rem)", fontWeight: 600, lineHeight: 1.1 }}
+        >
+          No surprises. Ever.
+        </motion.h2>
+      </div>
 
       <motion.p
         initial={shouldReduceMotion ? false : { opacity: 0, y: 12 }}
@@ -46,8 +50,8 @@ export function Pricing() {
 
       <div className="grid grid-cols-1 gap-4 md:grid-cols-3">
         {pricingContent.map((tier, i) => (
+          <TiltCard key={tier.name} maxTilt={6}>
           <motion.div
-            key={tier.name}
             initial={shouldReduceMotion ? false : { opacity: 0, y: 32 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-100px" }}
@@ -60,7 +64,7 @@ export function Pricing() {
                 : "0 24px 60px rgba(0,0,0,0.12), 0 8px 24px rgba(0,0,0,0.08)",
               transition: { duration: 0.22, ease: "easeOut" },
             }}
-            className="relative flex flex-col gap-8 rounded-sm p-8 cursor-pointer"
+            className="relative flex h-full flex-col gap-8 rounded-sm p-8 cursor-pointer"
             style={{
               background: tier.featured ? "rgba(233,110,51,0.05)" : "var(--glass-bg)",
               border: tier.featured ? "1px solid rgba(233,110,51,0.45)" : "1px solid var(--glass-border)",
@@ -84,12 +88,8 @@ export function Pricing() {
               <span className="font-mono text-xs text-muted" style={{ letterSpacing: "0.1em" }}>
                 {tier.name.toUpperCase()}
               </span>
-              <span className="font-fraunces text-cream"
-                style={{
-                  fontSize: "2.5rem", fontWeight: 700, lineHeight: 1,
-                  textShadow: tier.featured ? "0 0 30px rgba(233,110,51,0.4)" : "none",
-                  color: tier.featured ? "var(--accent)" : "var(--text)",
-                }}>
+              <span className="font-fraunces gradient-text"
+                style={{ fontSize: "2.5rem", fontWeight: 700, lineHeight: 1 }}>
                 {tier.price}
               </span>
             </div>
@@ -109,9 +109,8 @@ export function Pricing() {
             </ul>
 
             <div className="mt-auto">
-              <a
-                href="#contact"
-                onClick={(e) => { e.preventDefault(); document.querySelector("#contact")?.scrollIntoView({ behavior: "smooth" }); }}
+              <button
+                onClick={() => window.dispatchEvent(new CustomEvent("open-book-call"))}
                 className="inline-flex w-full items-center justify-center rounded-sm px-5 py-3 font-mono text-xs transition-all duration-200"
                 style={{
                   background: tier.featured ? "var(--accent)" : "transparent",
@@ -122,9 +121,10 @@ export function Pricing() {
                 }}
               >
                 {tier.cta}
-              </a>
+              </button>
             </div>
           </motion.div>
+          </TiltCard>
         ))}
       </div>
 

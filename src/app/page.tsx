@@ -9,9 +9,9 @@ import { Pricing } from "@/components/sections/Pricing";
 import { FAQ } from "@/components/sections/FAQ";
 import { FinalCTA } from "@/components/sections/FinalCTA";
 import { Footer } from "@/components/sections/Footer";
-import { CustomCursor } from "@/components/ui/CustomCursor";
 import { NoiseOverlay } from "@/components/ui/NoiseOverlay";
 import { AuroraBackground } from "@/components/ui/AuroraBackground";
+import { BookCallModal } from "@/components/ui/BookCallModal";
 
 export default function Home() {
   return (
@@ -28,8 +28,8 @@ export default function Home() {
       {/* Full-screen animated aurora background */}
       <AuroraBackground />
 
-      {/* Fine-pointer cursor */}
-      <CustomCursor />
+      {/* Global contact modal */}
+      <BookCallModal />
 
       {/* Page structure */}
       <Nav />

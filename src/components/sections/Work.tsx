@@ -2,6 +2,7 @@
 
 import { motion, useReducedMotion } from "framer-motion";
 import { workContent } from "@/content/site";
+import { TiltCard } from "@/components/ui/TiltCard";
 
 export function Work() {
   const shouldReduceMotion = useReducedMotion();
@@ -23,28 +24,31 @@ export function Work() {
         <div className="h-px max-w-xs flex-1" style={{ background: "var(--border)" }} aria-hidden="true" />
       </motion.div>
 
-      <motion.h2
-        id="work-heading"
-        initial={shouldReduceMotion ? false : { opacity: 0, y: 16 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, margin: "-100px" }}
-        transition={{ duration: 0.55, delay: 0.05 }}
-        className="mb-16 font-fraunces text-cream"
-        style={{ fontSize: "clamp(2rem, 4vw, 2.75rem)", fontWeight: 600, lineHeight: 1.1 }}
-      >
-        Work that speaks.
-      </motion.h2>
+      <div className="relative mb-16 overflow-visible">
+        <span className="section-num pointer-events-none absolute -top-2 right-0 select-none" aria-hidden="true">02</span>
+        <motion.h2
+          id="work-heading"
+          initial={shouldReduceMotion ? false : { opacity: 0, y: 16 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 0.55, delay: 0.05 }}
+          className="font-fraunces text-cream"
+          style={{ fontSize: "clamp(2rem, 4vw, 2.75rem)", fontWeight: 600, lineHeight: 1.1 }}
+        >
+          Work that speaks.
+        </motion.h2>
+      </div>
 
       <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
         {workContent.map((item, i) => (
+          <TiltCard key={item.title}>
           <motion.article
-            key={item.title}
             initial={shouldReduceMotion ? false : { opacity: 0, y: 32 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.6, ease: [0.2, 0.8, 0.2, 1], delay: i * 0.1 }}
             whileHover={shouldReduceMotion ? {} : { y: -6 }}
-            className="group relative overflow-hidden rounded-sm"
+            className="group relative h-full overflow-hidden rounded-sm"
             style={{
               border: "1px solid var(--border)",
               backdropFilter: "blur(12px)",
@@ -133,6 +137,7 @@ export function Work() {
             )}
 
           </motion.article>
+          </TiltCard>
         ))}
       </div>
     </section>

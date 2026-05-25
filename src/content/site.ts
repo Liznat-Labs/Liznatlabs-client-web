@@ -295,11 +295,11 @@ export const ctaContent = {
   ] satisfies HeadlineLine[],
   subhead:
     "Have a project in mind? Send a short brief and I'll get back to you within 24 hours.",
-  email: "hello@liznatlabs.com",
+  email: "liznatlabs@gmail.com",
   calendlyLabel: "Book a free 30-min call →",
   calendlyHref: "#contact",
   whatsappLabel: "Message on WhatsApp",
-  whatsappHref: "https://wa.me/919999999999",
+  whatsappHref: "https://wa.me/916361618251",
 };
 
 // ─── Footer ───────────────────────────────────────────────────────────────────
@@ -318,8 +318,8 @@ export const footerContent = {
   connectLinks: [
     { label: "Book a Call", href: "#contact" },
     { label: "Email Us", href: "mailto:hello@liznatlabs.com" },
-    { label: "WhatsApp", href: "https://wa.me/919999999999" },
-    { label: "LinkedIn", href: "#" },
+    { label: "WhatsApp", href: "https://wa.me/916361618251" },
+    { label: "LinkedIn", href: "https://www.linkedin.com/in/faizan-khan-51b635411" },
   ],
   legalLinks: [
     { label: "Privacy Policy", href: "/privacy" },

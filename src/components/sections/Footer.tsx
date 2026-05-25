@@ -1,6 +1,7 @@
 ﻿"use client";
 
 import { footerContent } from "@/content/site";
+import { LogoLockup } from "@/components/ui/Logo";
 
 export function Footer() {
   return (
@@ -13,17 +14,8 @@ export function Footer() {
       <div className="grid grid-cols-2 gap-12 py-16 md:grid-cols-4">
         {/* Brand */}
         <div className="col-span-2 flex flex-col gap-4 md:col-span-1">
-          <div className="flex items-center gap-2.5">
-            <span
-              className="h-2 w-2 rounded-full bg-accent"
-              aria-hidden="true"
-            />
-            <span
-              className="font-fraunces text-cream"
-              style={{ fontSize: "1.05rem", fontWeight: 400 }}
-            >
-              {footerContent.brand.name}
-            </span>
+          <div className="text-cream">
+            <LogoLockup size={22} />
           </div>
           <p
             className="font-geist text-muted"

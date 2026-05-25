@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { navContent } from "@/content/site";
+import { LogoLockup } from "@/components/ui/Logo";
 
 export function Nav() {
   const [scrolled, setScrolled] = useState(false);
@@ -47,20 +48,10 @@ export function Nav() {
             e.preventDefault();
             window.scrollTo({ top: 0, behavior: "smooth" });
           }}
-          className="flex items-center gap-2.5 no-underline"
-          aria-label="Liznat Labs â€” home"
+          className="flex items-center no-underline text-cream"
+          aria-label="Liznat Labs, home"
         >
-          <span
-            className="h-2 w-2 rounded-full bg-accent"
-            style={{ animation: "pulse-dot 2.5s ease-in-out infinite" }}
-            aria-hidden="true"
-          />
-          <span
-            className="font-fraunces text-cream"
-            style={{ fontSize: "1.1rem", fontWeight: 400, letterSpacing: "-0.01em" }}
-          >
-            {navContent.logo}
-          </span>
+          <LogoLockup size={26} />
         </a>
 
         {/* Desktop center links */}
@@ -87,21 +78,19 @@ export function Nav() {
 
         {/* Desktop CTA */}
         <div className="hidden md:block">
-          <a
-            href={navContent.cta.href}
-            onClick={(e) => {
-              e.preventDefault();
-              handleNavClick(navContent.cta.href);
-            }}
+          <button
+            type="button"
+            onClick={() => window.dispatchEvent(new CustomEvent("open-book-call"))}
             className="inline-flex items-center rounded-sm border border-accent bg-transparent px-4 py-2 font-mono text-xs text-accent transition-all duration-200 hover:bg-accent hover:text-bg"
             style={{ letterSpacing: "0.04em" }}
           >
             {navContent.cta.label}
-          </a>
+          </button>
         </div>
 
         {/* Mobile menu button */}
         <button
+          type="button"
           className="flex flex-col gap-1.5 p-2 md:hidden"
           onClick={() => setMenuOpen(!menuOpen)}
           aria-label={menuOpen ? "Close menu" : "Open menu"}
@@ -155,17 +144,14 @@ export function Nav() {
               {link.label}
             </a>
           ))}
-          <a
-            href={navContent.cta.href}
-            onClick={(e) => {
-              e.preventDefault();
-              handleNavClick(navContent.cta.href);
-            }}
+          <button
+            type="button"
+            onClick={() => { setMenuOpen(false); window.dispatchEvent(new CustomEvent("open-book-call")); }}
             className="mt-4 inline-flex items-center justify-center rounded-sm border border-accent px-4 py-2.5 font-mono text-xs text-accent transition-all hover:bg-accent hover:text-bg"
             style={{ letterSpacing: "0.04em" }}
           >
             {navContent.cta.label}
-          </a>
+          </button>
         </div>
       </motion.div>
     </header>

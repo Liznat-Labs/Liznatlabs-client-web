@@ -28,8 +28,8 @@ function HeadlineRenderer({ lines }: { lines: HeadlineLine[] }) {
             seg.italic && seg.accent ? (
               <span
                 key={si}
-                className="font-fraunces italic glow-accent"
-                style={{ fontWeight: 600, color: "var(--accent)" }}
+                className="font-fraunces italic gradient-text"
+                style={{ fontWeight: 700 }}
               >
                 {seg.text}
               </span>
@@ -37,7 +37,7 @@ function HeadlineRenderer({ lines }: { lines: HeadlineLine[] }) {
               <span
                 key={si}
                 className="font-fraunces"
-                style={{ fontWeight: 500, color: "var(--text)" }}
+                style={{ fontWeight: 600, color: "var(--text)" }}
               >
                 {seg.text}
               </span>
@@ -61,6 +61,48 @@ export function Hero() {
     >
       {/* Particle layer */}
       <ParticleCanvas />
+
+      {/* Floating decorative shapes — CSS only, no JS */}
+      {!shouldReduceMotion && (
+        <div aria-hidden="true" className="pointer-events-none absolute inset-0 overflow-hidden">
+          {/* Large circle outline — upper right */}
+          <div style={{
+            position: "absolute", top: "8%", right: "-6%",
+            width: 400, height: 400, borderRadius: "50%",
+            border: "1.5px solid rgba(233,110,51,0.13)",
+            animation: "floatA 20s ease-in-out infinite",
+          }} />
+          {/* Medium ring — inner right */}
+          <div style={{
+            position: "absolute", top: "20%", right: "5%",
+            width: 180, height: 180, borderRadius: "50%",
+            border: "1px solid rgba(168,85,247,0.1)",
+            animation: "floatB 26s ease-in-out infinite",
+          }} />
+          {/* Diamond shape — lower left */}
+          <div style={{
+            position: "absolute", bottom: "18%", left: "1%",
+            width: 60, height: 60,
+            background: "rgba(233,110,51,0.07)",
+            transform: "rotate(45deg)",
+            animation: "floatC 15s ease-in-out infinite",
+          }} />
+          {/* Small accent dot */}
+          <div style={{
+            position: "absolute", top: "52%", right: "9%",
+            width: 10, height: 10, borderRadius: "50%",
+            background: "rgba(168,85,247,0.35)",
+            animation: "floatA 11s ease-in-out infinite reverse",
+          }} />
+          {/* Tiny orange dot */}
+          <div style={{
+            position: "absolute", top: "33%", right: "23%",
+            width: 6, height: 6, borderRadius: "50%",
+            background: "rgba(233,110,51,0.45)",
+            animation: "floatB 9s ease-in-out infinite",
+          }} />
+        </div>
+      )}
 
       {/* Horizontal scan line â€” purely decorative */}
       {!shouldReduceMotion && (
@@ -139,18 +181,17 @@ export function Hero() {
             <motion.div variants={itemVariants} className="flex flex-wrap gap-3">
               {heroContent.ctas.map((cta) =>
                 cta.primary ? (
-                  <a
+                  <button
                     key={cta.label}
-                    href={cta.href}
-                    onClick={(e) => { e.preventDefault(); document.querySelector(cta.href)?.scrollIntoView({ behavior: "smooth" }); }}
-                    className="inline-flex items-center rounded-sm bg-accent px-6 py-3 font-mono text-xs font-medium text-bg transition-all duration-200"
+                    onClick={() => window.dispatchEvent(new CustomEvent("open-book-call"))}
+                    className="shimmer-btn inline-flex items-center rounded-sm bg-accent px-6 py-3 font-mono text-xs font-medium text-bg transition-all duration-200"
                     style={{
                       letterSpacing: "0.04em",
                       boxShadow: "0 0 24px rgba(233,110,51,0.4), 0 0 60px rgba(233,110,51,0.15)",
                     }}
                   >
                     {cta.label}
-                  </a>
+                  </button>
                 ) : (
                   <a
                     key={cta.label}
@@ -172,40 +213,42 @@ export function Hero() {
             </motion.div>
 
             {/* Meta strip */}
-            <motion.div
-              variants={itemVariants}
-              className="mt-2 grid grid-cols-2 overflow-hidden rounded-sm md:grid-cols-4"
-              style={{
-                border: "1px solid var(--glass-border)",
-                background: "var(--glass-bg)",
-                backdropFilter: "blur(12px)",
-              }}
-              role="list"
-              aria-label="Studio highlights"
-            >
-              {heroContent.meta.map((cell, i) => (
-                <div
-                  key={cell.label}
-                  role="listitem"
-                  className="flex flex-col gap-1 px-5 py-4"
-                  style={{
-                    borderRight:
-                      i < heroContent.meta.length - 1
-                        ? "1px solid var(--glass-border)"
-                        : "none",
-                  }}
-                >
-                  <span className="font-mono text-xs text-muted" style={{ letterSpacing: "0.06em" }}>
-                    {cell.label}
-                  </span>
-                  <span
-                    className="font-fraunces"
-                    style={{ fontSize: "1.1rem", fontWeight: 400, color: "var(--text)" }}
+            <motion.div variants={itemVariants}>
+              <ul
+                className="mt-2 grid grid-cols-2 overflow-hidden rounded-sm md:grid-cols-4"
+                style={{
+                  border: "1px solid var(--glass-border)",
+                  background: "var(--glass-bg)",
+                  backdropFilter: "blur(12px)",
+                  listStyle: "none",
+                  padding: 0,
+                  margin: 0,
+                }}
+                aria-label="Studio highlights"
+              >
+                {heroContent.meta.map((cell, i) => (
+                  <li
+                    key={cell.label}
+                    className="flex flex-col gap-1 px-5 py-4"
+                    style={{
+                      borderRight:
+                        i < heroContent.meta.length - 1
+                          ? "1px solid var(--glass-border)"
+                          : "none",
+                    }}
                   >
-                    {cell.value}
-                  </span>
-                </div>
-              ))}
+                    <span className="font-mono text-xs text-muted" style={{ letterSpacing: "0.06em" }}>
+                      {cell.label}
+                    </span>
+                    <span
+                      className="font-fraunces"
+                      style={{ fontSize: "1.1rem", fontWeight: 400, color: "var(--text)" }}
+                    >
+                      {cell.value}
+                    </span>
+                  </li>
+                ))}
+              </ul>
             </motion.div>
           </motion.div>
 

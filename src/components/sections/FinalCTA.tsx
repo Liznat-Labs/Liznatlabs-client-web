@@ -13,10 +13,10 @@ function HeadlineRenderer({ lines }: { lines: HeadlineLine[] }) {
               key={si}
               className={
                 seg.italic && seg.accent
-                  ? "font-fraunces italic text-accent"
+                  ? "font-fraunces italic gradient-text"
                   : "font-fraunces"
               }
-              style={{ fontWeight: 400 }}
+              style={{ fontWeight: seg.italic && seg.accent ? 700 : 600 }}
             >
               {seg.text}
             </span>
@@ -119,13 +119,13 @@ export function FinalCTA() {
           transition={{ duration: 0.55, ease: [0.2, 0.8, 0.2, 1], delay: 0.2 }}
           className="flex flex-wrap items-center justify-center gap-3"
         >
-          <a
-            href={ctaContent.calendlyHref}
-            className="inline-flex items-center rounded-sm bg-accent px-6 py-3 font-mono text-xs font-medium text-bg transition-all duration-200 hover:shadow-[0_0_24px_rgba(233,110,51,0.4)]"
+          <button
+            onClick={() => window.dispatchEvent(new CustomEvent("open-book-call"))}
+            className="shimmer-btn inline-flex items-center rounded-sm bg-accent px-6 py-3 font-mono text-xs font-medium text-bg transition-all duration-200 hover:shadow-[0_0_32px_rgba(233,110,51,0.5)]"
             style={{ letterSpacing: "0.04em" }}
           >
             {ctaContent.calendlyLabel}
-          </a>
+          </button>
 
           <a
             href={ctaContent.whatsappHref}

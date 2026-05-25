@@ -2,6 +2,7 @@
 
 import { motion, useReducedMotion } from "framer-motion";
 import { servicesContent } from "@/content/site";
+import { TiltCard } from "@/components/ui/TiltCard";
 
 function WebIcon() {
   return (
@@ -44,34 +45,37 @@ export function Services() {
     <section id="services" aria-labelledby="services-heading"
       className="mx-auto max-w-7xl px-6 py-24 xl:px-8">
 
-      <motion.div
-        initial={shouldReduceMotion ? false : { opacity: 0, y: 16 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, margin: "-100px" }}
-        transition={{ duration: 0.5 }}
-        className="mb-16 flex items-center gap-4"
-      >
-        <span className="font-mono text-xs text-muted" style={{ letterSpacing: "0.12em" }}>
-          WHAT WE BUILD
-        </span>
-        <div className="h-px max-w-xs flex-1" style={{ background: "var(--border)" }} aria-hidden="true" />
-      </motion.div>
+      <div className="relative mb-16 overflow-visible">
+        <span className="section-num pointer-events-none absolute -top-6 right-0 select-none" aria-hidden="true">01</span>
+        <motion.div
+          initial={shouldReduceMotion ? false : { opacity: 0, y: 16 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 0.5 }}
+          className="flex items-center gap-4"
+        >
+          <span className="font-mono text-xs text-muted" style={{ letterSpacing: "0.12em" }}>
+            WHAT WE BUILD
+          </span>
+          <div className="h-px max-w-xs flex-1" style={{ background: "var(--border)" }} aria-hidden="true" />
+        </motion.div>
+      </div>
 
       <h2 id="services-heading" className="sr-only">Services</h2>
 
-      <div className="grid grid-cols-1 gap-4 md:grid-cols-3" role="list">
+      <ul className="grid grid-cols-1 gap-4 md:grid-cols-3" style={{ listStyle: "none", padding: 0, margin: 0 }}>
         {servicesContent.map((service, i) => {
           const Icon = icons[i];
           return (
+            <li key={service.number}>
+            <TiltCard>
             <motion.article
-              key={service.number}
-              role="listitem"
               initial={shouldReduceMotion ? false : { opacity: 0, y: 32 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-100px" }}
               transition={{ duration: 0.6, ease: [0.2, 0.8, 0.2, 1], delay: i * 0.08 }}
               whileHover={shouldReduceMotion ? {} : { y: -6 }}
-              className="group flex flex-col gap-6 rounded-sm p-8"
+              className="group flex h-full flex-col gap-6 rounded-sm p-8"
               style={{
                 background: "var(--glass-bg)",
                 border: "1px solid var(--glass-border)",
@@ -122,9 +126,11 @@ export function Services() {
                 ))}
               </div>
             </motion.article>
+            </TiltCard>
+            </li>
           );
         })}
-      </div>
+      </ul>
     </section>
   );
 }

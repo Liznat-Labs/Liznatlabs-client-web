@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { motion, useMotionValue, useSpring } from "framer-motion";
+import { motion, useMotionValue } from "framer-motion";
 
 export function CustomCursor() {
   const [visible, setVisible] = useState(false);
@@ -10,10 +10,6 @@ export function CustomCursor() {
 
   const rawX = useMotionValue(0);
   const rawY = useMotionValue(0);
-
-  const springConfig = { stiffness: 200, damping: 30, mass: 0.5 };
-  const ringX = useSpring(rawX, springConfig);
-  const ringY = useSpring(rawY, springConfig);
 
   useEffect(() => {
     if (typeof window === "undefined") return;
@@ -97,28 +93,6 @@ export function CustomCursor() {
         />
       </motion.div>
 
-      {/* Outer ring — lags behind via spring */}
-      <motion.div
-        aria-hidden="true"
-        style={{
-          x: ringX,
-          y: ringY,
-          translateX: "-50%",
-          translateY: "-50%",
-          position: "fixed",
-          top: 0,
-          left: 0,
-          zIndex: 9998,
-          pointerEvents: "none",
-          width: hovered ? 40 : 28,
-          height: hovered ? 40 : 28,
-          borderRadius: "50%",
-          border: `1px solid ${hovered ? "var(--accent)" : "rgba(245,239,230,0.35)"}`,
-          transition: "width 0.25s ease, height 0.25s ease, border-color 0.25s ease",
-        }}
-        animate={{ opacity: visible ? 1 : 0 }}
-        transition={{ duration: 0.25 }}
-      />
     </>
   );
 }

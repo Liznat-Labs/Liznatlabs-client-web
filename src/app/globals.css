@@ -40,9 +40,6 @@ body {
   font-weight: 400;
 }
 
-body.cursor-active { cursor: none; }
-body.cursor-active a,
-body.cursor-active button { cursor: none; }
 
 :focus-visible {
   outline: 2px solid var(--accent);
@@ -157,4 +154,62 @@ body.cursor-active button { cursor: none; }
   text-shadow:
     0 0 20px rgba(0,229,255,0.6),
     0 0 50px rgba(0,229,255,0.3);
+}
+
+/* ── Gradient text ── */
+.gradient-text {
+  background: linear-gradient(125deg, #E96E33 0%, #a855f7 55%, #ec4899 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ── Big faded section numbers ── */
+.section-num {
+  font-size: clamp(7rem, 20vw, 16rem);
+  font-weight: 900;
+  line-height: 1;
+  color: transparent;
+  -webkit-text-stroke: 1.5px rgba(0, 0, 0, 0.06);
+  pointer-events: none;
+  user-select: none;
+  letter-spacing: -0.05em;
+  font-family: var(--font-geist-sans), system-ui, sans-serif;
+}
+
+/* ── Floating shape keyframes ── */
+@keyframes floatA {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  33%       { transform: translateY(-22px) rotate(7deg); }
+  66%       { transform: translateY(10px) rotate(-4deg); }
+}
+@keyframes floatB {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  40%       { transform: translateY(18px) rotate(-10deg); }
+  80%       { transform: translateY(-14px) rotate(5deg); }
+}
+@keyframes floatC {
+  0%, 100% { transform: translateY(0px) scale(1) rotate(0deg); }
+  50%       { transform: translateY(-18px) scale(1.06) rotate(15deg); }
+}
+
+/* ── Shimmer button ── */
+@keyframes shimmer {
+  from { transform: translateX(-150%) skewX(-20deg); }
+  to   { transform: translateX(250%) skewX(-20deg); }
+}
+.shimmer-btn {
+  position: relative;
+  overflow: hidden;
+}
+.shimmer-btn::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.35) 50%, transparent 100%);
+  transform: translateX(-150%) skewX(-20deg);
+  pointer-events: none;
+}
+.shimmer-btn:hover::after {
+  animation: shimmer 0.65s ease forwards;
 }
