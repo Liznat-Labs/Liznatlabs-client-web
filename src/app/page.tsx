@@ -1,4 +1,4 @@
-import { Nav } from "@/components/sections/Nav";
+import { Nav } from "@/components/layout/Nav";
 import { Hero } from "@/components/sections/Hero";
 import { MarqueeStrip } from "@/components/sections/MarqueeStrip";
 import { Services } from "@/components/sections/Services";
@@ -8,7 +8,7 @@ import { About } from "@/components/sections/About";
 import { Pricing } from "@/components/sections/Pricing";
 import { FAQ } from "@/components/sections/FAQ";
 import { FinalCTA } from "@/components/sections/FinalCTA";
-import { Footer } from "@/components/sections/Footer";
+import { Footer } from "@/components/layout/Footer";
 import { NoiseOverlay } from "@/components/ui/NoiseOverlay";
 import { AuroraBackground } from "@/components/ui/AuroraBackground";
 import { BookCallModal } from "@/components/ui/BookCallModal";

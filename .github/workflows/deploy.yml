@@ -42,7 +42,7 @@ jobs:
             git pull origin main
             docker load < liznat-labs.tar.gz
             rm liznat-labs.tar.gz
-            docker-compose -f docker-compose.prod.yml down || true
-            docker-compose -f docker-compose.prod.yml up -d
+            docker-compose -f infra/docker-compose.prod.yml down || true
+            docker-compose -f infra/docker-compose.prod.yml up -d
             docker image prune -f
             echo "Deploy complete."
