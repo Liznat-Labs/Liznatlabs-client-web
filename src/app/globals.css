@@ -81,8 +81,8 @@ body {
 @layer utilities {
   .glass {
     background: var(--glass-bg);
-    backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
+    backdrop-filter: blur(12px);
     border: 1px solid var(--glass-border);
   }
 }
@@ -172,6 +172,7 @@ body {
   color: transparent;
   -webkit-text-stroke: 1.5px rgba(0, 0, 0, 0.06);
   pointer-events: none;
+  -webkit-user-select: none;
   user-select: none;
   letter-spacing: -0.05em;
   font-family: var(--font-geist-sans), system-ui, sans-serif;

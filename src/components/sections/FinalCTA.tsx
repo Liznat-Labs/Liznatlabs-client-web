@@ -77,7 +77,7 @@ export function FinalCTA() {
           transition={{ duration: 0.65, ease: [0.2, 0.8, 0.2, 1], delay: 0.06 }}
           className="font-fraunces text-cream"
           style={{
-            fontSize: "clamp(3rem, 8vw, 6rem)",
+            fontSize: "clamp(2.25rem, 8vw, 6rem)",
             lineHeight: 0.95,
             letterSpacing: "-0.025em",
             fontWeight: 600,

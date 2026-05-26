@@ -25,5 +25,11 @@ yarn-error.log*
 Thumbs.db
 
 # Editor
-.vscode/
+.vscode/*.code-workspace
 .idea/
+
+# TypeScript build cache
+tsconfig.tsbuildinfo
+
+# Deploy secrets
+.deploy.env

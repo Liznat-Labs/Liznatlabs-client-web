@@ -106,7 +106,7 @@ export function BookCallModal() {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={shouldReduceMotion ? {} : { opacity: 0, y: 16, scale: 0.97 }}
             transition={{ duration: 0.3, ease: [0.2, 0.8, 0.2, 1] }}
-            className="relative w-full max-w-lg rounded-sm p-8"
+            className="relative w-full max-w-lg rounded-sm p-5 sm:p-8"
             style={{
               background: "var(--bg)",
               border: "1px solid var(--border)",
@@ -170,7 +170,7 @@ export function BookCallModal() {
                 </div>
 
                 <form onSubmit={handleSubmit} className="flex flex-col gap-4">
-                  <div className="grid grid-cols-2 gap-4">
+                  <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
                     <div className="flex flex-col gap-1.5">
                       <label htmlFor="modal-name" className="font-mono text-xs text-muted" style={{ letterSpacing: "0.06em" }}>
                         NAME *

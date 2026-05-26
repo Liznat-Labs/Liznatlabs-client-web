@@ -68,7 +68,7 @@ export function Work() {
             {item.image ? (
               <>
                 {/* Image top half */}
-                <div className="relative w-full overflow-hidden" style={{ height: 220 }}>
+                <div className="relative w-full overflow-hidden" style={{ height: "clamp(160px, 30vw, 220px)" }}>
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
                     src={`${item.image}?v=2`}
@@ -79,7 +79,7 @@ export function Work() {
                 </div>
 
                 {/* Content below image */}
-                <div className="flex flex-col gap-2 p-8 pt-4">
+                <div className="flex flex-col gap-2 p-5 pt-3 sm:p-8 sm:pt-4">
                   <span
                     className="inline-block self-start rounded-sm px-2 py-1 font-mono text-xs mb-2"
                     style={{
@@ -112,7 +112,7 @@ export function Work() {
                   background: "radial-gradient(ellipse at top left, rgba(233,110,51,0.06), transparent 60%)",
                 }} />
 
-                <div className="relative flex h-full min-h-[380px] flex-col justify-between p-8">
+                <div className="relative flex h-full min-h-[280px] flex-col justify-between p-5 sm:min-h-[380px] sm:p-8">
                   <span
                     className="inline-block self-start rounded-sm px-2 py-1 font-mono text-xs"
                     style={{

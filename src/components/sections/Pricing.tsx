@@ -64,7 +64,7 @@ export function Pricing() {
                 : "0 24px 60px rgba(0,0,0,0.12), 0 8px 24px rgba(0,0,0,0.08)",
               transition: { duration: 0.22, ease: "easeOut" },
             }}
-            className="relative flex h-full flex-col gap-8 rounded-sm p-8 cursor-pointer"
+            className="relative flex h-full flex-col gap-6 rounded-sm p-5 cursor-pointer sm:gap-8 sm:p-8"
             style={{
               background: tier.featured ? "rgba(233,110,51,0.05)" : "var(--glass-bg)",
               border: tier.featured ? "1px solid rgba(233,110,51,0.45)" : "1px solid var(--glass-border)",

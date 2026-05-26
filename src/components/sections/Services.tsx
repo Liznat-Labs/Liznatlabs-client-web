@@ -75,7 +75,7 @@ export function Services() {
               viewport={{ once: true, margin: "-100px" }}
               transition={{ duration: 0.6, ease: [0.2, 0.8, 0.2, 1], delay: i * 0.08 }}
               whileHover={shouldReduceMotion ? {} : { y: -6 }}
-              className="group flex h-full flex-col gap-6 rounded-sm p-8"
+              className="group flex h-full flex-col gap-5 rounded-sm p-5 sm:gap-6 sm:p-8"
               style={{
                 background: "var(--glass-bg)",
                 border: "1px solid var(--glass-border)",

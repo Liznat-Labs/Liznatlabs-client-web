@@ -153,7 +153,7 @@ export function Hero() {
             <motion.div variants={itemVariants}>
               <h1
                 style={{
-                  fontSize: "clamp(3rem, 7.5vw, 6.5rem)",
+                  fontSize: "clamp(2.25rem, 7.5vw, 6.5rem)",
                   lineHeight: 0.95,
                   letterSpacing: "-0.025em",
                 }}

@@ -1,0 +1,9 @@
+{
+  "vscode-edge-devtools.webhintIgnoredGlobs": [
+    "**/*.tsx",
+    "**/*.ts",
+    "**/*.jsx",
+    "**/*.js"
+  ],
+  "vscode-edge-devtools.webhint": false
+}
