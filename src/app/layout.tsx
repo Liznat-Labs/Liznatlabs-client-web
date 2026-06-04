@@ -37,7 +37,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Liznat Labs — Modern Software, Shipped with Intent",
     description:
-      "Bengaluru-based dev studio. Modern websites, Android apps, and custom software for ambitious teams. Solo-founder care. Fixed pricing. Real results.",
+      "Bengaluru-based dev studio. Modern websites, Android apps, and custom software for ambitious teams. Co-founder care. Fixed pricing. Real results.",
     url: "https://liznatlabs.com",
     siteName: "Liznat Labs",
     images: [

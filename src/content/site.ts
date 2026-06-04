@@ -80,7 +80,7 @@ export const heroContent = {
     },
   ] satisfies HeadlineLine[],
   subhead:
-    "Liznat Labs is a Bengaluru-based dev studio building modern websites, Android apps, and custom software for ambitious teams. Solo-founder care. Fixed pricing. Real results.",
+    "Liznat Labs is a Bengaluru-based dev studio building modern websites, Android apps, and custom software for ambitious teams. Co-founder care. Fixed pricing. Real results.",
   ctas: [
     { label: "Start a project →", href: "#contact", primary: true },
     { label: "See our work", href: "#work", primary: false },
@@ -197,12 +197,12 @@ export const processContent: ProcessStep[] = [
 
 export const aboutContent = {
   pullQuote:
-    "I started Liznat Labs because the best work happens when one person cares end-to-end. No handoffs. No diluted vision.",
+    "We started Liznat Labs because the best work happens when the people building it care end-to-end. No handoffs. No diluted vision.",
   paragraphs: [
-    "Founded by Faizan Khan in 2026. The name 'Liznat' is drawn from people who shaped who I am — that same care goes into every line of code.",
-    "Before starting the studio, I spent years building products across fintech, e-commerce, and consumer apps. I know what good software feels like to build and to use. Every project here gets that standard.",
+    "Founded by Faizan Khan and Faraaz Khan A in 2026. The name 'Liznat' is drawn from people who shaped who we are — that same care goes into every line of code.",
+    "Between us, we've spent years building products across fintech, e-commerce, and consumer apps. We know what good software feels like to build and to use. Every project here gets that standard.",
   ],
-  signature: "— Faizan Khan, Founder",
+  signature: "— Faizan Khan & Faraaz Khan A, Co-Founders",
 };
 
 // ─── Pricing ──────────────────────────────────────────────────────────────────

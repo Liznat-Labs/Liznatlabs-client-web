@@ -62,7 +62,7 @@ export function About() {
 
         {/* Right â€” founder note */}
         <div className="flex flex-col justify-center gap-6 px-10 py-14 lg:px-14 lg:py-16">
-          <h2 id="about-heading" className="sr-only">About the Founder</h2>
+          <h2 id="about-heading" className="sr-only">About the Co-Founders</h2>
 
           {aboutContent.paragraphs.map((para, i) => (
             <p key={i} className="font-geist text-muted"
