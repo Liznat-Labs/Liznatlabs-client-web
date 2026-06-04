@@ -100,7 +100,7 @@ export function Hero() {
         </div>
       )}
 
-      {/* Horizontal scan line â€” purely decorative */}
+      {/* Horizontal scan line â€" purely decorative */}
       {!shouldReduceMotion && (
         <div
           className="pointer-events-none absolute left-0 right-0 top-1/3 h-px"
@@ -117,7 +117,7 @@ export function Hero() {
       <div className="relative z-10 flex min-h-[92vh] items-center">
         <div className="grid w-full grid-cols-1 items-center gap-12 py-24 lg:grid-cols-[1fr_440px] xl:gap-20">
 
-          {/* â”€â”€ Left: content â”€â”€ */}
+          {/* â"€â"€ Left: content â"€â"€ */}
           <motion.div
             initial={shouldReduceMotion ? false : "hidden"}
             animate="visible"
@@ -250,10 +250,10 @@ export function Hero() {
 
           {/* ── Right: code window ── */}
           <div
-            className=”hidden lg:flex lg:items-center lg:justify-end”
+            className="hidden lg:flex lg:items-center lg:justify-end"
             style={{
-              transform: “rotate(1.5deg)”,
-              filter: “drop-shadow(0 40px 80px rgba(0,229,255,0.10)) drop-shadow(0 0 40px rgba(233,110,51,0.08))”,
+              transform: "rotate(1.5deg)",
+              filter: "drop-shadow(0 40px 80px rgba(0,229,255,0.10)) drop-shadow(0 0 40px rgba(233,110,51,0.08))",
             }}
           >
             <CodeWindow />
