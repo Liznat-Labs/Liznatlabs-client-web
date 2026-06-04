@@ -64,13 +64,11 @@ export const heroContent = {
     {
       segments: [
         { text: "Software" },
-        { text: " crafted" },
       ],
     },
     {
-      indent: true,
       segments: [
-        { text: "with " },
+        { text: "crafted with " },
         { text: "intent,", italic: true, accent: true },
       ],
     },

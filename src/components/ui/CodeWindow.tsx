@@ -114,16 +114,16 @@ export function CodeWindow() {
       initial={{ opacity: 0, y: 28 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ delay: 0.55, duration: 0.8, ease: [0.2, 0.8, 0.2, 1] }}
-      className="hidden lg:flex lg:flex-col"
+      className="flex flex-col"
       style={{
-        width: 420,
+        width: 440,
         flexShrink: 0,
         background: "#080807",
-        border: "1px solid rgba(0,229,255,0.18)",
-        borderRadius: 10,
+        border: "1px solid rgba(0,229,255,0.22)",
+        borderRadius: 12,
         overflow: "hidden",
         boxShadow:
-          "0 0 0 1px rgba(0,229,255,0.06), 0 32px 64px rgba(0,0,0,0.35), 0 0 120px rgba(0,229,255,0.07)",
+          "0 0 0 1px rgba(0,229,255,0.08), 0 24px 48px rgba(0,0,0,0.45), inset 0 1px 0 rgba(255,255,255,0.05)",
       }}
     >
       {/* Title bar */}

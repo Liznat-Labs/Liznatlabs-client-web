@@ -17,13 +17,9 @@ const itemVariants = {
 
 function HeadlineRenderer({ lines }: { lines: HeadlineLine[] }) {
   return (
-    <div style={{ lineHeight: 1.05 }}>
+    <div style={{ lineHeight: 1.0 }}>
       {lines.map((line, li) => (
-        <motion.div
-          key={li}
-          variants={itemVariants}
-          style={{ paddingLeft: line.indent ? "clamp(1.5rem, 8vw, 7rem)" : 0 }}
-        >
+        <motion.div key={li} variants={itemVariants}>
           {line.segments.map((seg, si) =>
             seg.italic && seg.accent ? (
               <span
@@ -37,7 +33,7 @@ function HeadlineRenderer({ lines }: { lines: HeadlineLine[] }) {
               <span
                 key={si}
                 className="font-fraunces"
-                style={{ fontWeight: 600, color: "var(--text)" }}
+                style={{ fontWeight: 700, color: "var(--text)" }}
               >
                 {seg.text}
               </span>
@@ -119,7 +115,7 @@ export function Hero() {
       )}
 
       <div className="relative z-10 flex min-h-[92vh] items-center">
-        <div className="grid w-full grid-cols-1 items-center gap-16 py-24 lg:grid-cols-[1fr_auto]">
+        <div className="grid w-full grid-cols-1 items-center gap-12 py-24 lg:grid-cols-[1fr_440px] xl:gap-20">
 
           {/* â”€â”€ Left: content â”€â”€ */}
           <motion.div
@@ -153,9 +149,9 @@ export function Hero() {
             <motion.div variants={itemVariants}>
               <h1
                 style={{
-                  fontSize: "clamp(2.25rem, 7.5vw, 6.5rem)",
-                  lineHeight: 0.95,
-                  letterSpacing: "-0.025em",
+                  fontSize: "clamp(2.5rem, 7vw, 6rem)",
+                  lineHeight: 0.92,
+                  letterSpacing: "-0.03em",
                 }}
               >
                 <HeadlineRenderer lines={heroContent.headlineLines} />
@@ -252,8 +248,16 @@ export function Hero() {
             </motion.div>
           </motion.div>
 
-          {/* â”€â”€ Right: code window â”€â”€ */}
-          <CodeWindow />
+          {/* ── Right: code window ── */}
+          <div
+            className=”hidden lg:flex lg:items-center lg:justify-end”
+            style={{
+              transform: “rotate(1.5deg)”,
+              filter: “drop-shadow(0 40px 80px rgba(0,229,255,0.10)) drop-shadow(0 0 40px rgba(233,110,51,0.08))”,
+            }}
+          >
+            <CodeWindow />
+          </div>
         </div>
       </div>
     </section>
