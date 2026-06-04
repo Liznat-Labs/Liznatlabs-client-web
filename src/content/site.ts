@@ -64,7 +64,6 @@ export const heroContent = {
     {
       segments: [
         { text: "Software" },
-        { text: " /", italic: false },
         { text: " crafted" },
       ],
     },
