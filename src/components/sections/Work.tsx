@@ -57,8 +57,8 @@ export function Work() {
               transition: "border-color 0.3s, box-shadow 0.3s, transform 0.25s",
             }}
             onMouseEnter={(e) => {
-              (e.currentTarget as HTMLElement).style.borderColor = "rgba(79, 70, 229,0.4)";
-              (e.currentTarget as HTMLElement).style.boxShadow = "0 8px 32px rgba(79, 70, 229,0.12), 0 2px 8px rgba(0,0,0,0.06)";
+              (e.currentTarget as HTMLElement).style.borderColor = "rgba(139, 92, 246,0.4)";
+              (e.currentTarget as HTMLElement).style.boxShadow = "0 8px 32px rgba(139, 92, 246,0.12), 0 2px 8px rgba(0,0,0,0.06)";
             }}
             onMouseLeave={(e) => {
               (e.currentTarget as HTMLElement).style.borderColor = "var(--border)";
@@ -109,7 +109,7 @@ export function Work() {
                   background: `repeating-linear-gradient(-45deg, transparent, transparent 40px, rgba(0,0,0,0.015) 40px, rgba(0,0,0,0.015) 41px)`,
                 }} />
                 <div className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-300 group-hover:opacity-100" style={{
-                  background: "radial-gradient(ellipse at top left, rgba(79, 70, 229,0.06), transparent 60%)",
+                  background: "radial-gradient(ellipse at top left, rgba(139, 92, 246,0.06), transparent 60%)",
                 }} />
 
                 <div className="relative flex h-full min-h-[280px] flex-col justify-between p-5 sm:min-h-[380px] sm:p-8">

@@ -145,7 +145,7 @@ export const workContent: WorkItem[] = [
     type: "Web",
     description:
       "Complete redesign of a Bengaluru restaurant's digital presence — rich photography, online table booking, and a menu that loads in under a second.",
-    accentHue: "rgba(79, 70, 229, 0.15)",
+    accentHue: "rgba(139, 92, 246, 0.15)",
     image: "/work/spice-and-smoke-preview.svg",
   },
   {
@@ -154,7 +154,7 @@ export const workContent: WorkItem[] = [
     type: "App",
     description:
       "Android booking app for a boutique fitness studio — class scheduling, instructor profiles, and in-app payments in a single polished experience.",
-    accentHue: "rgba(79, 70, 229, 0.10)",
+    accentHue: "rgba(139, 92, 246, 0.10)",
     image: "/work/flow-studio-preview.svg",
   },
   {

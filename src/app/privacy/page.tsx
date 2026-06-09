@@ -153,7 +153,7 @@ export default function PrivacyPage() {
         {/* Footer note */}
         <div
           className="mt-16 rounded-sm p-6"
-          style={{ background: "rgba(79, 70, 229,0.05)", border: "1px solid rgba(79, 70, 229,0.2)" }}
+          style={{ background: "rgba(139, 92, 246,0.05)", border: "1px solid rgba(139, 92, 246,0.2)" }}
         >
           <p className="font-geist text-muted" style={{ fontSize: "0.875rem", lineHeight: 1.75 }}>
             Questions? Email us at{" "}

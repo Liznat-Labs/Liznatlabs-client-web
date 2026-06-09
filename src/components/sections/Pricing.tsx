@@ -60,17 +60,17 @@ export function Pricing() {
               y: -10,
               scale: 1.025,
               boxShadow: tier.featured
-                ? "0 24px 60px rgba(79, 70, 229,0.25), 0 8px 24px rgba(79, 70, 229,0.15), inset 0 0 40px rgba(79, 70, 229,0.06)"
+                ? "0 24px 60px rgba(139, 92, 246,0.25), 0 8px 24px rgba(139, 92, 246,0.15), inset 0 0 40px rgba(139, 92, 246,0.06)"
                 : "0 24px 60px rgba(0,0,0,0.12), 0 8px 24px rgba(0,0,0,0.08)",
               transition: { duration: 0.22, ease: "easeOut" },
             }}
             className="relative flex h-full flex-col gap-6 rounded-sm p-5 cursor-pointer sm:gap-8 sm:p-8"
             style={{
-              background: tier.featured ? "rgba(79, 70, 229,0.05)" : "var(--glass-bg)",
-              border: tier.featured ? "1px solid rgba(79, 70, 229,0.45)" : "1px solid var(--glass-border)",
+              background: tier.featured ? "rgba(139, 92, 246,0.05)" : "var(--glass-bg)",
+              border: tier.featured ? "1px solid rgba(139, 92, 246,0.45)" : "1px solid var(--glass-border)",
               backdropFilter: "blur(12px)",
               WebkitBackdropFilter: "blur(12px)",
-              boxShadow: tier.featured ? "0 4px 24px rgba(79, 70, 229,0.18), 0 1px 4px rgba(0,0,0,0.05)" : "0 2px 16px rgba(0,0,0,0.07), 0 1px 4px rgba(0,0,0,0.04)",
+              boxShadow: tier.featured ? "0 4px 24px rgba(139, 92, 246,0.18), 0 1px 4px rgba(0,0,0,0.05)" : "0 2px 16px rgba(0,0,0,0.07), 0 1px 4px rgba(0,0,0,0.04)",
             }}
           >
             {tier.featured && (
@@ -94,7 +94,7 @@ export function Pricing() {
               </span>
             </div>
 
-            <div className="h-px w-full" style={{ background: tier.featured ? "rgba(79, 70, 229,0.2)" : "var(--glass-border)" }} />
+            <div className="h-px w-full" style={{ background: tier.featured ? "rgba(139, 92, 246,0.2)" : "var(--glass-border)" }} />
 
             <ul className="flex flex-col gap-3" role="list" aria-label={`${tier.name} plan features`}>
               {tier.features.map((feature) => (
@@ -117,7 +117,7 @@ export function Pricing() {
                   color: tier.featured ? "var(--bg)" : "var(--text)",
                   border: tier.featured ? "none" : "1px solid var(--border)",
                   letterSpacing: "0.04em",
-                  boxShadow: tier.featured ? "0 0 20px rgba(79, 70, 229,0.4)" : "none",
+                  boxShadow: tier.featured ? "0 0 20px rgba(139, 92, 246,0.4)" : "none",
                 }}
               >
                 {tier.cta}

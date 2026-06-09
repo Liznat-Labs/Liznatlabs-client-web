@@ -39,7 +39,7 @@ export function FinalCTA() {
         style={{
           width: "70vw",
           height: "50vw",
-          background: "radial-gradient(ellipse, rgba(79,70,229,0.18) 0%, transparent 65%)",
+          background: "radial-gradient(ellipse, rgba(139, 92, 246,0.18) 0%, transparent 65%)",
           filter: "blur(60px)",
           zIndex: 0,
         }}
