@@ -9,13 +9,13 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        bg: "#030309",
-        surface: "#0C0C18",
-        cream: "#EDEEFF",
-        muted: "#5E5E80",
-        "border-line": "#1E1E32",
-        accent: "#E96E33",
-        "accent-2": "#00E5FF",
+        bg: "#FFFFFF",
+        surface: "#F5F5F5",
+        cream: "#0A0A0A",
+        muted: "#7C7C7C",
+        "border-line": "#E2E2E2",
+        accent: "#6D28D9",
+        "accent-2": "#0891B2",
       },
       fontFamily: {
         fraunces: ["var(--font-fraunces)", "Georgia", "serif"],

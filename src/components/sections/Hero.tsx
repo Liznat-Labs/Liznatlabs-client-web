@@ -1,45 +1,111 @@
-﻿"use client";
+"use client";
 
 import { motion, useReducedMotion } from "framer-motion";
 import { heroContent, type HeadlineLine } from "@/content/site";
-import { ParticleCanvas } from "@/components/ui/ParticleCanvas";
-import { CodeWindow } from "@/components/ui/CodeWindow";
 
 const containerVariants = {
   hidden: {},
-  visible: { transition: { staggerChildren: 0.09, delayChildren: 0.15 } },
+  visible: { transition: { staggerChildren: 0.1, delayChildren: 0.12 } },
+};
+const itemVariants = {
+  hidden: { opacity: 0, y: 40 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.85, ease: [0.16, 1, 0.3, 1] } },
 };
 
-const itemVariants = {
-  hidden: { opacity: 0, y: 28 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.75, ease: [0.2, 0.8, 0.2, 1] } },
-};
+function ArrowRight() {
+  return (
+    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true" style={{ flexShrink: 0 }}>
+      <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+    </svg>
+  );
+}
+
+function PillBtn({
+  label,
+  onClick,
+  primary = false,
+  href,
+}: {
+  label: string;
+  onClick?: () => void;
+  primary?: boolean;
+  href?: string;
+}) {
+  const base: React.CSSProperties = {
+    display: "inline-flex",
+    alignItems: "center",
+    gap: "0.5rem",
+    borderRadius: "9999px",
+    padding: "0.85rem 1.85rem",
+    fontSize: "0.875rem",
+    fontWeight: 500,
+    letterSpacing: "0.01em",
+    cursor: "pointer",
+    transition: "all 0.25s cubic-bezier(0.4,0,0.2,1)",
+    fontFamily: "var(--font-geist-sans), system-ui, sans-serif",
+    textDecoration: "none",
+    border: primary ? "2px solid #0A0A0A" : "2px solid #CCCCCC",
+    background: primary ? "#0A0A0A" : "transparent",
+    color: primary ? "#FFFFFF" : "#0A0A0A",
+  };
+
+  const inner = (
+    <>
+      <span
+        style={{ display: "inline-block", transition: "transform 0.3s cubic-bezier(0.4,0,0.2,1)" }}
+        className="group-hover:-translate-x-0.5"
+      >
+        {label}
+      </span>
+      <span
+        style={{ display: "inline-flex", alignItems: "center", transition: "transform 0.3s cubic-bezier(0.4,0,0.2,1)" }}
+        className="group-hover:translate-x-0.5"
+      >
+        <ArrowRight />
+      </span>
+    </>
+  );
+
+  if (href) {
+    return (
+      <a
+        href={href}
+        className="group"
+        style={base}
+        onClick={(e) => {
+          e.preventDefault();
+          document.querySelector(href)?.scrollIntoView({ behavior: "smooth" });
+        }}
+      >
+        {inner}
+      </a>
+    );
+  }
+
+  return (
+    <button type="button" className="group" style={base} onClick={onClick}>
+      {inner}
+    </button>
+  );
+}
 
 function HeadlineRenderer({ lines }: { lines: HeadlineLine[] }) {
   return (
     <div style={{ lineHeight: 1.0 }}>
       {lines.map((line, li) => (
-        <motion.div key={li} variants={itemVariants}>
+        <div key={li}>
           {line.segments.map((seg, si) =>
             seg.italic && seg.accent ? (
-              <span
-                key={si}
-                className="font-fraunces italic gradient-text"
-                style={{ fontWeight: 700 }}
-              >
+              <span key={si} className="font-fraunces italic gradient-text" style={{ fontWeight: 700 }}>
                 {seg.text}
               </span>
             ) : (
-              <span
-                key={si}
-                className="font-fraunces"
-                style={{ fontWeight: 700, color: "var(--text)" }}
-              >
+              <span key={si} className="font-fraunces" style={{ fontWeight: 700, color: "var(--text)" }}>
                 {seg.text}
               </span>
             )
           )}
-        </motion.div>
+        </div>
       ))}
     </div>
   );
@@ -52,216 +118,161 @@ export function Hero() {
     <section
       id="hero"
       aria-label="Hero"
-      className="relative mx-auto max-w-7xl overflow-hidden px-6 xl:px-8"
-      style={{ minHeight: "92vh" }}
+      style={{ minHeight: "100vh", display: "flex", flexDirection: "column", justifyContent: "center", position: "relative", overflow: "hidden" }}
     >
-      {/* Particle layer */}
-      <ParticleCanvas />
+      {/* Subtle dot grid */}
+      <div
+        aria-hidden="true"
+        style={{
+          position: "absolute",
+          inset: 0,
+          backgroundImage: "radial-gradient(rgba(0,0,0,0.045) 1px, transparent 1px)",
+          backgroundSize: "30px 30px",
+          pointerEvents: "none",
+        }}
+      />
 
-      {/* Floating decorative shapes — CSS only, no JS */}
-      {!shouldReduceMotion && (
-        <div aria-hidden="true" className="pointer-events-none absolute inset-0 overflow-hidden">
-          {/* Large circle outline — upper right */}
-          <div style={{
-            position: "absolute", top: "8%", right: "-6%",
-            width: 400, height: 400, borderRadius: "50%",
-            border: "1.5px solid rgba(109, 40, 217,0.13)",
-            animation: "floatA 20s ease-in-out infinite",
-          }} />
-          {/* Medium ring — inner right */}
-          <div style={{
-            position: "absolute", top: "20%", right: "5%",
-            width: 180, height: 180, borderRadius: "50%",
-            border: "1px solid rgba(168,85,247,0.1)",
-            animation: "floatB 26s ease-in-out infinite",
-          }} />
-          {/* Diamond shape — lower left */}
-          <div style={{
-            position: "absolute", bottom: "18%", left: "1%",
-            width: 60, height: 60,
-            background: "rgba(109, 40, 217,0.07)",
-            transform: "rotate(45deg)",
-            animation: "floatC 15s ease-in-out infinite",
-          }} />
-          {/* Small accent dot */}
-          <div style={{
-            position: "absolute", top: "52%", right: "9%",
-            width: 10, height: 10, borderRadius: "50%",
-            background: "rgba(168,85,247,0.35)",
-            animation: "floatA 11s ease-in-out infinite reverse",
-          }} />
-          {/* Tiny orange dot */}
-          <div style={{
-            position: "absolute", top: "33%", right: "23%",
-            width: 6, height: 6, borderRadius: "50%",
-            background: "rgba(109, 40, 217,0.45)",
-            animation: "floatB 9s ease-in-out infinite",
-          }} />
-        </div>
-      )}
-
-      {/* Horizontal scan line â€" purely decorative */}
-      {!shouldReduceMotion && (
-        <div
-          className="pointer-events-none absolute left-0 right-0 top-1/3 h-px"
-          aria-hidden="true"
-          style={{
-            background:
-              "linear-gradient(90deg, transparent 0%, rgba(0,229,255,0.25) 30%, rgba(0,229,255,0.5) 50%, rgba(0,229,255,0.25) 70%, transparent 100%)",
-            animation: "gridScroll 6s linear infinite",
-            opacity: 0.5,
-          }}
-        />
-      )}
-
-      <div className="relative z-10 flex min-h-[92vh] items-center">
-        <div className="grid w-full grid-cols-1 items-center gap-12 py-24 lg:grid-cols-[1fr_440px] xl:gap-20">
-
-          {/* â"€â"€ Left: content â"€â"€ */}
-          <motion.div
-            initial={shouldReduceMotion ? false : "hidden"}
-            animate="visible"
-            variants={containerVariants}
-            className="flex flex-col gap-8"
-          >
-            {/* Status pill */}
-            <motion.div variants={itemVariants}>
-              <span
-                className="inline-flex items-center gap-2 rounded-full px-3 py-1.5 font-mono text-xs"
-                style={{
-                  border: "1px solid rgba(0,229,255,0.3)",
-                  color: "var(--accent-2)",
-                  background: "rgba(0,229,255,0.06)",
-                  letterSpacing: "0.06em",
-                  backdropFilter: "blur(8px)",
-                }}
-              >
-                <span
-                  className="h-1.5 w-1.5 rounded-full"
-                  style={{ background: "#22c55e", boxShadow: "0 0 6px #22c55e" }}
-                  aria-hidden="true"
-                />
-                {heroContent.status}
-              </span>
-            </motion.div>
-
-            {/* Headline */}
-            <motion.div variants={itemVariants}>
-              <h1
-                style={{
-                  fontSize: "clamp(2.5rem, 7vw, 6rem)",
-                  lineHeight: 0.92,
-                  letterSpacing: "-0.03em",
-                }}
-              >
-                <HeadlineRenderer lines={heroContent.headlineLines} />
-              </h1>
-            </motion.div>
-
-            {/* Subhead */}
-            <motion.p
-              variants={itemVariants}
+      <div
+        className="relative mx-auto w-full max-w-7xl px-6 xl:px-8"
+        style={{ paddingTop: "9rem", paddingBottom: "8rem" }}
+      >
+        <motion.div
+          initial={shouldReduceMotion ? false : "hidden"}
+          animate="visible"
+          variants={containerVariants}
+          className="flex flex-col"
+          style={{ gap: "2.5rem" }}
+        >
+          {/* Status pill */}
+          <motion.div variants={itemVariants}>
+            <span
+              className="font-mono text-xs inline-flex items-center gap-2"
               style={{
-                fontSize: "clamp(0.875rem, 1.4vw, 1rem)",
-                lineHeight: 1.75,
-                fontWeight: 600,
+                border: "1.5px solid #E2E2E2",
+                borderRadius: "9999px",
+                padding: "0.4rem 1rem",
                 color: "var(--muted)",
-                maxWidth: "44ch",
-                fontFamily: "var(--font-geist-sans)",
+                letterSpacing: "0.08em",
+                background: "#FAFAFA",
               }}
             >
-              {heroContent.subhead}
-            </motion.p>
-
-            {/* CTAs */}
-            <motion.div variants={itemVariants} className="flex flex-wrap gap-3">
-              {heroContent.ctas.map((cta) =>
-                cta.primary ? (
-                  <button
-                    key={cta.label}
-                    onClick={() => window.dispatchEvent(new CustomEvent("open-book-call"))}
-                    className="shimmer-btn inline-flex items-center rounded-sm bg-accent px-6 py-3 font-mono text-xs font-medium text-bg transition-all duration-200"
-                    style={{
-                      letterSpacing: "0.04em",
-                      boxShadow: "0 0 24px rgba(109, 40, 217,0.4), 0 0 60px rgba(109, 40, 217,0.15)",
-                    }}
-                  >
-                    {cta.label}
-                  </button>
-                ) : (
-                  <a
-                    key={cta.label}
-                    href={cta.href}
-                    onClick={(e) => { e.preventDefault(); document.querySelector(cta.href)?.scrollIntoView({ behavior: "smooth" }); }}
-                    className="inline-flex items-center rounded-sm px-6 py-3 font-mono text-xs transition-all duration-200 hover:text-cream"
-                    style={{
-                      border: "1px solid var(--glass-border)",
-                      color: "var(--muted)",
-                      background: "var(--glass-bg)",
-                      backdropFilter: "blur(8px)",
-                      letterSpacing: "0.04em",
-                    }}
-                  >
-                    {cta.label}
-                  </a>
-                )
-              )}
-            </motion.div>
-
-            {/* Meta strip */}
-            <motion.div variants={itemVariants}>
-              <ul
-                className="mt-2 grid grid-cols-2 overflow-hidden rounded-sm md:grid-cols-4"
+              <span
+                aria-hidden="true"
                 style={{
-                  border: "1px solid var(--glass-border)",
-                  background: "var(--glass-bg)",
-                  backdropFilter: "blur(12px)",
-                  listStyle: "none",
-                  padding: 0,
-                  margin: 0,
+                  width: 6,
+                  height: 6,
+                  borderRadius: "50%",
+                  background: "#22c55e",
+                  boxShadow: "0 0 6px #22c55e",
+                  display: "inline-block",
+                  flexShrink: 0,
                 }}
-                aria-label="Studio highlights"
-              >
-                {heroContent.meta.map((cell, i) => (
-                  <li
-                    key={cell.label}
-                    className="flex flex-col gap-1 px-5 py-4"
-                    style={{
-                      borderRight:
-                        i < heroContent.meta.length - 1
-                          ? "1px solid var(--glass-border)"
-                          : "none",
-                    }}
-                  >
-                    <span className="font-mono text-xs text-muted" style={{ letterSpacing: "0.06em" }}>
-                      {cell.label}
-                    </span>
-                    <span
-                      className="font-fraunces"
-                      style={{ fontSize: "1.1rem", fontWeight: 400, color: "var(--text)" }}
-                    >
-                      {cell.value}
-                    </span>
-                  </li>
-                ))}
-              </ul>
-            </motion.div>
+              />
+              {heroContent.status}
+            </span>
           </motion.div>
 
-          {/* ── Right: code window ── */}
-          <div
-            className="hidden lg:flex lg:items-center lg:justify-end"
+          {/* Giant headline */}
+          <motion.div variants={itemVariants}>
+            <h1
+              style={{
+                fontSize: "clamp(3.5rem, 9.5vw, 9.5rem)",
+                lineHeight: 0.92,
+                letterSpacing: "-0.035em",
+              }}
+            >
+              <HeadlineRenderer lines={heroContent.headlineLines} />
+            </h1>
+          </motion.div>
+
+          {/* Divider */}
+          <motion.div variants={itemVariants}>
+            <div style={{ height: "1px", background: "#E2E2E2" }} aria-hidden="true" />
+          </motion.div>
+
+          {/* CTA row */}
+          <motion.div variants={itemVariants} style={{ display: "flex", flexWrap: "wrap", gap: "1rem", alignItems: "center" }}>
+            <PillBtn
+              label="Book a call"
+              primary
+              onClick={() => window.dispatchEvent(new CustomEvent("open-book-call"))}
+            />
+            <PillBtn label="View our work" href="#work" />
+          </motion.div>
+
+          {/* Meta strip */}
+          <motion.div variants={itemVariants}>
+            <div
+              style={{
+                display: "flex",
+                flexWrap: "wrap",
+                gap: "0.5rem 2.5rem",
+                fontFamily: "var(--font-geist-mono), monospace",
+                fontSize: "0.75rem",
+                letterSpacing: "0.04em",
+                color: "var(--muted)",
+              }}
+            >
+              {heroContent.meta.map((cell, i) => (
+                <span key={cell.label} style={{ display: "inline-flex", alignItems: "center", gap: "0.5rem" }}>
+                  {i > 0 && (
+                    <span
+                      aria-hidden="true"
+                      style={{
+                        display: "inline-block",
+                        width: 3,
+                        height: 3,
+                        borderRadius: "50%",
+                        background: "#CCCCCC",
+                        flexShrink: 0,
+                      }}
+                    />
+                  )}
+                  <strong style={{ color: "var(--text)", fontWeight: 600 }}>{cell.value}</strong>
+                  <span>{cell.label}</span>
+                </span>
+              ))}
+            </div>
+          </motion.div>
+        </motion.div>
+      </div>
+
+      {/* Scroll indicator */}
+      {!shouldReduceMotion && (
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 1.4, duration: 0.7 }}
+          aria-hidden="true"
+          style={{
+            position: "absolute",
+            bottom: "2.5rem",
+            right: "2.5rem",
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            gap: "0.4rem",
+          }}
+        >
+          <span
             style={{
-              transform: "rotate(1.5deg)",
-              filter: "drop-shadow(0 40px 80px rgba(0,229,255,0.10)) drop-shadow(0 0 40px rgba(109, 40, 217,0.08))",
+              fontSize: "0.6rem",
+              fontFamily: "var(--font-geist-mono), monospace",
+              color: "var(--muted)",
+              letterSpacing: "0.2em",
+              textTransform: "uppercase",
+              writingMode: "vertical-rl",
             }}
           >
-            <CodeWindow />
-          </div>
-        </div>
-      </div>
+            Scroll
+          </span>
+          <motion.div
+            animate={{ y: [0, 8, 0] }}
+            transition={{ duration: 1.8, repeat: Infinity, ease: "easeInOut" }}
+            style={{ width: 1, height: 48, background: "linear-gradient(to bottom, var(--muted), transparent)" }}
+          />
+        </motion.div>
+      )}
     </section>
   );
 }
-
-

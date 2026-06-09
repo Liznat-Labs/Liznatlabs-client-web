@@ -1,138 +1,194 @@
-﻿"use client";
+"use client";
 
 import { motion, useReducedMotion } from "framer-motion";
 import { servicesContent } from "@/content/site";
-import { TiltCard } from "@/components/ui/TiltCard";
 
 function WebIcon() {
   return (
-    <svg width="36" height="36" viewBox="0 0 36 36" fill="none" stroke="currentColor"
+    <svg width="32" height="32" viewBox="0 0 32 32" fill="none" stroke="currentColor"
       strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-      <circle cx="18" cy="18" r="13" />
-      <path d="M18 5 C13.5 11, 13.5 25, 18 31" />
-      <path d="M18 5 C22.5 11, 22.5 25, 18 31" />
-      <path d="M5 18 H31" /><path d="M6.5 12 H29.5" /><path d="M6.5 24 H29.5" />
+      <circle cx="16" cy="16" r="12" />
+      <path d="M16 4 C11.5 9.5, 11.5 22.5, 16 28" />
+      <path d="M16 4 C20.5 9.5, 20.5 22.5, 16 28" />
+      <path d="M4 16 H28" /><path d="M5.5 11 H26.5" /><path d="M5.5 21 H26.5" />
     </svg>
   );
 }
 function MobileIcon() {
   return (
-    <svg width="32" height="36" viewBox="0 0 32 36" fill="none" stroke="currentColor"
+    <svg width="28" height="32" viewBox="0 0 28 32" fill="none" stroke="currentColor"
       strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-      <rect x="6" y="3" width="20" height="30" rx="3" />
-      <circle cx="16" cy="29" r="1.2" />
-      <path d="M12 7.5 H20" />
+      <rect x="4" y="2" width="20" height="28" rx="3" />
+      <circle cx="14" cy="26" r="1.1" />
+      <path d="M10 6.5 H18" />
     </svg>
   );
 }
 function CodeIcon() {
   return (
-    <svg width="36" height="36" viewBox="0 0 36 36" fill="none" stroke="currentColor"
+    <svg width="32" height="32" viewBox="0 0 32 32" fill="none" stroke="currentColor"
       strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-      <polyline points="11,13 5,18 11,23" />
-      <polyline points="25,13 31,18 25,23" />
-      <line x1="22" y1="9" x2="14" y2="27" />
+      <polyline points="10,12 4,16 10,20" />
+      <polyline points="22,12 28,16 22,20" />
+      <line x1="19" y1="8" x2="13" y2="24" />
     </svg>
   );
 }
 
 const icons = [WebIcon, MobileIcon, CodeIcon];
 
+function ArrowCta({ label }: { label: string }) {
+  return (
+    <span
+      className="group inline-flex items-center gap-2"
+      style={{
+        fontSize: "0.8125rem",
+        fontWeight: 500,
+        color: "var(--text)",
+        letterSpacing: "0.01em",
+        transition: "color 0.2s ease",
+      }}
+    >
+      <span
+        style={{ transition: "transform 0.3s cubic-bezier(0.4,0,0.2,1)" }}
+        className="group-hover:-translate-x-0.5"
+      >
+        {label}
+      </span>
+      <svg
+        width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true"
+        style={{ flexShrink: 0, transition: "transform 0.3s cubic-bezier(0.4,0,0.2,1)" }}
+        className="group-hover:translate-x-0.5"
+      >
+        <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+      </svg>
+    </span>
+  );
+}
+
 export function Services() {
   const shouldReduceMotion = useReducedMotion();
 
   return (
-    <section id="services" aria-labelledby="services-heading"
-      className="mx-auto max-w-7xl px-6 py-24 xl:px-8">
+    <section id="services" aria-labelledby="services-heading" style={{ background: "#FFFFFF" }}>
+      <div className="mx-auto max-w-7xl px-6 xl:px-8" style={{ paddingTop: "7rem", paddingBottom: "7rem" }}>
 
-      <div className="relative mb-16 overflow-visible">
-        <span className="section-num pointer-events-none absolute -top-6 right-0 select-none" aria-hidden="true">01</span>
+        {/* Section header */}
         <motion.div
-          initial={shouldReduceMotion ? false : { opacity: 0, y: 16 }}
+          initial={shouldReduceMotion ? false : { opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.5 }}
-          className="flex items-center gap-4"
+          viewport={{ once: true, margin: "-80px" }}
+          transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+          style={{ marginBottom: "4rem" }}
         >
-          <span className="font-mono text-xs text-muted" style={{ letterSpacing: "0.12em" }}>
-            WHAT WE BUILD
+          <span
+            className="font-mono"
+            style={{ fontSize: "0.68rem", letterSpacing: "0.22em", textTransform: "uppercase", color: "var(--muted)" }}
+          >
+            What we build
           </span>
-          <div className="h-px max-w-xs flex-1" style={{ background: "var(--border)" }} aria-hidden="true" />
+          <h2
+            id="services-heading"
+            className="font-fraunces"
+            style={{ fontSize: "clamp(2rem, 4vw, 2.75rem)", fontWeight: 600, lineHeight: 1.1, color: "var(--text)", marginTop: "1rem" }}
+          >
+            End-to-end digital products.
+          </h2>
         </motion.div>
+
+        {/* Cards grid */}
+        <ul className="grid grid-cols-1 gap-px md:grid-cols-3" style={{ listStyle: "none", padding: 0, margin: 0, background: "var(--border)", border: "1px solid var(--border)" }}>
+          {servicesContent.map((service, i) => {
+            const Icon = icons[i];
+            return (
+              <li key={service.number} style={{ background: "#FFFFFF" }}>
+                <motion.article
+                  initial={shouldReduceMotion ? false : { opacity: 0, y: 24 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: "-80px" }}
+                  transition={{ duration: 0.65, ease: [0.16, 1, 0.3, 1], delay: i * 0.08 }}
+                  className="group flex h-full flex-col"
+                  style={{
+                    padding: "2.5rem",
+                    background: "#FFFFFF",
+                    transition: "background 0.3s ease",
+                    cursor: "default",
+                  }}
+                  onMouseEnter={(e) => {
+                    (e.currentTarget as HTMLElement).style.background = "#FAFAFA";
+                  }}
+                  onMouseLeave={(e) => {
+                    (e.currentTarget as HTMLElement).style.background = "#FFFFFF";
+                  }}
+                >
+                  {/* Number + category */}
+                  <div style={{ display: "flex", alignItems: "center", gap: "0.75rem", marginBottom: "2rem" }}>
+                    <span
+                      className="font-mono"
+                      style={{ fontSize: "0.65rem", letterSpacing: "0.18em", color: "var(--accent)", fontWeight: 500 }}
+                    >
+                      {service.number}
+                    </span>
+                    <span
+                      className="font-mono"
+                      style={{ fontSize: "0.65rem", letterSpacing: "0.14em", color: "var(--muted)", textTransform: "uppercase" }}
+                    >
+                      / {service.category}
+                    </span>
+                  </div>
+
+                  {/* Icon */}
+                  <div style={{ color: "var(--text)", marginBottom: "1.75rem", opacity: 0.75 }}>
+                    <Icon />
+                  </div>
+
+                  {/* Title */}
+                  <h3
+                    className="font-fraunces"
+                    style={{ fontSize: "1.5rem", fontWeight: 500, lineHeight: 1.15, color: "var(--text)", marginBottom: "1rem" }}
+                  >
+                    {service.title}
+                  </h3>
+
+                  {/* Description */}
+                  <p
+                    className="font-geist"
+                    style={{ fontSize: "0.875rem", lineHeight: 1.8, fontWeight: 400, color: "var(--muted)", marginBottom: "2rem", flex: 1 }}
+                  >
+                    {service.body}
+                  </p>
+
+                  {/* Tags */}
+                  <div style={{ display: "flex", flexWrap: "wrap", gap: "0.4rem", marginBottom: "2rem" }}>
+                    {service.tags.map((tag) => (
+                      <span
+                        key={tag}
+                        className="font-mono"
+                        style={{
+                          fontSize: "0.6rem",
+                          letterSpacing: "0.1em",
+                          padding: "0.3rem 0.65rem",
+                          border: "1px solid var(--border)",
+                          borderRadius: "3px",
+                          color: "var(--muted)",
+                          textTransform: "uppercase",
+                        }}
+                      >
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+
+                  {/* Arrow CTA */}
+                  <div style={{ borderTop: "1px solid var(--border)", paddingTop: "1.25rem" }}>
+                    <ArrowCta label="Learn more" />
+                  </div>
+                </motion.article>
+              </li>
+            );
+          })}
+        </ul>
       </div>
-
-      <h2 id="services-heading" className="sr-only">Services</h2>
-
-      <ul className="grid grid-cols-1 gap-4 md:grid-cols-3" style={{ listStyle: "none", padding: 0, margin: 0 }}>
-        {servicesContent.map((service, i) => {
-          const Icon = icons[i];
-          return (
-            <li key={service.number}>
-            <TiltCard>
-            <motion.article
-              initial={shouldReduceMotion ? false : { opacity: 0, y: 32 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-100px" }}
-              transition={{ duration: 0.6, ease: [0.2, 0.8, 0.2, 1], delay: i * 0.08 }}
-              whileHover={shouldReduceMotion ? {} : { y: -6 }}
-              className="group flex h-full flex-col gap-5 rounded-sm p-5 sm:gap-6 sm:p-8"
-              style={{
-                background: "var(--glass-bg)",
-                border: "1px solid var(--glass-border)",
-                backdropFilter: "blur(12px)",
-                WebkitBackdropFilter: "blur(12px)",
-                boxShadow: "0 2px 16px rgba(0,0,0,0.07), 0 1px 4px rgba(0,0,0,0.04)",
-                transition: "border-color 0.3s, box-shadow 0.3s, transform 0.25s",
-              }}
-              onMouseEnter={(e) => {
-                (e.currentTarget as HTMLElement).style.borderColor = "rgba(109, 40, 217,0.4)";
-                (e.currentTarget as HTMLElement).style.boxShadow = "0 8px 32px rgba(109, 40, 217,0.15), 0 2px 8px rgba(0,0,0,0.06)";
-              }}
-              onMouseLeave={(e) => {
-                (e.currentTarget as HTMLElement).style.borderColor = "var(--glass-border)";
-                (e.currentTarget as HTMLElement).style.boxShadow = "0 2px 16px rgba(0,0,0,0.07), 0 1px 4px rgba(0,0,0,0.04)";
-              }}
-            >
-              <div className="flex items-center gap-3">
-                <span className="font-mono text-xs text-accent" style={{ letterSpacing: "0.1em" }}>
-                  {service.number}
-                </span>
-                <span className="font-mono text-xs text-muted" style={{ letterSpacing: "0.1em" }}>
-                  / {service.category.toUpperCase()}
-                </span>
-              </div>
-
-              <div className="text-accent" style={{ filter: "drop-shadow(0 0 8px rgba(109, 40, 217,0.5))" }}>
-                <Icon />
-              </div>
-
-              <h3 className="font-fraunces text-cream"
-                style={{ fontSize: "1.5rem", fontWeight: 400, lineHeight: 1.1 }}>
-                {service.title}
-              </h3>
-
-              <p className="font-geist text-muted"
-                style={{ fontSize: "0.875rem", lineHeight: 1.75, fontWeight: 400 }}>
-                {service.body}
-              </p>
-
-              <div className="mt-auto flex flex-wrap gap-2 pt-2">
-                {service.tags.map((tag) => (
-                  <span key={tag}
-                    className="rounded-sm px-2 py-0.5 font-mono text-xs text-muted"
-                    style={{ border: "1px solid var(--border)", letterSpacing: "0.04em", background: "rgba(0,0,0,0.04)", color: "var(--text)" }}>
-                    {tag}
-                  </span>
-                ))}
-              </div>
-            </motion.article>
-            </TiltCard>
-            </li>
-          );
-        })}
-      </ul>
     </section>
   );
 }
-
-
