@@ -38,15 +38,17 @@ function PillBtn({
     borderRadius: "9999px",
     padding: "0.85rem 1.85rem",
     fontSize: "0.875rem",
-    fontWeight: 500,
+    fontWeight: 600,
     letterSpacing: "0.01em",
     cursor: "pointer",
     transition: "all 0.25s cubic-bezier(0.4,0,0.2,1)",
     fontFamily: "var(--font-geist-sans), system-ui, sans-serif",
     textDecoration: "none",
-    border: primary ? "2px solid #0A0A0A" : "2px solid #CCCCCC",
-    background: primary ? "#0A0A0A" : "transparent",
+    border: primary ? "2px solid #0A0A0A" : "2px solid rgba(10,10,10,0.35)",
+    background: primary ? "#0A0A0A" : "rgba(255,255,255,0.75)",
     color: primary ? "#FFFFFF" : "#0A0A0A",
+    backdropFilter: "blur(8px)",
+    WebkitBackdropFilter: "blur(8px)",
   };
 
   const inner = (
@@ -96,11 +98,26 @@ function HeadlineRenderer({ lines }: { lines: HeadlineLine[] }) {
         <div key={li}>
           {line.segments.map((seg, si) =>
             seg.italic && seg.accent ? (
-              <span key={si} className="font-fraunces italic gradient-text" style={{ fontWeight: 700 }}>
+              <span
+                key={si}
+                className="font-fraunces italic gradient-text"
+                style={{
+                  fontWeight: 700,
+                  filter: "drop-shadow(0 2px 12px rgba(255,255,255,0.9))",
+                }}
+              >
                 {seg.text}
               </span>
             ) : (
-              <span key={si} className="font-fraunces" style={{ fontWeight: 700, color: "var(--text)" }}>
+              <span
+                key={si}
+                className="font-fraunces"
+                style={{
+                  fontWeight: 700,
+                  color: "#0A0A0A",
+                  textShadow: "0 2px 24px rgba(255,255,255,0.95), 0 0 40px rgba(255,255,255,0.7)",
+                }}
+              >
                 {seg.text}
               </span>
             )
@@ -133,13 +150,13 @@ export function Hero() {
           pointerEvents: "none",
         }}
       />
-      {/* Overlay to ensure text stays readable */}
+      {/* Light overlay — keep image visible, text readable */}
       <div
         aria-hidden="true"
         style={{
           position: "absolute",
           inset: 0,
-          background: "rgba(255,255,255,0.55)",
+          background: "rgba(255,255,255,0.38)",
           pointerEvents: "none",
         }}
       />
@@ -155,35 +172,6 @@ export function Hero() {
           className="flex flex-col"
           style={{ gap: "2.5rem" }}
         >
-          {/* Status pill */}
-          <motion.div variants={itemVariants}>
-            <span
-              className="font-mono text-xs inline-flex items-center gap-2"
-              style={{
-                border: "1.5px solid #E2E2E2",
-                borderRadius: "9999px",
-                padding: "0.4rem 1rem",
-                color: "var(--muted)",
-                letterSpacing: "0.08em",
-                background: "#FAFAFA",
-              }}
-            >
-              <span
-                aria-hidden="true"
-                style={{
-                  width: 6,
-                  height: 6,
-                  borderRadius: "50%",
-                  background: "#22c55e",
-                  boxShadow: "0 0 6px #22c55e",
-                  display: "inline-block",
-                  flexShrink: 0,
-                }}
-              />
-              {heroContent.status}
-            </span>
-          </motion.div>
-
           {/* Giant headline */}
           <motion.div variants={itemVariants}>
             <h1
@@ -199,7 +187,24 @@ export function Hero() {
 
           {/* Divider */}
           <motion.div variants={itemVariants}>
-            <div style={{ height: "1px", background: "#E2E2E2" }} aria-hidden="true" />
+            <div style={{ height: "1.5px", background: "rgba(10,10,10,0.25)", width: "100%" }} aria-hidden="true" />
+          </motion.div>
+
+          {/* Subhead */}
+          <motion.div variants={itemVariants}>
+            <p
+              className="font-geist"
+              style={{
+                fontSize: "clamp(1rem, 1.6vw, 1.2rem)",
+                lineHeight: 1.6,
+                fontWeight: 500,
+                color: "#0A0A0A",
+                maxWidth: "48ch",
+                textShadow: "0 1px 16px rgba(255,255,255,0.9)",
+              }}
+            >
+              {heroContent.subhead}
+            </p>
           </motion.div>
 
           {/* CTA row */}
@@ -210,41 +215,6 @@ export function Hero() {
               onClick={() => window.dispatchEvent(new CustomEvent("open-book-call"))}
             />
             <PillBtn label="View our work" href="#work" />
-          </motion.div>
-
-          {/* Meta strip */}
-          <motion.div variants={itemVariants}>
-            <div
-              style={{
-                display: "flex",
-                flexWrap: "wrap",
-                gap: "0.5rem 2.5rem",
-                fontFamily: "var(--font-geist-mono), monospace",
-                fontSize: "0.75rem",
-                letterSpacing: "0.04em",
-                color: "var(--muted)",
-              }}
-            >
-              {heroContent.meta.map((cell, i) => (
-                <span key={cell.label} style={{ display: "inline-flex", alignItems: "center", gap: "0.5rem" }}>
-                  {i > 0 && (
-                    <span
-                      aria-hidden="true"
-                      style={{
-                        display: "inline-block",
-                        width: 3,
-                        height: 3,
-                        borderRadius: "50%",
-                        background: "#CCCCCC",
-                        flexShrink: 0,
-                      }}
-                    />
-                  )}
-                  <strong style={{ color: "var(--text)", fontWeight: 600 }}>{cell.value}</strong>
-                  <span>{cell.label}</span>
-                </span>
-              ))}
-            </div>
           </motion.div>
         </motion.div>
       </div>
@@ -270,10 +240,11 @@ export function Hero() {
             style={{
               fontSize: "0.6rem",
               fontFamily: "var(--font-geist-mono), monospace",
-              color: "var(--muted)",
+              color: "#0A0A0A",
               letterSpacing: "0.2em",
               textTransform: "uppercase",
               writingMode: "vertical-rl",
+              textShadow: "0 1px 8px rgba(255,255,255,0.8)",
             }}
           >
             Scroll
@@ -281,7 +252,7 @@ export function Hero() {
           <motion.div
             animate={{ y: [0, 8, 0] }}
             transition={{ duration: 1.8, repeat: Infinity, ease: "easeInOut" }}
-            style={{ width: 1, height: 48, background: "linear-gradient(to bottom, var(--muted), transparent)" }}
+            style={{ width: 1, height: 48, background: "linear-gradient(to bottom, #0A0A0A, transparent)" }}
           />
         </motion.div>
       )}
