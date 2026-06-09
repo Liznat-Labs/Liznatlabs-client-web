@@ -120,14 +120,26 @@ export function Hero() {
       aria-label="Hero"
       style={{ minHeight: "100vh", display: "flex", flexDirection: "column", justifyContent: "center", position: "relative", overflow: "hidden" }}
     >
-      {/* Subtle dot grid */}
+      {/* Hero background image */}
       <div
         aria-hidden="true"
         style={{
           position: "absolute",
           inset: 0,
-          backgroundImage: "radial-gradient(rgba(0,0,0,0.045) 1px, transparent 1px)",
-          backgroundSize: "30px 30px",
+          backgroundImage: "url('/hero-bg.png')",
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          backgroundRepeat: "no-repeat",
+          pointerEvents: "none",
+        }}
+      />
+      {/* Overlay to ensure text stays readable */}
+      <div
+        aria-hidden="true"
+        style={{
+          position: "absolute",
+          inset: 0,
+          background: "rgba(255,255,255,0.82)",
           pointerEvents: "none",
         }}
       />
