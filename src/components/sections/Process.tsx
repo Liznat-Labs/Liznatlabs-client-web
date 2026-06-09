@@ -11,7 +11,7 @@ export function Process() {
       id="process"
       aria-labelledby="process-heading"
       style={{
-        background: "rgba(0,0,0,0.025)",
+        background: "rgba(109,40,217,0.03)",
         marginLeft: "-1.5rem",
         marginRight: "-1.5rem",
       }}

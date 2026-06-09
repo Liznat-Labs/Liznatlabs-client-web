@@ -9,7 +9,9 @@ export function Work() {
 
   return (
     <section id="work" aria-labelledby="work-heading"
-      className="mx-auto max-w-7xl px-6 py-24 xl:px-8">
+      style={{ background: "#0C0C0F" }}
+      className="w-full">
+      <div className="mx-auto max-w-7xl px-6 py-24 xl:px-8">
 
       <motion.div
         initial={shouldReduceMotion ? false : { opacity: 0, y: 16 }}
@@ -18,10 +20,10 @@ export function Work() {
         transition={{ duration: 0.5 }}
         className="mb-4 flex items-center gap-4"
       >
-        <span className="font-mono text-xs text-muted" style={{ letterSpacing: "0.12em" }}>
+        <span className="font-mono text-xs" style={{ letterSpacing: "0.12em", color: "rgba(255,255,255,0.4)" }}>
           SELECTED WORK
         </span>
-        <div className="h-px max-w-xs flex-1" style={{ background: "var(--border)" }} aria-hidden="true" />
+        <div className="h-px max-w-xs flex-1" style={{ background: "rgba(255,255,255,0.1)" }} aria-hidden="true" />
       </motion.div>
 
       <div className="relative mb-16 overflow-visible">
@@ -32,8 +34,8 @@ export function Work() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.55, delay: 0.05 }}
-          className="font-fraunces text-cream"
-          style={{ fontSize: "clamp(2rem, 4vw, 2.75rem)", fontWeight: 600, lineHeight: 1.1 }}
+          className="font-fraunces"
+          style={{ fontSize: "clamp(2rem, 4vw, 2.75rem)", fontWeight: 600, lineHeight: 1.1, color: "#EEEDF0" }}
         >
           Work that speaks.
         </motion.h2>
@@ -139,6 +141,7 @@ export function Work() {
           </motion.article>
           </TiltCard>
         ))}
+      </div>
       </div>
     </section>
   );

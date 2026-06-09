@@ -131,7 +131,7 @@ export function BookCallModal() {
               <div className="flex flex-col items-center gap-6 py-8 text-center">
                 <div
                   className="flex h-12 w-12 items-center justify-center rounded-full"
-                  style={{ background: "rgba(139, 92, 246,0.1)", border: "1px solid rgba(139, 92, 246,0.3)" }}
+                  style={{ background: "rgba(109, 40, 217,0.1)", border: "1px solid rgba(109, 40, 217,0.3)" }}
                 >
                   <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
                     <path d="M4 10L8 14L16 6" stroke="var(--accent)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />

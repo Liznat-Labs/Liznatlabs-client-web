@@ -38,7 +38,7 @@ export function About() {
               marginBottom: "0.5rem",
               display: "block",
               opacity: 0.6,
-              filter: "drop-shadow(0 0 20px rgba(139, 92, 246,0.5))",
+              filter: "drop-shadow(0 0 20px rgba(109, 40, 217,0.5))",
             }}
             aria-hidden="true"
           >
@@ -78,7 +78,7 @@ export function About() {
 
           <div
             className="mt-2 h-px w-12"
-            style={{ background: "var(--accent)", opacity: 0.5, boxShadow: "0 0 8px rgba(139, 92, 246,0.6)" }}
+            style={{ background: "var(--accent)", opacity: 0.5, boxShadow: "0 0 8px rgba(109, 40, 217,0.6)" }}
             aria-hidden="true"
           />
         </div>

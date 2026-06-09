@@ -63,7 +63,7 @@ function lineColor(type: LT): string {
   switch (type) {
     case "cmd":     return "#F5EFE6";
     case "ok":      return "#00E5FF";
-    case "metric":  return "#8B5CF6";
+    case "metric":  return "#6D28D9";
     case "label":   return "#F5EFE6";
     case "comment": return "#5A6478";
     case "code":    return "#B8C4D0";

@@ -85,8 +85,8 @@ export function Services() {
                 transition: "border-color 0.3s, box-shadow 0.3s, transform 0.25s",
               }}
               onMouseEnter={(e) => {
-                (e.currentTarget as HTMLElement).style.borderColor = "rgba(139, 92, 246,0.4)";
-                (e.currentTarget as HTMLElement).style.boxShadow = "0 8px 32px rgba(139, 92, 246,0.15), 0 2px 8px rgba(0,0,0,0.06)";
+                (e.currentTarget as HTMLElement).style.borderColor = "rgba(109, 40, 217,0.4)";
+                (e.currentTarget as HTMLElement).style.boxShadow = "0 8px 32px rgba(109, 40, 217,0.15), 0 2px 8px rgba(0,0,0,0.06)";
               }}
               onMouseLeave={(e) => {
                 (e.currentTarget as HTMLElement).style.borderColor = "var(--glass-border)";
@@ -102,7 +102,7 @@ export function Services() {
                 </span>
               </div>
 
-              <div className="text-accent" style={{ filter: "drop-shadow(0 0 8px rgba(139, 92, 246,0.5))" }}>
+              <div className="text-accent" style={{ filter: "drop-shadow(0 0 8px rgba(109, 40, 217,0.5))" }}>
                 <Icon />
               </div>
 

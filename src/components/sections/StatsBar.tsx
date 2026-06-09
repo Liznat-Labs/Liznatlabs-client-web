@@ -61,7 +61,7 @@ export function StatsBar() {
     <section
       aria-label="Studio highlights"
       style={{
-        background: "rgba(10,10,10,0.04)",
+        background: "rgba(109,40,217,0.03)",
         borderTop: "1px solid var(--border)",
         marginLeft: "-1.5rem",
         marginRight: "-1.5rem",

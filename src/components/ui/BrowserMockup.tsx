@@ -100,13 +100,13 @@ export function BrowserMockup() {
               <div key={i} style={{ width: w, height: 4, background: "#ccc", borderRadius: 3 }} />
             ))}
           </div>
-          <div style={{ width: 64, height: 24, background: "#8B5CF6", borderRadius: 6, boxShadow: "0 2px 8px rgba(139, 92, 246,0.35)" }} />
+          <div style={{ width: 64, height: 24, background: "#6D28D9", borderRadius: 6, boxShadow: "0 2px 8px rgba(109, 40, 217,0.35)" }} />
         </div>
 
         {/* Hero area with gradient */}
         <div
           style={{
-            background: "linear-gradient(135deg, rgba(139, 92, 246,0.1) 0%, rgba(0,119,170,0.04) 40%, rgba(247,248,252,0.95) 70%)",
+            background: "linear-gradient(135deg, rgba(109, 40, 217,0.1) 0%, rgba(0,119,170,0.04) 40%, rgba(247,248,252,0.95) 70%)",
             padding: "24px 20px 20px",
             display: "flex",
             gap: 14,
@@ -120,11 +120,11 @@ export function BrowserMockup() {
             </div>
             <div style={{ width: "65%", height: 11, background: "#0E0E1A", borderRadius: 4 }} />
             <div style={{ width: "85%", height: 11, background: "#0E0E1A", borderRadius: 4, opacity: 0.8 }} />
-            <div style={{ width: "50%", height: 11, background: "#8B5CF6", borderRadius: 4, opacity: 0.9 }} />
+            <div style={{ width: "50%", height: 11, background: "#6D28D9", borderRadius: 4, opacity: 0.9 }} />
             <div style={{ width: "90%", height: 5, background: "#bbb", borderRadius: 3, marginTop: 3 }} />
             <div style={{ width: "72%", height: 5, background: "#bbb", borderRadius: 3 }} />
             <div style={{ display: "flex", gap: 8, marginTop: 6 }}>
-              <div style={{ width: 80, height: 28, background: "#8B5CF6", borderRadius: 6, boxShadow: "0 4px 12px rgba(139, 92, 246,0.4)" }} />
+              <div style={{ width: 80, height: 28, background: "#6D28D9", borderRadius: 6, boxShadow: "0 4px 12px rgba(109, 40, 217,0.4)" }} />
               <div style={{ width: 70, height: 28, borderRadius: 6, border: "1.5px solid rgba(0,0,0,0.12)", background: "rgba(255,255,255,0.6)" }} />
             </div>
           </div>
@@ -139,8 +139,8 @@ export function BrowserMockup() {
               gap: 6,
             }}
           >
-            <div style={{ width: "100%", height: 54, background: "rgba(139, 92, 246,0.12)", borderRadius: 8, border: "1px solid rgba(139, 92, 246,0.15)", display: "flex", alignItems: "center", justifyContent: "center" }}>
-              <div style={{ width: 24, height: 24, borderRadius: "50%", background: "rgba(139, 92, 246,0.25)", border: "1px solid rgba(139, 92, 246,0.3)" }} />
+            <div style={{ width: "100%", height: 54, background: "rgba(109, 40, 217,0.12)", borderRadius: 8, border: "1px solid rgba(109, 40, 217,0.15)", display: "flex", alignItems: "center", justifyContent: "center" }}>
+              <div style={{ width: 24, height: 24, borderRadius: "50%", background: "rgba(109, 40, 217,0.25)", border: "1px solid rgba(109, 40, 217,0.3)" }} />
             </div>
             <div style={{ width: "100%", height: 38, background: "rgba(0,119,170,0.08)", borderRadius: 8, border: "1px solid rgba(0,119,170,0.12)" }} />
           </div>
@@ -212,7 +212,7 @@ export function BrowserMockup() {
           }}
         >
           {[
-            { accent: "#8B5CF6" },
+            { accent: "#6D28D9" },
             { accent: "#0077AA" },
             { accent: "#8264ff" },
             { accent: "#16a34a" },

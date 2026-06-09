@@ -32,8 +32,8 @@ export function Nav() {
         zIndex: 50,
         backdropFilter: "blur(20px)",
         WebkitBackdropFilter: "blur(20px)",
-        backgroundColor: "rgba(5,5,10,0.85)",
-        borderBottom: "1px solid rgba(255,255,255,0.07)",
+        backgroundColor: "rgba(249,248,246,0.92)",
+        borderBottom: "1px solid rgba(0,0,0,0.07)",
         transition: "border-color 0.3s ease",
       }}
     >
