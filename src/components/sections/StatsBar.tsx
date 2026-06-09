@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import { useEffect, useRef, useState } from "react";
 import { motion, useInView, useReducedMotion } from "framer-motion";
@@ -7,10 +7,15 @@ const stats = [
   { value: 15, suffix: "+", label: "Projects shipped", color: "var(--accent)" },
   { value: 100, suffix: "%", label: "On-time delivery", color: "var(--accent-2)" },
   { value: 6, suffix: " wks", label: "Max. delivery time", color: "#8264ff" },
-  { value: 5, suffix: ".0â˜…", label: "Average rating", color: "#16a34a" },
+  { value: 5, suffix: ".0*", label: "Average rating", color: "#16a34a" },
 ];
 
-function CountUp({ target, suffix, color, duration = 1.4 }: {
+function CountUp({
+  target,
+  suffix,
+  color,
+  duration = 1.4,
+}: {
   target: number;
   suffix: string;
   color: string;
@@ -23,7 +28,10 @@ function CountUp({ target, suffix, color, duration = 1.4 }: {
 
   useEffect(() => {
     if (!inView) return;
-    if (shouldReduceMotion) { setCount(target); return; }
+    if (shouldReduceMotion) {
+      setCount(target);
+      return;
+    }
 
     let frame = 0;
     const totalFrames = Math.round(duration * 60);
@@ -40,7 +48,8 @@ function CountUp({ target, suffix, color, duration = 1.4 }: {
 
   return (
     <span ref={ref} style={{ color }}>
-      {count}{suffix}
+      {count}
+      {suffix}
     </span>
   );
 }
@@ -51,56 +60,95 @@ export function StatsBar() {
   return (
     <section
       aria-label="Studio highlights"
-      className="relative mx-auto max-w-7xl px-6 py-16 xl:px-8"
+      style={{
+        background: "rgba(10,10,10,0.04)",
+        borderTop: "1px solid var(--border)",
+        marginLeft: "-1.5rem",
+        marginRight: "-1.5rem",
+      }}
     >
-      {/* Subtle background bloom */}
-      <div
-        className="pointer-events-none absolute inset-0 -z-10"
-        aria-hidden="true"
-        style={{
-          background:
-            "radial-gradient(ellipse 70% 100% at 50% 50%, rgba(79, 70, 229,0.05) 0%, transparent 65%)",
-        }}
-      />
-
-      <div className="grid grid-cols-2 gap-px overflow-hidden rounded-2xl md:grid-cols-4"
-        style={{ border: "1px solid var(--border)", background: "var(--border)" }}
-      >
-        {stats.map((stat, i) => (
-          <motion.div
-            key={stat.label}
-            initial={shouldReduceMotion ? false : { opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-60px" }}
-            transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1], delay: i * 0.08 }}
-            className="flex flex-col items-center gap-2 px-6 py-10 text-center"
-            style={{ background: "rgba(255,255,255,0.85)", backdropFilter: "blur(12px)" }}
-          >
-            {/* Accent dot */}
-            <span
-              className="mb-1 h-1.5 w-1.5 rounded-full"
-              style={{ background: stat.color }}
-              aria-hidden="true"
-            />
-
-            <span
-              className="font-geist tabular-nums"
-              style={{ fontSize: "clamp(2rem, 4vw, 3rem)", fontWeight: 700, lineHeight: 1, letterSpacing: "-0.03em" }}
+      <div className="mx-auto max-w-7xl px-6 xl:px-8">
+        <div
+          className="grid grid-cols-2 md:grid-cols-4"
+          role="list"
+          style={{ position: "relative" }}
+        >
+          {stats.map((stat, i) => (
+            <motion.div
+              key={stat.label}
+              role="listitem"
+              initial={shouldReduceMotion ? false : { opacity: 0, y: 16 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-60px" }}
+              transition={{
+                duration: 0.6,
+                ease: [0.16, 1, 0.3, 1],
+                delay: i * 0.09,
+              }}
+              className="relative flex flex-col items-start"
+              style={{
+                padding: "3rem 2.5rem",
+              }}
             >
-              <CountUp target={stat.value} suffix={stat.suffix} color={stat.color} />
-            </span>
+              {/* Vertical separator — shown between columns on desktop only */}
+              {i > 0 && (
+                <div
+                  aria-hidden="true"
+                  className="hidden md:block"
+                  style={{
+                    position: "absolute",
+                    top: "20%",
+                    bottom: "20%",
+                    left: 0,
+                    width: "1px",
+                    background: "var(--border)",
+                    opacity: 0.3,
+                  }}
+                />
+              )}
 
-            <span
-              className="font-mono text-muted"
-              style={{ fontSize: "0.7rem", letterSpacing: "0.1em", textTransform: "uppercase" }}
-            >
-              {stat.label}
-            </span>
-          </motion.div>
-        ))}
+              {/* Accent top rule */}
+              <div
+                aria-hidden="true"
+                style={{
+                  width: "24px",
+                  height: "2px",
+                  background: stat.color,
+                  marginBottom: "1.5rem",
+                  opacity: 0.9,
+                }}
+              />
+
+              {/* Stat number */}
+              <span
+                className="font-geist tabular-nums"
+                style={{
+                  fontSize: "clamp(3.5rem, 7vw, 5.5rem)",
+                  fontWeight: 700,
+                  lineHeight: 1,
+                  letterSpacing: "-0.04em",
+                }}
+              >
+                <CountUp target={stat.value} suffix={stat.suffix} color={stat.color} />
+              </span>
+
+              {/* Label */}
+              <span
+                className="font-mono text-muted"
+                style={{
+                  fontSize: "0.65rem",
+                  letterSpacing: "0.14em",
+                  textTransform: "uppercase",
+                  marginTop: "0.85rem",
+                  fontWeight: 500,
+                }}
+              >
+                {stat.label}
+              </span>
+            </motion.div>
+          ))}
+        </div>
       </div>
     </section>
   );
 }
-
-
