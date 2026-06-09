@@ -30,9 +30,32 @@ export function FinalCTA() {
     <section
       id="contact"
       aria-labelledby="cta-heading"
-      style={{ background: "#F5F5F5", borderTop: "1px solid var(--border)" }}
+      style={{ position: "relative", overflow: "hidden", borderTop: "1px solid var(--border)" }}
     >
-      <div className="mx-auto max-w-7xl px-6 xl:px-8" style={{ paddingTop: "8rem", paddingBottom: "8rem" }}>
+      {/* Background image */}
+      <div
+        aria-hidden="true"
+        style={{
+          position: "absolute",
+          inset: 0,
+          backgroundImage: "url('/cta-bg.png')",
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          backgroundRepeat: "no-repeat",
+          pointerEvents: "none",
+        }}
+      />
+      {/* Light overlay for text readability */}
+      <div
+        aria-hidden="true"
+        style={{
+          position: "absolute",
+          inset: 0,
+          background: "rgba(255,255,255,0.38)",
+          pointerEvents: "none",
+        }}
+      />
+      <div className="relative mx-auto max-w-7xl px-6 xl:px-8" style={{ paddingTop: "8rem", paddingBottom: "8rem", zIndex: 1 }}>
         <div className="flex flex-col items-center gap-8 text-center">
 
           {/* Eyebrow */}
@@ -42,7 +65,7 @@ export function FinalCTA() {
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.5, ease: [0.2, 0.8, 0.2, 1] }}
             className="font-mono text-xs"
-            style={{ color: "var(--muted)", letterSpacing: "0.18em", textTransform: "uppercase" }}
+            style={{ color: "#0A0A0A", letterSpacing: "0.18em", textTransform: "uppercase", textShadow: "0 1px 12px rgba(255,255,255,0.9)" }}
           >
             Start a Project
           </motion.span>
@@ -56,11 +79,12 @@ export function FinalCTA() {
             transition={{ duration: 0.65, ease: [0.2, 0.8, 0.2, 1], delay: 0.06 }}
             className="font-fraunces"
             style={{
-              color: "var(--text)",
+              color: "#0A0A0A",
               fontSize: "clamp(2.25rem, 8vw, 6rem)",
               lineHeight: 0.95,
               letterSpacing: "-0.025em",
               fontWeight: 600,
+              textShadow: "0 2px 24px rgba(255,255,255,0.95), 0 0 40px rgba(255,255,255,0.7)",
             }}
           >
             <HeadlineRenderer lines={ctaContent.headlineLines} />
@@ -73,7 +97,7 @@ export function FinalCTA() {
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.6, ease: [0.2, 0.8, 0.2, 1], delay: 0.12 }}
             className="max-w-md font-geist"
-            style={{ color: "var(--muted)", fontSize: "0.95rem", lineHeight: 1.7, fontWeight: 400 }}
+            style={{ color: "#0A0A0A", fontSize: "0.95rem", lineHeight: 1.7, fontWeight: 500, textShadow: "0 1px 16px rgba(255,255,255,0.9)" }}
           >
             {ctaContent.subhead}
           </motion.p>
