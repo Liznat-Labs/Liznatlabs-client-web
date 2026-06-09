@@ -139,7 +139,7 @@ export function Hero() {
         style={{
           position: "absolute",
           inset: 0,
-          background: "rgba(255,255,255,0.82)",
+          background: "rgba(255,255,255,0.55)",
           pointerEvents: "none",
         }}
       />
