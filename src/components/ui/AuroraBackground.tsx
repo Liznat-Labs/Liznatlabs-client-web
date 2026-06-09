@@ -17,7 +17,7 @@ export function AuroraBackground() {
           position: "absolute",
           width: "60vw", height: "60vw",
           borderRadius: "50%",
-          background: "radial-gradient(circle, rgba(233,110,51,0.09) 0%, transparent 65%)",
+          background: "radial-gradient(circle, rgba(79, 70, 229,0.09) 0%, transparent 65%)",
           filter: "blur(60px)",
           top: "-20%", left: "-15%",
         }}

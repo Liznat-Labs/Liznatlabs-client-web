@@ -65,7 +65,7 @@ export function Hero() {
           <div style={{
             position: "absolute", top: "8%", right: "-6%",
             width: 400, height: 400, borderRadius: "50%",
-            border: "1.5px solid rgba(233,110,51,0.13)",
+            border: "1.5px solid rgba(79, 70, 229,0.13)",
             animation: "floatA 20s ease-in-out infinite",
           }} />
           {/* Medium ring — inner right */}
@@ -79,7 +79,7 @@ export function Hero() {
           <div style={{
             position: "absolute", bottom: "18%", left: "1%",
             width: 60, height: 60,
-            background: "rgba(233,110,51,0.07)",
+            background: "rgba(79, 70, 229,0.07)",
             transform: "rotate(45deg)",
             animation: "floatC 15s ease-in-out infinite",
           }} />
@@ -94,7 +94,7 @@ export function Hero() {
           <div style={{
             position: "absolute", top: "33%", right: "23%",
             width: 6, height: 6, borderRadius: "50%",
-            background: "rgba(233,110,51,0.45)",
+            background: "rgba(79, 70, 229,0.45)",
             animation: "floatB 9s ease-in-out infinite",
           }} />
         </div>
@@ -183,7 +183,7 @@ export function Hero() {
                     className="shimmer-btn inline-flex items-center rounded-sm bg-accent px-6 py-3 font-mono text-xs font-medium text-bg transition-all duration-200"
                     style={{
                       letterSpacing: "0.04em",
-                      boxShadow: "0 0 24px rgba(233,110,51,0.4), 0 0 60px rgba(233,110,51,0.15)",
+                      boxShadow: "0 0 24px rgba(79, 70, 229,0.4), 0 0 60px rgba(79, 70, 229,0.15)",
                     }}
                   >
                     {cta.label}
@@ -253,7 +253,7 @@ export function Hero() {
             className="hidden lg:flex lg:items-center lg:justify-end"
             style={{
               transform: "rotate(1.5deg)",
-              filter: "drop-shadow(0 40px 80px rgba(0,229,255,0.10)) drop-shadow(0 0 40px rgba(233,110,51,0.08))",
+              filter: "drop-shadow(0 40px 80px rgba(0,229,255,0.10)) drop-shadow(0 0 40px rgba(79, 70, 229,0.08))",
             }}
           >
             <CodeWindow />

@@ -49,7 +49,7 @@ export function FinalCTA() {
         style={{
           width: "60vw",
           height: "40vw",
-          background: "radial-gradient(ellipse, rgba(233,110,51,0.07) 0%, transparent 65%)",
+          background: "radial-gradient(ellipse, rgba(79, 70, 229,0.07) 0%, transparent 65%)",
           filter: "blur(40px)",
         }}
         aria-hidden="true"
@@ -121,7 +121,7 @@ export function FinalCTA() {
         >
           <button
             onClick={() => window.dispatchEvent(new CustomEvent("open-book-call"))}
-            className="shimmer-btn inline-flex items-center rounded-sm bg-accent px-6 py-3 font-mono text-xs font-medium text-bg transition-all duration-200 hover:shadow-[0_0_32px_rgba(233,110,51,0.5)]"
+            className="shimmer-btn inline-flex items-center rounded-sm bg-accent px-6 py-3 font-mono text-xs font-medium text-bg transition-all duration-200 hover:shadow-[0_0_32px_rgba(79, 70, 229,0.5)]"
             style={{ letterSpacing: "0.04em" }}
           >
             {ctaContent.calendlyLabel}

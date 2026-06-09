@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 export function BorderBeam({
   duration = 8,
   colorFrom = "rgba(0,229,255,0.85)",
-  colorTo = "rgba(233,110,51,0.65)",
+  colorTo = "rgba(79, 70, 229,0.65)",
 }: {
   duration?: number;
   colorFrom?: string;

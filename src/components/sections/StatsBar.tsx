@@ -59,7 +59,7 @@ export function StatsBar() {
         aria-hidden="true"
         style={{
           background:
-            "radial-gradient(ellipse 70% 100% at 50% 50%, rgba(233,110,51,0.05) 0%, transparent 65%)",
+            "radial-gradient(ellipse 70% 100% at 50% 50%, rgba(79, 70, 229,0.05) 0%, transparent 65%)",
         }}
       />
 

@@ -12,7 +12,7 @@ export function BackgroundGlows() {
           width: "60vw",
           height: "60vw",
           background:
-            "radial-gradient(ellipse at center, rgba(233,110,51,0.07) 0%, transparent 65%)",
+            "radial-gradient(ellipse at center, rgba(79, 70, 229,0.07) 0%, transparent 65%)",
           borderRadius: "50%",
           filter: "blur(60px)",
         }}
@@ -26,7 +26,7 @@ export function BackgroundGlows() {
           width: "55vw",
           height: "55vw",
           background:
-            "radial-gradient(ellipse at center, rgba(233,110,51,0.05) 0%, transparent 65%)",
+            "radial-gradient(ellipse at center, rgba(79, 70, 229,0.05) 0%, transparent 65%)",
           borderRadius: "50%",
           filter: "blur(80px)",
         }}
