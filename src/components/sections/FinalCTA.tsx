@@ -4,6 +4,7 @@ import { motion, useReducedMotion } from "framer-motion";
 import { ctaContent, type HeadlineLine } from "@/content/site";
 
 function HeadlineRenderer({ lines }: { lines: HeadlineLine[] }) {
+  const shadowStyle = "0 0 30px rgba(255,255,255,1), 0 0 60px rgba(255,255,255,1), 0 2px 4px rgba(255,255,255,0.9)";
   return (
     <>
       {lines.map((line, li) => (
@@ -11,8 +12,12 @@ function HeadlineRenderer({ lines }: { lines: HeadlineLine[] }) {
           {line.segments.map((seg, si) => (
             <span
               key={si}
-              className={seg.italic && seg.accent ? "font-fraunces italic gradient-text" : "font-fraunces"}
-              style={{ fontWeight: seg.italic && seg.accent ? 700 : 600 }}
+              className={seg.italic && seg.accent ? "font-fraunces italic" : "font-fraunces"}
+              style={{
+                fontWeight: 700,
+                color: "#0A0A0A",
+                textShadow: shadowStyle,
+              }}
             >
               {seg.text}
             </span>
