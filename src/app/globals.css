@@ -151,8 +151,3 @@ body {
   to   { transform: translateX(0); opacity: 1; }
 }
 
-/* ── Work section image grayscale-to-color effect ── */
-.group:hover .work-img {
-  filter: grayscale(0%) brightness(1) !important;
-  transform: scale(1.04);
-}

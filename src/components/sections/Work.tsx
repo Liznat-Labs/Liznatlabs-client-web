@@ -110,10 +110,9 @@ export function Work() {
                         objectFit: "cover",
                         objectPosition: "top",
                         display: "block",
-                        filter: "grayscale(100%) brightness(0.9)",
-                        transition: "filter 0.55s ease, transform 0.55s ease",
+                        transition: "transform 0.55s ease",
                       }}
-                      className="work-img"
+                      className="group-hover:scale-105"
                     />
                     <div
                       style={{
