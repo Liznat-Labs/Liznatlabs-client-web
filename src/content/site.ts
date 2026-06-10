@@ -181,13 +181,14 @@ export const workContent: WorkItem[] = [
     url: "https://staging.dtzjgg2whesyw.amplifyapp.com/",
   },
   {
-    title: "Jewellery Store",
+    title: "Reddy's Jewellery",
     category: "E-Commerce",
     type: "Web",
     description:
-      "Elegant e-commerce storefront for a jewellery brand — curated product catalog, smooth browsing experience, and a checkout flow built for conversion.",
+      "Heritage jewellery brand website with rich gold aesthetics, product catalog, and an immersive browsing experience — crafting tradition since 1952.",
     accentHue: "rgba(234, 179, 8, 0.15)",
-    url: "https://jewellary-website-git-main-t-mounika-s-projects.vercel.app/",
+    url: "https://jewellary-website-noedb8er7-t-mounika-s-projects.vercel.app/",
+    image: "/work/jewellery.png",
   },
 ];
 
