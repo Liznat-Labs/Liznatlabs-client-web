@@ -21,6 +21,7 @@ export type WorkItem = {
   description: string;
   accentHue: string;
   image?: string;
+  url?: string;
 };
 
 export type ProcessStep = {
@@ -156,6 +157,7 @@ export const workContent: WorkItem[] = [
       "Event landing page for Google Developer Group's DevFest 2025 Bengaluru — live countdown, speaker lineup, agenda, and ticket registration. Clean, fast, and mobile-first.",
     accentHue: "rgba(109, 40, 217, 0.12)",
     image: "/work/devfest.png",
+    url: "http://devfest2025-event-demo.s3-website.ap-south-1.amazonaws.com",
   },
   {
     title: "Unnati Loan Services",
@@ -165,6 +167,7 @@ export const workContent: WorkItem[] = [
       "Full-featured loan management platform with customer and bank-manager portals, authentication, loan tracking, and repayment workflows. Built for scale and security.",
     accentHue: "rgba(234, 179, 8, 0.12)",
     image: "/work/loan-manager.png",
+    url: "https://loan-manager-tan.vercel.app/",
   },
   {
     title: "FocusFlow",
@@ -174,6 +177,7 @@ export const workContent: WorkItem[] = [
       "Productivity SaaS landing page with deep-work focus blocks, session stats dashboard preview, and conversion-optimised pricing — built to drive trial sign-ups.",
     accentHue: "rgba(109, 40, 217, 0.12)",
     image: "/work/staging-app.png",
+    url: "https://staging.dtzjgg2whesyw.amplifyapp.com/",
   },
   {
     title: "Jewellery Store",
@@ -182,6 +186,7 @@ export const workContent: WorkItem[] = [
     description:
       "Elegant e-commerce storefront for a jewellery brand — curated product catalog, smooth browsing experience, and a checkout flow built for conversion.",
     accentHue: "rgba(234, 179, 8, 0.15)",
+    url: "https://jewellary-website-git-main-t-mounika-s-projects.vercel.app/",
   },
 ];
 
