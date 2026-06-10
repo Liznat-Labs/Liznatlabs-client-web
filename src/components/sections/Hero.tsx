@@ -135,21 +135,20 @@ export function Hero() {
     <section
       id="hero"
       aria-label="Hero"
-      style={{ minHeight: "100vh", display: "flex", flexDirection: "column", justifyContent: "center", position: "relative", overflow: "hidden" }}
+      style={{
+        minHeight: "100vh",
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "center",
+        position: "relative",
+        overflow: "hidden",
+        width: "100%",
+        backgroundImage: "url('/hero-bg.png')",
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+        backgroundRepeat: "no-repeat",
+      }}
     >
-      {/* Hero background image */}
-      <div
-        aria-hidden="true"
-        style={{
-          position: "absolute",
-          inset: 0,
-          backgroundImage: "url('/hero-bg.png')",
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-          backgroundRepeat: "no-repeat",
-          pointerEvents: "none",
-        }}
-      />
       {/* Light overlay — keep image visible, text readable */}
       <div
         aria-hidden="true"

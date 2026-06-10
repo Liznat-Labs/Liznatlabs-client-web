@@ -35,21 +35,17 @@ export function FinalCTA() {
     <section
       id="contact"
       aria-labelledby="cta-heading"
-      style={{ position: "relative", overflow: "hidden", borderTop: "1px solid var(--border)" }}
+      style={{
+        position: "relative",
+        overflow: "hidden",
+        borderTop: "1px solid var(--border)",
+        backgroundImage: "url('/cta-bg.png')",
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+        backgroundRepeat: "no-repeat",
+        width: "100%",
+      }}
     >
-      {/* Background image */}
-      <div
-        aria-hidden="true"
-        style={{
-          position: "absolute",
-          inset: 0,
-          backgroundImage: "url('/cta-bg.png')",
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-          backgroundRepeat: "no-repeat",
-          pointerEvents: "none",
-        }}
-      />
       {/* Overlay for text readability */}
       <div
         aria-hidden="true"
