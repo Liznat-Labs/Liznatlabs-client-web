@@ -148,6 +148,7 @@ export const workContent: WorkItem[] = [
       "Full-stack e-commerce platform for a custom packaging business — product catalog, custom order requests, customer portal, and admin dashboard. Built with React, Node.js, and MongoDB.",
     accentHue: "rgba(8, 145, 178, 0.12)",
     image: "/work/azha-packaging.png",
+    url: "https://azha-packaging.vercel.app",
   },
   {
     title: "DevFest 2025",
