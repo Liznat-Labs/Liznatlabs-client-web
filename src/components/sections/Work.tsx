@@ -35,7 +35,7 @@ export function Work() {
 
         {/* Grid */}
         <div
-          className="grid grid-cols-1 gap-px md:grid-cols-2"
+          className="grid grid-cols-1 gap-px md:grid-cols-2 lg:grid-cols-3"
           style={{ background: "var(--border)", border: "1px solid var(--border)" }}
         >
           {workContent.map((item, i) => (

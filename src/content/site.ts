@@ -140,24 +140,6 @@ export const servicesContent: Service[] = [
 
 export const workContent: WorkItem[] = [
   {
-    title: "Spice & Smoke",
-    category: "Restaurant",
-    type: "Web",
-    description:
-      "Complete redesign of a Bengaluru restaurant's digital presence — rich photography, online table booking, and a menu that loads in under a second.",
-    accentHue: "rgba(109, 40, 217, 0.15)",
-    image: "/work/spice-and-smoke-preview.svg",
-  },
-  {
-    title: "Flow Studio",
-    category: "Wellness",
-    type: "App",
-    description:
-      "Android booking app for a boutique fitness studio — class scheduling, instructor profiles, and in-app payments in a single polished experience.",
-    accentHue: "rgba(109, 40, 217, 0.10)",
-    image: "/work/flow-studio-preview.svg",
-  },
-  {
     title: "Azha Packaging",
     category: "E-Commerce",
     type: "Web",
@@ -165,6 +147,41 @@ export const workContent: WorkItem[] = [
       "Full-stack e-commerce platform for a custom packaging business — product catalog, custom order requests, customer portal, and admin dashboard. Built with React, Node.js, and MongoDB.",
     accentHue: "rgba(8, 145, 178, 0.12)",
     image: "/work/azha-packaging.png",
+  },
+  {
+    title: "DevFest 2025",
+    category: "Event",
+    type: "Web",
+    description:
+      "Event landing page for Google Developer Group's DevFest 2025 Bengaluru — live countdown, speaker lineup, agenda, and ticket registration. Clean, fast, and mobile-first.",
+    accentHue: "rgba(109, 40, 217, 0.12)",
+    image: "/work/devfest.png",
+  },
+  {
+    title: "Unnati Loan Services",
+    category: "Fintech",
+    type: "Web App",
+    description:
+      "Full-featured loan management platform with customer and bank-manager portals, authentication, loan tracking, and repayment workflows. Built for scale and security.",
+    accentHue: "rgba(234, 179, 8, 0.12)",
+    image: "/work/loan-manager.png",
+  },
+  {
+    title: "FocusFlow",
+    category: "SaaS",
+    type: "Web App",
+    description:
+      "Productivity SaaS landing page with deep-work focus blocks, session stats dashboard preview, and conversion-optimised pricing — built to drive trial sign-ups.",
+    accentHue: "rgba(109, 40, 217, 0.12)",
+    image: "/work/staging-app.png",
+  },
+  {
+    title: "Jewellery Store",
+    category: "E-Commerce",
+    type: "Web",
+    description:
+      "Elegant e-commerce storefront for a jewellery brand — curated product catalog, smooth browsing experience, and a checkout flow built for conversion.",
+    accentHue: "rgba(234, 179, 8, 0.15)",
   },
 ];
 
