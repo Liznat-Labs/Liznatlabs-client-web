@@ -44,7 +44,7 @@ const sections = [
   {
     title: "6. Your Rights",
     body: [
-      "You have the right to request access to, correction of, or deletion of any personal information you have submitted to us. To exercise these rights, email us at liznatlabs@gmail.com and we will respond within 7 business days.",
+      "You have the right to request access to, correction of, or deletion of any personal information you have submitted to us. To exercise these rights, email us at info@liznatlabs.com and we will respond within 7 business days.",
       "If you are based in the European Union, you may also have additional rights under GDPR, including the right to data portability and the right to lodge a complaint with a supervisory authority.",
     ],
   },
@@ -63,7 +63,7 @@ const sections = [
   {
     title: "9. Contact",
     body: [
-      "If you have any questions about this Privacy Policy, please contact us at liznatlabs@gmail.com. We are based in Bengaluru, Karnataka, India.",
+      "If you have any questions about this Privacy Policy, please contact us at info@liznatlabs.com. We are based in Bengaluru, Karnataka, India.",
     ],
   },
 ];
@@ -131,8 +131,8 @@ export default function PrivacyPage() {
         >
           <p className="font-geist text-muted" style={{ fontSize: "0.875rem", lineHeight: 1.75 }}>
             Questions? Email us at{" "}
-            <a href="mailto:liznatlabs@gmail.com" className="text-accent hover:underline">
-              liznatlabs@gmail.com
+            <a href="mailto:info@liznatlabs.com" className="text-accent hover:underline">
+              info@liznatlabs.com
             </a>{" "}
             and we&apos;ll get back to you within 24 hours.
           </p>

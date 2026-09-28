@@ -107,7 +107,7 @@ const sections = [
   {
     title: "15. Contact",
     body: [
-      "For any questions regarding these terms, please contact us at liznatlabs@gmail.com. We are based in Bengaluru, Karnataka, India.",
+      "For any questions regarding these terms, please contact us at info@liznatlabs.com. We are based in Bengaluru, Karnataka, India.",
     ],
   },
 ];
@@ -175,8 +175,8 @@ export default function TermsPage() {
         >
           <p className="font-geist text-muted" style={{ fontSize: "0.875rem", lineHeight: 1.75 }}>
             Questions about these terms? Email us at{" "}
-            <a href="mailto:liznatlabs@gmail.com" className="text-accent hover:underline">
-              liznatlabs@gmail.com
+            <a href="mailto:info@liznatlabs.com" className="text-accent hover:underline">
+              info@liznatlabs.com
             </a>{" "}
             and we&apos;ll respond within 24 hours.
           </p>

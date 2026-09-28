@@ -24,7 +24,7 @@ export const brand = {
   statement:
     "Empowering businesses through Artificial Intelligence, enterprise technology, and engineering talent.",
   motto: "Built with intent. Shipped with speed.",
-  email: "liznatlabs@gmail.com",
+  email: "info@liznatlabs.com",
   whatsapp: "https://wa.me/916361618251",
   linkedin: "https://www.linkedin.com/in/faizan-khan-51b635411",
   location: "Bengaluru, Karnataka, India",
