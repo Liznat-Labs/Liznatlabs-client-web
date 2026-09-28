@@ -20,7 +20,7 @@ export type WorkItem = {
 
 export const brand = {
   name: "Liznat Labs",
-  tagline: "A deep tech studio — Bengaluru, India",
+  tagline: "A software company — Bengaluru, India",
   statement:
     "Empowering businesses through Artificial Intelligence, enterprise technology, and engineering talent.",
   motto: "Built with intent. Shipped with speed.",
@@ -51,7 +51,7 @@ export const heroContent = {
     { segments: [{ text: "shipped with " }, { text: "speed.", italic: true, accent: true }] },
   ] satisfies HeadlineLine[],
   subhead:
-    "Liznat Labs is a Bengaluru-based dev studio building modern websites, Android apps, and custom software for ambitious teams. Co-founder care. Fixed pricing. Real results.",
+    "Liznat Labs is a Bengaluru-based software company building modern websites, Android apps, and custom software for ambitious teams. Co-founder care. Fixed pricing. Real results.",
 };
 
 // ─── Home ─────────────────────────────────────────────────────────────────────
@@ -59,9 +59,9 @@ export const heroContent = {
 export const home = {
   whoWeAre: {
     eyebrow: "Who we are",
-    title: [{ text: "A studio that ships, " }, { text: "not slides.", accent: true }] as Segment[],
+    title: [{ text: "A startup that ships, " }, { text: "not slides.", accent: true }] as Segment[],
     body: [
-      "Liznat Labs is a deep tech studio from Bengaluru. We combine applied Artificial Intelligence with serious software engineering and a bench of senior engineers — so ideas leave the whiteboard and start running your business.",
+      "Liznat Labs is a software and AI startup from Bengaluru. We combine applied Artificial Intelligence with serious software engineering and a bench of senior engineers — so ideas leave the whiteboard and start running your business.",
       "Agents, language models, vision and automation, designed as one system — then built, deployed and looked after with the same care as the rest of your infrastructure.",
     ],
     kicker: "Not prototypes. Software your team relies on every day.",
@@ -163,7 +163,7 @@ export const home = {
 
   quote: {
     quote: "Not concepts — products in production, used every day.",
-    byline: "Liznat Labs · A deep tech studio",
+    byline: "Liznat Labs · Software company, Bengaluru",
     cta: { label: "See the work", href: "/work" },
   },
 
@@ -499,7 +499,7 @@ export const servicesPage = {
 export const aboutPage = {
   hero: {
     eyebrow: "Who we are",
-    title: [{ text: "A deep tech studio, " }, { text: "not a vendor", accent: true }, { text: "." }] as Segment[],
+    title: [{ text: "A software company, " }, { text: "not a vendor", accent: true }, { text: "." }] as Segment[],
     body: "Liznat Labs pairs applied Artificial Intelligence with enterprise-grade engineering and a bench of vetted engineers — turning ambitious ideas into systems that run in production.",
     stats: [
       { value: "2026", label: "Founded in Bengaluru" },
@@ -510,7 +510,7 @@ export const aboutPage = {
   },
   story: {
     eyebrow: "Our story",
-    title: [{ text: "A studio built for " }, { text: "what comes next", accent: true }, { text: "." }] as Segment[],
+    title: [{ text: "A startup built for " }, { text: "what comes next", accent: true }, { text: "." }] as Segment[],
     body: "Founded in 2026, Liznat Labs builds production-grade software for businesses that can't afford software that only works in a demo.",
     timeline: [
       { kicker: "01 — The foundation", title: "Founded in 2026", body: "Started in Bengaluru to bring applied AI and disciplined engineering to growing businesses in India and beyond." },
@@ -582,7 +582,7 @@ export const aboutPage = {
     body: "Rooted in Bengaluru and working globally, we're guided by two commitments.",
     vision: {
       title: "Intelligent businesses, built in India",
-      body: "To become the studio growing businesses trust to build, own and scale intelligent systems — where modern AI and human skill work together with lasting confidence.",
+      body: "To become the software company growing businesses trust to build, own and scale intelligent systems — where modern AI and human skill work together with lasting confidence.",
     },
     mission: {
       title: "Turn AI into production reality",

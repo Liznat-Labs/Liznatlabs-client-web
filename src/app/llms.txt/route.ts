@@ -12,7 +12,7 @@ export function GET() {
 
   const text = `# ${brand.name}
 
-> ${brand.name} is a deep tech studio in Bengaluru, India, founded in 2026 by Faizan Khan. It builds production AI applications, enterprise IT solutions and dedicated engineering teams for businesses in India and worldwide, and develops Zynk Works, a connected platform of business apps for small businesses.
+> ${brand.name} is a software company and technology startup in Bengaluru, India, founded in 2026 by Faizan Khan. It builds production AI applications, enterprise IT solutions and dedicated engineering teams for businesses in India and worldwide, and develops Zynk Works, a connected platform of business apps for small businesses.
 
 - Website: ${SITE_URL}
 - Email: ${brand.email}

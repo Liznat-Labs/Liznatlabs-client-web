@@ -21,7 +21,7 @@ const jakarta = Plus_Jakarta_Sans({
 
 const title = "Liznat Labs — AI Development & IT Solutions in Bengaluru";
 const description =
-  "Bengaluru deep tech studio building AI agents, custom software, websites, Android apps and enterprise IT, plus dedicated engineering teams and Zynk Works.";
+  "Bengaluru software company building AI agents, custom software, websites, Android apps and enterprise IT, plus dedicated engineering teams and Zynk Works.";
 
 export const metadata: Metadata = {
   title: { default: title, template: "%s — Liznat Labs" },

@@ -17,7 +17,7 @@ export const ORG_ID = `${SITE_URL}/#organization`;
 
 export const organizationLd = {
   "@context": "https://schema.org",
-  "@type": ["Organization", "ProfessionalService"],
+  "@type": "Corporation",
   "@id": ORG_ID,
   name: brand.name,
   url: SITE_URL,
@@ -26,7 +26,7 @@ export const organizationLd = {
   email: brand.email,
   telephone: "+91-63616-18251",
   description:
-    "Liznat Labs is a deep tech studio in Bengaluru, India, building production AI applications, enterprise IT solutions and dedicated engineering teams, and the Zynk Works platform for small businesses.",
+    "Liznat Labs is a software company and technology startup in Bengaluru, India, building production AI applications, enterprise IT solutions and dedicated engineering teams, and the Zynk Works platform for small businesses.",
   foundingDate: "2026",
   founder: { "@type": "Person", name: "Faizan Khan", jobTitle: "Founder & CEO" },
   address: { "@type": "PostalAddress", addressLocality: "Bengaluru", addressRegion: "Karnataka", addressCountry: "IN" },

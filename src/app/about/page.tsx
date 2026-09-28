@@ -8,7 +8,7 @@ import { Beliefs } from "@/components/sections/Beliefs";
 import { CTABand } from "@/components/sections/shared";
 
 export const metadata: Metadata = {
-  title: "About Us — Deep Tech Studio in Bengaluru",
+  title: "About Us — Software Company in Bengaluru",
   description:
     "Founded in Bengaluru in 2026 by Faizan Khan (CEO), with Faraaz Khan A (COO) and Ayaan Ahmed (CTO), Liznat Labs pairs applied AI with serious engineering.",
   alternates: { canonical: "/about" },
