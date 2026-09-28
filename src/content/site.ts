@@ -51,7 +51,7 @@ export const heroContent = {
     { segments: [{ text: "shipped with " }, { text: "speed.", italic: true, accent: true }] },
   ] satisfies HeadlineLine[],
   subhead:
-    "Liznat Labs is a Bengaluru-based software company building modern websites, Android apps, and custom software for ambitious teams. Co-founder care. Fixed pricing. Real results.",
+    "Liznat Labs is a Bengaluru-based software company building modern websites, Android apps, and custom software for ambitious teams. Founder-led care. Fixed pricing. Real results.",
 };
 
 // ─── Home ─────────────────────────────────────────────────────────────────────
