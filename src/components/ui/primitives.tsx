@@ -174,7 +174,7 @@ export function Section({
   tight?: boolean;
 }) {
   return (
-    <section id={id} className={`relative scroll-mt-32 overflow-clip ${sectionTone[tone]} ${className}`}>
+    <section id={id} className={`relative scroll-mt-36 overflow-clip ${sectionTone[tone]} ${className}`}>
       <div className={`shell relative ${tight ? "py-16 md:py-20" : "py-24 md:py-28"}`}>{children}</div>
     </section>
   );

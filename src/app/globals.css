@@ -20,6 +20,8 @@
 *, *::before, *::after { box-sizing: border-box; }
 
 html { scroll-behavior: smooth; color-scheme: light; overflow-x: clip; }
+/* Lenis drives smooth scrolling; native smooth-scroll would fight it */
+html.lenis { scroll-behavior: auto; }
 
 body {
   background: var(--canvas);
