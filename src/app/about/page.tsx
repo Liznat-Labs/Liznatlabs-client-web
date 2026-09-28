@@ -111,10 +111,10 @@ export default function AboutPage() {
               <p key={p} className="text-ink-soft" style={{ fontSize: "1.02rem", lineHeight: 1.85 }}>{p}</p>
             ))}
           </Reveal>
-          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+          <div className="grid grid-cols-1 gap-4 sm:grid-cols-3 lg:grid-cols-1 xl:grid-cols-3">
             {f.people.map((p, i) => (
               <Reveal key={p.name} delay={i * 0.1}>
-                <Tile tone={i === 0 ? "lilac" : "ice"} className="h-full">
+                <Tile tone={(["lilac", "ice", "mist"] as const)[i % 3]} className="h-full">
                   <div className="flex h-full flex-col gap-6 p-7">
                     <span className="flex h-16 w-16 items-center justify-center rounded-full bg-brand text-xl font-semibold text-white shadow-[0_10px_24px_rgba(109,40,217,0.3)]">
                       {initials(p.name)}

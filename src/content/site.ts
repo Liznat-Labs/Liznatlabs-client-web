@@ -490,15 +490,16 @@ export const aboutPage = {
     footnote: "Real innovation isn't judged in demos. It shows up in production logs, response times, uptime and results the business can feel.",
   },
   founders: {
-    eyebrow: "The founders",
+    eyebrow: "Leadership",
     title: [{ text: "The people behind " }, { text: "the systems", accent: true }, { text: "." }] as Segment[],
     body: [
       "Liznat Labs was founded by Faizan Khan and Faraaz Khan A in 2026. The name 'Liznat' comes from the people who shaped who we are — and that same care goes into every line of code.",
       "Between us, we've spent years building products across fintech, e-commerce and consumer apps. We know what good software feels like to build and to use, and every project here gets that standard.",
     ],
     people: [
-      { name: "Faizan Khan", role: "Co-Founder" },
-      { name: "Faraaz Khan A", role: "Co-Founder" },
+      { name: "Faizan Khan", role: "Co-Founder & CEO" },
+      { name: "Faraaz Khan A", role: "Co-Founder & COO" },
+      { name: "Ayaan Ahmed", role: "CTO" },
     ],
     teams: [
       { title: "Leadership", body: "Strategy, client partnerships and delivery oversight." },
