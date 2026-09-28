@@ -7,7 +7,7 @@ import { CTABand } from "@/components/sections/shared";
 
 export const metadata: Metadata = {
   title: "About",
-  description: "Liznat Labs is a deep tech studio founded in Bengaluru in 2026 by Faizan Khan and Faraaz Khan A — pairing applied AI with enterprise-grade engineering.",
+  description: "Liznat Labs is a deep tech studio founded in Bengaluru in 2026 by Faizan Khan — pairing applied AI with enterprise-grade engineering.",
 };
 
 function initials(name: string) {
