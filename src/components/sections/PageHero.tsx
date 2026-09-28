@@ -1,52 +1,132 @@
-import type { Segment, Stat } from "@/content/site";
-import { ParticleField } from "@/components/ui/ParticleField";
-import { Eyebrow, Reveal, Segments, StatsRow, type Accent } from "@/components/ui/primitives";
+"use client";
 
-/** Dark particle hero used at the top of every inner page, with an optional light stats strip below. */
+import { motion, useReducedMotion } from "framer-motion";
+import type { Segment, Stat } from "@/content/site";
+import { StatsRow } from "@/components/ui/primitives";
+
+// Same look as the homepage hero (LegacyHero): photo background, light overlay,
+// bold Plus Jakarta Sans headline with the purple-to-teal italic accent, Geist body.
+const JAKARTA = "var(--font-jakarta), system-ui, sans-serif";
+const GEIST = "var(--font-geist-sans), system-ui, sans-serif";
+
+const containerVariants = {
+  hidden: {},
+  visible: { transition: { staggerChildren: 0.1, delayChildren: 0.12 } },
+};
+const itemVariants = {
+  hidden: { opacity: 0, y: 40 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.85, ease: [0.16, 1, 0.3, 1] } },
+};
+
 export function PageHero({
   eyebrow,
   title,
   body,
   stats,
-  accent = "cyan",
   compact = false,
-  children,
 }: {
   eyebrow: string;
   title: Segment[];
   body?: string;
   stats?: Stat[];
-  accent?: Accent;
   compact?: boolean;
-  children?: React.ReactNode;
 }) {
+  const reduce = useReducedMotion();
   return (
     <>
       <section
-        data-nav-dark
-        className="relative overflow-hidden text-white"
-        style={{ background: "radial-gradient(900px 500px at 75% 20%, rgba(0,96,120,0.35), transparent 65%), #05060A" }}
+        className="relative flex w-full flex-col justify-center overflow-hidden"
+        style={{
+          minHeight: compact ? "52vh" : "78vh",
+          backgroundImage: "url('/hero-bg.png')",
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          backgroundRepeat: "no-repeat",
+        }}
       >
-        <ParticleField />
-        <div className={`shell relative flex flex-col gap-7 ${compact ? "pb-16 pt-36 md:pt-40" : "pb-24 pt-40 md:pb-28 md:pt-48"}`}>
-          <Reveal><Eyebrow variant="plain" light>{eyebrow}</Eyebrow></Reveal>
-          <Reveal delay={0.05}>
-            <h1 className="max-w-4xl font-light" style={{ fontSize: "clamp(2.8rem, 7vw, 5.8rem)", lineHeight: 1.02, letterSpacing: "-0.035em" }}>
-              <Segments segments={title} accent={accent} />
-            </h1>
-          </Reveal>
-          {body && (
-            <Reveal delay={0.1}>
-              <p className="max-w-2xl text-white/80" style={{ fontSize: "1.08rem", lineHeight: 1.75 }}>{body}</p>
-            </Reveal>
-          )}
-          {children}
+        <div aria-hidden="true" className="pointer-events-none absolute inset-0" style={{ background: "rgba(255,255,255,0.38)" }} />
+
+        <div className="shell relative" style={{ paddingTop: "9rem", paddingBottom: compact ? "4rem" : "6rem" }}>
+          <motion.div
+            initial={reduce ? false : "hidden"}
+            animate="visible"
+            variants={containerVariants}
+            className="flex flex-col"
+            style={{ gap: "2rem" }}
+          >
+            <motion.span
+              variants={itemVariants}
+              style={{
+                fontFamily: "var(--font-geist-mono), monospace",
+                fontSize: "0.72rem",
+                letterSpacing: "0.22em",
+                textTransform: "uppercase",
+                fontWeight: 600,
+                color: "#0A0A0A",
+                textShadow: "0 1px 12px rgba(255,255,255,0.9)",
+              }}
+            >
+              {eyebrow}
+            </motion.span>
+
+            <motion.div variants={itemVariants}>
+              <h1 style={{ fontSize: "clamp(2.8rem, 6.6vw, 6.4rem)", lineHeight: 0.98, letterSpacing: "-0.035em", maxWidth: "15ch" }}>
+                {title.map((seg, i) =>
+                  seg.accent ? (
+                    <span
+                      key={i}
+                      className="italic legacy-gradient-text"
+                      style={{ fontWeight: 700, fontFamily: JAKARTA, filter: "drop-shadow(0 2px 12px rgba(255,255,255,0.9))" }}
+                    >
+                      {seg.text}
+                    </span>
+                  ) : (
+                    <span
+                      key={i}
+                      style={{
+                        fontWeight: 700,
+                        fontFamily: JAKARTA,
+                        color: "#0A0A0A",
+                        textShadow: "0 2px 24px rgba(255,255,255,0.95), 0 0 40px rgba(255,255,255,0.7)",
+                      }}
+                    >
+                      {seg.text}
+                    </span>
+                  ),
+                )}
+              </h1>
+            </motion.div>
+
+            {body && (
+              <>
+                <motion.div variants={itemVariants}>
+                  <div style={{ height: "1.5px", background: "rgba(10,10,10,0.25)", width: "100%" }} aria-hidden="true" />
+                </motion.div>
+                <motion.div variants={itemVariants}>
+                  <p
+                    style={{
+                      fontSize: "clamp(1rem, 1.6vw, 1.2rem)",
+                      fontFamily: GEIST,
+                      lineHeight: 1.6,
+                      fontWeight: 500,
+                      color: "#0A0A0A",
+                      maxWidth: "52ch",
+                      textShadow: "0 1px 16px rgba(255,255,255,0.9)",
+                    }}
+                  >
+                    {body}
+                  </p>
+                </motion.div>
+              </>
+            )}
+          </motion.div>
         </div>
       </section>
+
       {stats && (
         <section className="bg-canvas">
           <div className="shell">
-            <div className="-mt-px border-y border-teal/30 py-10">
+            <div className="border-b border-teal/30 py-10">
               <StatsRow stats={stats} color="teal" />
             </div>
           </div>

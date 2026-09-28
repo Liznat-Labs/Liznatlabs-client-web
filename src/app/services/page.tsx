@@ -38,7 +38,7 @@ export default function ServicesPage() {
 
   return (
     <>
-      <PageHero eyebrow={c.hero.eyebrow} title={c.hero.title} body={c.hero.body} stats={c.hero.stats} accent="teal" />
+      <PageHero eyebrow={c.hero.eyebrow} title={c.hero.title} body={c.hero.body} stats={c.hero.stats} />
       <SubNav label="Disciplines" items={c.subnav} />
 
       <Section id="overview">
