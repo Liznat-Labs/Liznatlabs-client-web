@@ -1,13 +1,34 @@
 import type { Metadata } from "next";
+import { JsonLd } from "@/components/seo/JsonLd";
+import { ORG_ID, SITE_URL, zynkworksHrLd } from "@/lib/seo";
 import { workContent, workPage as c } from "@/content/site";
 import { Button, Reveal, Section, Segments, StatsRow, Tile } from "@/components/ui/primitives";
 import { PageHero } from "@/components/sections/PageHero";
 import { ZynkWorks } from "@/components/sections/ZynkWorks";
 
 export const metadata: Metadata = {
-  title: "Work",
-  description: "Live products built by Liznat Labs across e-commerce, fintech, SaaS and events.",
+  title: "Our Work — Zynk Works and Live Client Projects",
+  description:
+    "Zynk Works, Liznat Labs' connected business-app platform (zynkworks-hr is live), plus live client products across e-commerce, fintech, SaaS and events.",
+  alternates: { canonical: "/work" },
+  openGraph: { url: "/work" },
 };
+
+const workLd = [
+  zynkworksHrLd,
+  {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    name: "Liznat Labs projects",
+    itemListElement: workContent.map((w, i) => ({
+      "@type": "ListItem",
+      position: i + 1,
+      item: { "@type": "CreativeWork", name: w.title, description: w.description, url: w.url, genre: w.category, creator: { "@id": ORG_ID } },
+    })),
+  },
+  { "@context": "https://schema.org", "@type": "BreadcrumbList", itemListElement: [{ "@type": "ListItem", position: 1, name: "Home", item: SITE_URL }, { "@type": "ListItem", position: 2, name: "Work", item: `${SITE_URL}/work` }] },
+];
+
 
 function hostOf(url: string) {
   return url.replace(/^https?:\/\//, "").replace(/\/$/, "");
@@ -16,6 +37,7 @@ function hostOf(url: string) {
 export default function WorkPage() {
   return (
     <>
+      <JsonLd data={workLd} />
       <PageHero eyebrow={c.eyebrow} title={c.title} body={c.body} />
       <ZynkWorks />
 

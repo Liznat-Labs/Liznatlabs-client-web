@@ -1,17 +1,29 @@
 import type { Metadata } from "next";
+import { JsonLd } from "@/components/seo/JsonLd";
+import { ORG_ID, SITE_URL } from "@/lib/seo";
 import { brand, contactPage as c } from "@/content/site";
 import { Reveal, Section } from "@/components/ui/primitives";
 import { PageHero } from "@/components/sections/PageHero";
 import { ContactForm } from "@/components/sections/ContactForm";
 
 export const metadata: Metadata = {
-  title: "Contact",
-  description: "Book a strategy call with Liznat Labs — AI applications, enterprise IT and engineering teams from Bengaluru.",
+  title: "Contact Us — Book a Strategy Call",
+  description:
+    "Book a strategy call with Liznat Labs, Bengaluru, for AI applications, IT solutions, IT staffing or Zynk Works. We reply to every enquiry within 24 hours.",
+  alternates: { canonical: "/contact" },
+  openGraph: { url: "/contact" },
 };
+
+const contactLd = [
+  { "@context": "https://schema.org", "@type": "ContactPage", url: `${SITE_URL}/contact`, about: { "@id": ORG_ID } },
+  { "@context": "https://schema.org", "@type": "BreadcrumbList", itemListElement: [{ "@type": "ListItem", position: 1, name: "Home", item: SITE_URL }, { "@type": "ListItem", position: 2, name: "Contact", item: `${SITE_URL}/contact` }] },
+];
+
 
 export default function ContactPage() {
   return (
     <>
+      <JsonLd data={contactLd} />
       <PageHero eyebrow={c.eyebrow} title={c.title} compact />
       <Section tone="white">
         <div className="grid grid-cols-1 gap-14 lg:grid-cols-[0.9fr_1.2fr] lg:gap-20">

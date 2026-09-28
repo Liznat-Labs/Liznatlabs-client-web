@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+import { JsonLd } from "@/components/seo/JsonLd";
+import { ORG_ID, SITE_URL } from "@/lib/seo";
 import { aboutPage as c } from "@/content/site";
 import { CardGrid, Reveal, Section, SectionHeading, Tile, type CardTone } from "@/components/ui/primitives";
 import { PageHero } from "@/components/sections/PageHero";
@@ -6,9 +8,24 @@ import { Beliefs } from "@/components/sections/Beliefs";
 import { CTABand } from "@/components/sections/shared";
 
 export const metadata: Metadata = {
-  title: "About",
-  description: "Liznat Labs is a deep tech studio founded in Bengaluru in 2026 by Faizan Khan — pairing applied AI with enterprise-grade engineering.",
+  title: "About Us — Deep Tech Studio in Bengaluru",
+  description:
+    "Founded in Bengaluru in 2026 by Faizan Khan (CEO), with Faraaz Khan A (COO) and Ayaan Ahmed (CTO), Liznat Labs pairs applied AI with serious engineering.",
+  alternates: { canonical: "/about" },
+  openGraph: { url: "/about" },
 };
+
+const aboutLd = [
+  {
+    "@context": "https://schema.org",
+    "@type": "AboutPage",
+    url: `${SITE_URL}/about`,
+    about: { "@id": ORG_ID },
+    mainEntity: c.founders.people.map((p) => ({ "@type": "Person", name: p.name, jobTitle: p.role, worksFor: { "@id": ORG_ID } })),
+  },
+  { "@context": "https://schema.org", "@type": "BreadcrumbList", itemListElement: [{ "@type": "ListItem", position: 1, name: "Home", item: SITE_URL }, { "@type": "ListItem", position: 2, name: "About", item: `${SITE_URL}/about` }] },
+];
+
 
 function initials(name: string) {
   return name.split(" ").filter((p) => p.length > 1).slice(0, 2).map((p) => p[0]).join("");
@@ -56,6 +73,7 @@ export default function AboutPage() {
   const f = c.founders;
   return (
     <>
+      <JsonLd data={aboutLd} />
       <PageHero eyebrow={c.hero.eyebrow} title={c.hero.title} body={c.hero.body} stats={c.hero.stats} />
 
       <Section id="story">

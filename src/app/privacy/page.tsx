@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Privacy Policy — Liznat Labs",
-  description: "How Liznat Labs collects, uses, and protects your personal information.",
+  title: "Privacy Policy",
+  alternates: { canonical: "/privacy" },
+  description: "How Liznat Labs collects, uses and protects the personal information you share through our website and contact form.",
 };
 
 const sections = [

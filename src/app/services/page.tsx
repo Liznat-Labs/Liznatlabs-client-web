@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+import { JsonLd } from "@/components/seo/JsonLd";
+import { ORG_ID, SITE_URL } from "@/lib/seo";
 import { servicesPage as c } from "@/content/site";
 import { Button, CardGrid, LMark, CheckList, Reveal, Section, SectionHeading, Tile, type CardTone } from "@/components/ui/primitives";
 import { PageHero } from "@/components/sections/PageHero";
@@ -6,9 +8,32 @@ import { CTABand, FAQList, ProcessSteps, WhyUs, WorkGrid } from "@/components/se
 import { SubNav } from "@/components/sections/SubNav";
 
 export const metadata: Metadata = {
-  title: "Services",
-  description: "AI Applications, AI & IT Solutions and IT Staffing from Liznat Labs, Bengaluru — agents, RAG, voice AI, cloud, cybersecurity and dedicated engineering pods.",
+  title: "AI Development, IT Solutions & IT Staffing",
+  description:
+    "AI agents, knowledge assistants, voice AI and custom models; cloud, cybersecurity and IT infrastructure; and vetted engineers or dedicated pods, from Bengaluru.",
+  alternates: { canonical: "/services" },
+  openGraph: { url: "/services" },
 };
+
+const servicesLd = [
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: c.faq.items.map((f) => ({ "@type": "Question", name: f.q, acceptedAnswer: { "@type": "Answer", text: f.a } })),
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "OfferCatalog",
+    name: "Liznat Labs services",
+    itemListElement: [
+      ...c.aiApps.products.map((p) => ({ name: p.kicker, description: p.body, category: "AI Applications" })),
+      ...c.itSolutions.items.map((p) => ({ name: p.kicker, description: p.body, category: "AI & IT Solutions" })),
+      ...c.staffing.roles.map((p) => ({ name: p.kicker, description: p.body, category: "IT Staffing" })),
+    ].map((svc) => ({ "@type": "Offer", itemOffered: { "@type": "Service", ...svc, provider: { "@id": ORG_ID }, areaServed: ["IN", "Worldwide"] } })),
+  },
+  { "@context": "https://schema.org", "@type": "BreadcrumbList", itemListElement: [{ "@type": "ListItem", position: 1, name: "Home", item: SITE_URL }, { "@type": "ListItem", position: 2, name: "Services", item: `${SITE_URL}/services` }] },
+];
+
 
 function NextDiscipline({ links }: { links: { label: string; href: string }[] }) {
   return (
@@ -37,6 +62,7 @@ export default function ServicesPage() {
 
   return (
     <>
+      <JsonLd data={servicesLd} />
       <PageHero eyebrow={c.hero.eyebrow} title={c.hero.title} body={c.hero.body} stats={c.hero.stats} />
       <SubNav label="Disciplines" items={c.subnav} />
 

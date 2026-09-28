@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Terms of Service — Liznat Labs",
-  description: "Terms and conditions governing the use of Liznat Labs services.",
+  title: "Terms of Service",
+  alternates: { canonical: "/terms" },
+  description: "Terms for engaging Liznat Labs: proposals and scope, payment, revisions, delivery, intellectual property, support and confidentiality.",
 };
 
 const sections = [
