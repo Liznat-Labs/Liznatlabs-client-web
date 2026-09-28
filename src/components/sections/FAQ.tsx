@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import { useState } from "react";
 import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
@@ -39,7 +39,7 @@ function FAQItem({
           {question}
         </span>
 
-        {/* + rotates to Ã— */}
+        {/* + rotates to × */}
         <motion.span
           animate={{ rotate: isOpen ? 45 : 0 }}
           transition={{ duration: shouldReduceMotion ? 0 : 0.2, ease: [0.2, 0.8, 0.2, 1] }}
@@ -90,7 +90,7 @@ export function FAQ() {
       className="mx-auto max-w-7xl px-6 py-24 xl:px-8"
     >
       <div className="grid grid-cols-1 gap-16 lg:grid-cols-[1fr_1.6fr]">
-        {/* Left â€” heading */}
+        {/* Left — heading */}
         <motion.div
           initial={shouldReduceMotion ? false : { opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -122,7 +122,7 @@ export function FAQ() {
           </p>
         </motion.div>
 
-        {/* Right â€” accordion */}
+        {/* Right — accordion */}
         <motion.div
           initial={shouldReduceMotion ? false : { opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}

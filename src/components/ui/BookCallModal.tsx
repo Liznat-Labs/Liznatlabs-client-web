@@ -34,6 +34,7 @@ export function BookCallModal() {
   }, [open]);
 
   useEffect(() => {
+    if (!open) return;
     const handler = (e: KeyboardEvent) => { if (e.key === "Escape") close(); };
     window.addEventListener("keydown", handler);
     return () => window.removeEventListener("keydown", handler);
@@ -41,6 +42,9 @@ export function BookCallModal() {
 
   function close() {
     setOpen(false);
+    // Leave an in-flight request alone so the submit button stays disabled
+    // and the result is shown if the modal is reopened.
+    if (formState === "sending") return;
     if (formState === "success") {
       setTimeout(() => {
         setFormState("idle");

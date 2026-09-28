@@ -143,11 +143,14 @@ export function Nav() {
       {/* Mobile menu */}
       <motion.div
         id="mobile-menu"
-        role="dialog"
-        aria-modal="true"
         aria-label="Mobile navigation"
         initial={false}
-        animate={menuOpen ? { height: "auto", opacity: 1 } : { height: 0, opacity: 0 }}
+        // visibility:hidden once collapsed keeps the links out of the tab order
+        animate={
+          menuOpen
+            ? { height: "auto", opacity: 1, visibility: "visible" }
+            : { height: 0, opacity: 0, transitionEnd: { visibility: "hidden" } }
+        }
         transition={{ duration: 0.25, ease: [0.2, 0.8, 0.2, 1] }}
         style={{ overflow: "hidden", borderTop: menuOpen ? "1px solid var(--border)" : "none", background: "#FFFFFF" }}
       >

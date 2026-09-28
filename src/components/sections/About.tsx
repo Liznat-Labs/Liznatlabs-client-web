@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import { motion, useReducedMotion } from "framer-motion";
 import { aboutContent } from "@/content/site";
@@ -24,7 +24,7 @@ export function About() {
           boxShadow: "0 4px 24px rgba(0,0,0,0.08), 0 1px 4px rgba(0,0,0,0.05)",
         }}
       >
-        {/* Left â€” pull-quote */}
+        {/* Left — pull-quote */}
         <div
           className="flex flex-col justify-center px-10 py-14 lg:px-14 lg:py-16"
           style={{ borderRight: "1px solid var(--glass-border)" }}
@@ -60,7 +60,7 @@ export function About() {
           </blockquote>
         </div>
 
-        {/* Right â€” founder note */}
+        {/* Right — founder note */}
         <div className="flex flex-col justify-center gap-6 px-10 py-14 lg:px-14 lg:py-16">
           <h2 id="about-heading" className="sr-only">About the Co-Founders</h2>
 

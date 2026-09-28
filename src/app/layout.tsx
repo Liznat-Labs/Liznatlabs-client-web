@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Plus_Jakarta_Sans, JetBrains_Mono } from "next/font/google";
 import { GeistSans } from "geist/font/sans";
 import { GeistMono } from "geist/font/mono";
@@ -40,14 +40,6 @@ export const metadata: Metadata = {
       "Bengaluru-based dev studio. Modern websites, Android apps, and custom software for ambitious teams. Co-founder care. Fixed pricing. Real results.",
     url: "https://liznatlabs.com",
     siteName: "Liznat Labs",
-    images: [
-      {
-        url: "/og-image.png",
-        width: 1200,
-        height: 630,
-        alt: "Liznat Labs — Modern Software, Shipped with Intent",
-      },
-    ],
     locale: "en_IN",
     type: "website",
   },
@@ -56,18 +48,16 @@ export const metadata: Metadata = {
     title: "Liznat Labs — Modern Software, Shipped with Intent",
     description:
       "Bengaluru-based dev studio building modern websites, Android apps, and custom software.",
-    images: ["/og-image.png"],
   },
   metadataBase: new URL("https://liznatlabs.com"),
-  themeColor: "#0A0908",
-  icons: {
-    icon: "/favicon.ico",
-    shortcut: "/favicon.ico",
-  },
   robots: {
     index: true,
     follow: true,
   },
+};
+
+export const viewport: Viewport = {
+  themeColor: "#FFFFFF",
 };
 
 export default function RootLayout({

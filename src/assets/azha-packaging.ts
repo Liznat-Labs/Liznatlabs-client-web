@@ -1,1 +1,1 @@
-﻿export const azhaPackagingImg = "/work/azha-packaging.png";
+export const azhaPackagingImg = "/work/azha-packaging.png";
