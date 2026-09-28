@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import { useReducedMotion } from "framer-motion";
 import { marqueeItems } from "@/content/site";
@@ -50,7 +50,7 @@ export function MarqueeStrip() {
       />
 
       <div
-        className={`flex gap-4 whitespace-nowrap ${shouldReduceMotion ? "" : "animate-marquee"}`}
+        className={`flex whitespace-nowrap ${shouldReduceMotion ? "" : "animate-marquee"}`}
         style={{
           width: shouldReduceMotion ? "auto" : "max-content",
           animationDuration: "32s",
