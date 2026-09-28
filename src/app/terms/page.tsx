@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 
 export const metadata: Metadata = {
   title: "Terms of Service — Liznat Labs",
@@ -10,14 +9,14 @@ const sections = [
   {
     title: "1. Acceptance of Terms",
     body: [
-      "By engaging Liznat Labs for any service — including website development, Android app development, or custom software — you agree to be bound by these Terms of Service. If you do not agree, please do not proceed with any engagement.",
+      "By engaging Liznat Labs for any service — including AI applications, IT solutions, IT staffing, or software development — you agree to be bound by these Terms of Service. If you do not agree, please do not proceed with any engagement.",
       "These terms apply to all clients, regardless of how the engagement was initiated (website form, email, WhatsApp, or direct referral).",
     ],
   },
   {
     title: "2. Services",
     body: [
-      "Liznat Labs provides software development services including, but not limited to: modern websites, landing pages, Android applications, custom software, APIs, dashboards, and automation systems.",
+      "Liznat Labs provides technology services including, but not limited to: AI applications and agents, custom software, websites and mobile apps, APIs, data and automation systems, cloud and IT infrastructure, cybersecurity, and IT staffing.",
       "Each project begins with a written proposal that defines the scope, deliverables, timeline, and fixed price. Work begins only after the proposal is accepted and the deposit is paid.",
     ],
   },
@@ -39,7 +38,7 @@ const sections = [
   {
     title: "5. Revisions",
     body: [
-      "Each pricing tier includes a fixed number of revision rounds as specified in the proposal (typically 1–3 rounds). A revision round is a single consolidated set of feedback. Revisions beyond the included rounds will be billed at ₹2,000 per hour.",
+      "Each project includes a fixed number of revision rounds as specified in the proposal (typically 1–3 rounds). A revision round is a single consolidated set of feedback. Revisions beyond the included rounds will be billed at ₹2,000 per hour.",
       "Revisions must be submitted in writing (email or WhatsApp message). Verbal feedback alone will not be actioned until confirmed in writing.",
     ],
   },
@@ -68,7 +67,7 @@ const sections = [
   {
     title: "9. Post-Launch Support",
     body: [
-      "Each project includes a free support window after launch — 2 weeks for websites, 30 days for Studio tier, and 60 days for Build tier projects. During this period, Liznat Labs will fix bugs that are directly attributable to the delivered work at no additional charge.",
+      "Each project includes a free support window after launch — the length of which is specified in the project proposal. During this period, Liznat Labs will fix bugs that are directly attributable to the delivered work at no additional charge.",
       "Support does not cover new features, content changes, or issues arising from third-party service outages. After the support window, ongoing work is available on a retainer or per-request basis.",
     ],
   },
@@ -115,35 +114,10 @@ const sections = [
 
 export default function TermsPage() {
   return (
-    <div className="bg-bg min-h-screen">
-      {/* Top bar */}
-      <header style={{ borderBottom: "1px solid var(--border)" }}>
-        <div className="mx-auto flex max-w-4xl items-center justify-between px-6 py-4 xl:px-8">
-          <Link
-            href="/"
-            className="flex items-center gap-2.5 no-underline"
-            aria-label="Liznat Labs, home"
-          >
-            <span className="h-2 w-2 rounded-full bg-accent" aria-hidden="true" />
-            <span
-              className="font-fraunces text-cream"
-              style={{ fontSize: "1.05rem", fontWeight: 400 }}
-            >
-              Liznat Labs
-            </span>
-          </Link>
-          <Link
-            href="/"
-            className="font-mono text-xs text-muted transition-colors hover:text-accent"
-            style={{ letterSpacing: "0.06em" }}
-          >
-            ← Back to site
-          </Link>
-        </div>
-      </header>
+    <div className="relative min-h-screen">
 
       {/* Content */}
-      <main className="mx-auto max-w-4xl px-6 py-16 xl:px-8">
+      <div className="mx-auto max-w-4xl px-6 pb-24 pt-36 xl:px-8">
         {/* Heading */}
         <div className="mb-12">
           <span
@@ -197,7 +171,7 @@ export default function TermsPage() {
         {/* Footer note */}
         <div
           className="mt-16 rounded-sm p-6"
-          style={{ background: "rgba(109, 40, 217,0.05)", border: "1px solid rgba(109, 40, 217,0.2)" }}
+          style={{ background: "rgba(61,124,255,0.06)", border: "1px solid rgba(106,168,255,0.25)" }}
         >
           <p className="font-geist text-muted" style={{ fontSize: "0.875rem", lineHeight: 1.75 }}>
             Questions about these terms? Email us at{" "}
@@ -207,35 +181,7 @@ export default function TermsPage() {
             and we&apos;ll respond within 24 hours.
           </p>
         </div>
-      </main>
-
-      {/* Footer */}
-      <footer
-        className="mx-auto max-w-4xl px-6 py-8 xl:px-8"
-        style={{ borderTop: "1px solid var(--border)" }}
-      >
-        <div className="flex flex-col items-center justify-between gap-3 sm:flex-row">
-          <span className="font-mono text-xs text-muted" style={{ letterSpacing: "0.06em" }}>
-            © 2026 Liznat Labs · Bengaluru, India
-          </span>
-          <div className="flex gap-6">
-            <Link
-              href="/privacy"
-              className="font-mono text-xs text-muted transition-colors hover:text-accent"
-              style={{ letterSpacing: "0.04em" }}
-            >
-              Privacy Policy
-            </Link>
-            <Link
-              href="/terms"
-              className="font-mono text-xs text-accent"
-              style={{ letterSpacing: "0.04em" }}
-            >
-              Terms of Service
-            </Link>
-          </div>
-        </div>
-      </footer>
+      </div>
     </div>
   );
 }

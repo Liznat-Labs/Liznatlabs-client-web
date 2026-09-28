@@ -15,24 +15,25 @@ export default function OpengraphImage() {
           flexDirection: "column",
           justifyContent: "space-between",
           padding: "80px",
-          background: "#FFFFFF",
-          color: "#0A0A0A",
+          backgroundColor: "#05060A",
+          backgroundImage: "radial-gradient(circle at 85% 0%, rgba(61,124,255,0.35) 0%, rgba(5,6,10,0) 55%)",
+          color: "#F4F6FB",
           fontFamily: "sans-serif",
         }}
       >
         <div style={{ display: "flex", alignItems: "center", gap: "24px" }}>
           <svg width="75" height="72" viewBox="0 0 48 46">
-            <path d="M0 0 L14 0 L14 32 L38 32 L38 46 L0 46 Z" fill="#0A0A0A" />
-            <rect x="22" y="4" width="10" height="10" fill="#4C1D95" />
+            <path d="M0 0 L14 0 L14 32 L38 32 L38 46 L0 46 Z" fill="#F4F6FB" />
+            <rect x="22" y="4" width="10" height="10" fill="#3D7CFF" />
           </svg>
           <span style={{ fontSize: 44 }}>Liznat Labs</span>
         </div>
-        <div style={{ display: "flex", flexDirection: "column", fontSize: 72, fontWeight: 700, lineHeight: 1.05 }}>
+        <div style={{ display: "flex", flexDirection: "column", fontSize: 72, fontWeight: 300, lineHeight: 1.05 }}>
           <span>Software crafted with intent,</span>
-          <span style={{ color: "#6D28D9" }}>shipped with speed.</span>
+          <span style={{ color: "#6AA8FF" }}>shipped with speed.</span>
         </div>
-        <span style={{ fontSize: 28, color: "#7C7C7C" }}>
-          Websites · Android apps · Custom software — Bengaluru
+        <span style={{ fontSize: 28, color: "#AAB1C4" }}>
+          AI Applications · AI & IT Solutions · IT Staffing — Bengaluru
         </span>
       </div>
     ),

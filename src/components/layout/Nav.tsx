@@ -1,199 +1,129 @@
 "use client";
 
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
-import { motion } from "framer-motion";
-import { navContent } from "@/content/site";
+import { AnimatePresence, motion } from "framer-motion";
+import { navLinks } from "@/content/site";
 import { LogoLockup } from "@/components/ui/Logo";
 
 export function Nav() {
+  const pathname = usePathname();
   const [scrolled, setScrolled] = useState(false);
-  const [menuOpen, setMenuOpen] = useState(false);
+  const [open, setOpen] = useState(false);
 
   useEffect(() => {
-    const handler = () => setScrolled(window.scrollY > 24);
-    window.addEventListener("scroll", handler, { passive: true });
-    return () => window.removeEventListener("scroll", handler);
+    const onScroll = () => setScrolled(window.scrollY > 24);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  const handleNavClick = (href: string) => {
-    setMenuOpen(false);
-    if (href.startsWith("#")) {
-      const el = document.querySelector(href);
-      el?.scrollIntoView({ behavior: "smooth" });
-    }
-  };
+  // Close the mobile menu on navigation, and lock page scroll while it's open
+  useEffect(() => setOpen(false), [pathname]);
+  useEffect(() => {
+    document.body.style.overflow = open ? "hidden" : "";
+    if (!open) return;
+    const onKey = (e: KeyboardEvent) => e.key === "Escape" && setOpen(false);
+    window.addEventListener("keydown", onKey);
+    return () => {
+      document.body.style.overflow = "";
+      window.removeEventListener("keydown", onKey);
+    };
+  }, [open]);
+
+  const isActive = (href: string) => (href === "/" ? pathname === "/" : pathname.startsWith(href));
 
   return (
+    <>
     <header
-      role="banner"
-      style={{
-        position: "fixed",
-        top: 0,
-        left: 0,
-        right: 0,
-        zIndex: 50,
-        backdropFilter: "blur(20px)",
-        WebkitBackdropFilter: "blur(20px)",
-        backgroundColor: scrolled ? "rgba(255,255,255,0.95)" : "rgba(255,255,255,0.85)",
-        borderBottom: `1px solid ${scrolled ? "#E8E8E8" : "transparent"}`,
-        transition: "background-color 0.3s ease, border-color 0.3s ease",
-      }}
+      className={`fixed inset-x-0 top-0 z-50 transition-[background-color,border-color,backdrop-filter] duration-500 ${
+        scrolled || open ? "border-b hairline bg-[rgba(5,6,10,0.72)] backdrop-blur-xl" : "border-b border-transparent"
+      }`}
     >
-      <nav
-        className="mx-auto flex max-w-7xl items-center justify-between px-6 py-5 xl:px-8"
-        aria-label="Main navigation"
-      >
-        {/* Logo */}
-        <a
-          href="#"
-          onClick={(e) => { e.preventDefault(); window.scrollTo({ top: 0, behavior: "smooth" }); }}
-          className="flex items-center no-underline"
-          style={{ color: "var(--text)" }}
-          aria-label="Liznat Labs, home"
-        >
-          <LogoLockup size={26} />
-        </a>
+      <nav className="shell flex h-[76px] items-center justify-between" aria-label="Main navigation">
+        <Link href="/" aria-label="Liznat Labs, home" className="text-pearl">
+          <LogoLockup size={24} />
+        </Link>
 
-        {/* Desktop center links */}
-        <ul className="hidden items-center gap-8 md:flex" role="list">
-          {navContent.links.map((link) => (
-            <li key={link.label}>
-              <a
-                href={link.href}
-                onClick={(e) => { e.preventDefault(); handleNavClick(link.href); }}
-                className="font-geist text-sm transition-colors duration-200"
-                style={{ fontWeight: 400, letterSpacing: "0.01em", color: "var(--muted)", textDecoration: "none" }}
-                onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.color = "var(--text)"; }}
-                onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.color = "var(--muted)"; }}
-              >
-                {link.label}
-              </a>
-            </li>
-          ))}
-        </ul>
-
-        {/* Desktop CTA — pill button */}
-        <div className="hidden md:block">
-          <button
-            type="button"
-            onClick={() => window.dispatchEvent(new CustomEvent("open-book-call"))}
-            className="group inline-flex items-center gap-2"
-            style={{
-              borderRadius: "9999px",
-              background: "#0A0A0A",
-              color: "#FFFFFF",
-              border: "none",
-              padding: "0.6rem 1.4rem",
-              fontSize: "0.8125rem",
-              fontWeight: 500,
-              letterSpacing: "0.01em",
-              cursor: "pointer",
-              transition: "background 0.25s ease",
-              fontFamily: "var(--font-geist-sans), system-ui, sans-serif",
-            }}
-            onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.background = "var(--accent)"; }}
-            onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.background = "#0A0A0A"; }}
+        <div className="hidden items-center gap-10 md:flex">
+          <ul className="flex items-center gap-9" role="list">
+            {navLinks.map((l) => (
+              <li key={l.href}>
+                <Link
+                  href={l.href}
+                  aria-current={isActive(l.href) ? "page" : undefined}
+                  className={`relative py-1 text-sm tracking-wide transition-colors duration-300 ${
+                    isActive(l.href) ? "text-pearl" : "text-pearl-dim hover:text-pearl"
+                  }`}
+                >
+                  {l.label}
+                  <span
+                    className={`absolute inset-x-0 -bottom-1 h-px origin-left bg-pearl transition-transform duration-500 ${
+                      isActive(l.href) ? "scale-x-100" : "scale-x-0"
+                    }`}
+                  />
+                </Link>
+              </li>
+            ))}
+          </ul>
+          <Link
+            href="/contact"
+            className="glass rounded-full px-5 py-2.5 text-sm tracking-wide text-pearl transition-colors duration-300 hover:border-blue-bright hover:text-blue-bright"
           >
-            <span
-              style={{ display: "inline-block", transition: "transform 0.3s ease" }}
-              className="group-hover:-translate-x-0.5"
-            >
-              {navContent.cta.label}
-            </span>
-            <svg
-              width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true"
-              style={{ flexShrink: 0, transition: "transform 0.3s ease" }}
-              className="group-hover:translate-x-0.5"
-            >
-              <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-            </svg>
-          </button>
+            Let&apos;s Talk
+          </Link>
         </div>
 
-        {/* Mobile hamburger */}
         <button
           type="button"
-          className="flex flex-col gap-1.5 p-2 md:hidden"
-          onClick={() => setMenuOpen(!menuOpen)}
-          aria-label={menuOpen ? "Close menu" : "Open menu"}
-          aria-expanded={menuOpen}
+          className="relative flex h-10 w-10 flex-col items-center justify-center gap-1.5 md:hidden"
+          onClick={() => setOpen((o) => !o)}
+          aria-label={open ? "Close menu" : "Open menu"}
+          aria-expanded={open}
           aria-controls="mobile-menu"
         >
-          <motion.span
-            className="block h-px w-5"
-            style={{ background: "var(--text)" }}
-            animate={menuOpen ? { rotate: 45, y: 5 } : { rotate: 0, y: 0 }}
-            transition={{ duration: 0.2 }}
-          />
-          <motion.span
-            className="block h-px w-5"
-            style={{ background: "var(--text)" }}
-            animate={menuOpen ? { opacity: 0 } : { opacity: 1 }}
-            transition={{ duration: 0.2 }}
-          />
-          <motion.span
-            className="block h-px w-5"
-            style={{ background: "var(--text)" }}
-            animate={menuOpen ? { rotate: -45, y: -5 } : { rotate: 0, y: 0 }}
-            transition={{ duration: 0.2 }}
-          />
+          <span className={`block h-px w-6 bg-pearl transition-transform duration-300 ${open ? "translate-y-[3.5px] rotate-45" : ""}`} />
+          <span className={`block h-px w-6 bg-pearl transition-transform duration-300 ${open ? "-translate-y-[3.5px] -rotate-45" : ""}`} />
         </button>
       </nav>
 
-      {/* Mobile menu */}
-      <motion.div
-        id="mobile-menu"
-        aria-label="Mobile navigation"
-        initial={false}
-        // visibility:hidden once collapsed keeps the links out of the tab order
-        animate={
-          menuOpen
-            ? { height: "auto", opacity: 1, visibility: "visible" }
-            : { height: 0, opacity: 0, transitionEnd: { visibility: "hidden" } }
-        }
-        transition={{ duration: 0.25, ease: [0.2, 0.8, 0.2, 1] }}
-        style={{ overflow: "hidden", borderTop: menuOpen ? "1px solid var(--border)" : "none", background: "#FFFFFF" }}
-      >
-        <div className="flex flex-col gap-0 px-6 pb-6 pt-4">
-          {navContent.links.map((link) => (
-            <a
-              key={link.label}
-              href={link.href}
-              onClick={(e) => { e.preventDefault(); handleNavClick(link.href); }}
-              className="py-3 font-geist text-sm"
-              style={{
-                fontWeight: 400,
-                color: "var(--muted)",
-                textDecoration: "none",
-                borderBottom: "1px solid var(--border)",
-                transition: "color 0.2s",
-              }}
-              onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.color = "var(--text)"; }}
-              onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.color = "var(--muted)"; }}
-            >
-              {link.label}
-            </a>
-          ))}
-          <button
-            type="button"
-            onClick={() => { setMenuOpen(false); window.dispatchEvent(new CustomEvent("open-book-call")); }}
-            className="group mt-5 inline-flex items-center justify-center gap-2"
-            style={{
-              borderRadius: "9999px",
-              background: "#0A0A0A",
-              color: "#FFFFFF",
-              border: "none",
-              padding: "0.85rem 1.75rem",
-              fontSize: "0.875rem",
-              fontWeight: 500,
-              cursor: "pointer",
-              fontFamily: "var(--font-geist-sans), system-ui, sans-serif",
-            }}
-          >
-            {navContent.cta.label}
-          </button>
-        </div>
-      </motion.div>
     </header>
+
+      {/* Outside the header: backdrop-filter there would make it the menu's containing block */}
+      <AnimatePresence>
+        {open && (
+          <motion.div
+            id="mobile-menu"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.3 }}
+            className="fixed inset-x-0 bottom-0 top-[76px] z-40 bg-bg md:hidden"
+          >
+            <ul className="shell flex flex-col pt-8" role="list">
+              {[...navLinks, { label: "Let's Talk", href: "/contact" }].map((l, i) => (
+                <motion.li
+                  key={l.href}
+                  initial={{ opacity: 0, y: 16 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.05 * i, duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+                  className="border-b hairline"
+                >
+                  <Link
+                    href={l.href}
+                    aria-current={isActive(l.href) ? "page" : undefined}
+                    className={`flex items-baseline gap-4 py-5 text-3xl font-extralight ${isActive(l.href) ? "text-pearl" : "text-pearl-dim"}`}
+                  >
+                    <span className="font-mono text-xs text-blue-bright">{String(i + 1).padStart(2, "0")}</span>
+                    {l.label}
+                  </Link>
+                </motion.li>
+              ))}
+            </ul>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </>
   );
 }

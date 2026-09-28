@@ -1,76 +1,76 @@
 import type { Metadata, Viewport } from "next";
-import { Plus_Jakarta_Sans, JetBrains_Mono } from "next/font/google";
-import { GeistSans } from "geist/font/sans";
-import { GeistMono } from "geist/font/mono";
+import { Sora, Space_Grotesk } from "next/font/google";
+import { Nav } from "@/components/layout/Nav";
+import { Footer } from "@/components/layout/Footer";
+import { ParticleField } from "@/components/ui/ParticleField";
 import "./globals.css";
 
-const fraunces = Plus_Jakarta_Sans({
+const sora = Sora({
   subsets: ["latin"],
-  variable: "--font-fraunces",
+  variable: "--font-sora",
   display: "swap",
-  weight: ["300", "400", "500", "600", "700"],
-  style: ["normal", "italic"],
+  weight: ["200", "300", "400", "600", "700"],
 });
 
-const jetbrainsMono = JetBrains_Mono({
+const spaceGrotesk = Space_Grotesk({
   subsets: ["latin"],
-  variable: "--font-jetbrains-mono",
+  variable: "--font-space-grotesk",
   display: "swap",
-  weight: ["400", "500"],
+  weight: ["300", "400", "500"],
 });
+
+const title = "Liznat Labs — AI, Enterprise Technology & Engineering Talent";
+const description =
+  "Liznat Labs is a deep tech studio in Bengaluru building production AI applications, enterprise IT solutions and dedicated engineering teams for businesses in India and worldwide.";
 
 export const metadata: Metadata = {
-  title: "Liznat Labs — Modern Software, Shipped with Intent",
-  description:
-    "Bengaluru-based dev studio building modern websites, Android apps, and custom software for ambitious teams. Fixed pricing. Real results.",
+  title: { default: title, template: "%s — Liznat Labs" },
+  description,
   keywords: [
-    "web development",
-    "android apps",
+    "AI development company India",
+    "AI agents",
+    "enterprise IT solutions",
+    "IT staffing Bengaluru",
     "custom software",
-    "bengaluru",
-    "india",
-    "dev studio",
-    "startup",
-    "MVP",
+    "RAG",
+    "voice AI",
+    "Bengaluru",
   ],
   authors: [{ name: "Liznat Labs" }],
   openGraph: {
-    title: "Liznat Labs — Modern Software, Shipped with Intent",
-    description:
-      "Bengaluru-based dev studio. Modern websites, Android apps, and custom software for ambitious teams. Co-founder care. Fixed pricing. Real results.",
+    title,
+    description,
     url: "https://liznatlabs.com",
     siteName: "Liznat Labs",
     locale: "en_IN",
     type: "website",
   },
-  twitter: {
-    card: "summary_large_image",
-    title: "Liznat Labs — Modern Software, Shipped with Intent",
-    description:
-      "Bengaluru-based dev studio building modern websites, Android apps, and custom software.",
-  },
+  twitter: { card: "summary_large_image", title, description },
   metadataBase: new URL("https://liznatlabs.com"),
-  robots: {
-    index: true,
-    follow: true,
-  },
+  robots: { index: true, follow: true },
 };
 
 export const viewport: Viewport = {
-  themeColor: "#FFFFFF",
+  themeColor: "#05060A",
 };
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html
-      lang="en"
-      className={`${fraunces.variable} ${jetbrainsMono.variable} ${GeistSans.variable} ${GeistMono.variable}`}
-    >
-      <body className="antialiased bg-bg text-cream">{children}</body>
+    <html lang="en" className={`${sora.variable} ${spaceGrotesk.variable}`}>
+      <body className="bg-bg text-pearl antialiased">
+        <a
+          href="#main"
+          className="fixed left-4 top-4 z-[100] -translate-y-24 rounded-full bg-blue px-4 py-2 font-mono text-xs text-white transition-transform focus:translate-y-0"
+        >
+          Skip to content
+        </a>
+        <ParticleField />
+        <Nav />
+        <main id="main" className="relative z-10">
+          {children}
+        </main>
+        <Footer />
+      </body>
     </html>
   );
 }

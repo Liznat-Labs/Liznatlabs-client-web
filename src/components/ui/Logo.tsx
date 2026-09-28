@@ -1,5 +1,3 @@
-"use client";
-
 interface LogoMarkProps {
   size?: number;
   className?: string;
@@ -23,7 +21,7 @@ export function LogoMark({ size = 28, className = "" }: LogoMarkProps) {
       {/* L body */}
       <path d="M0 0 L14 0 L14 32 L38 32 L38 46 L0 46 Z" fill="currentColor" />
       {/* Accent square — floats to the right of the vertical stroke */}
-      <rect x="22" y="4" width="10" height="10" fill="#4C1D95" />
+      <rect x="22" y="4" width="10" height="10" fill="#3D7CFF" />
     </svg>
   );
 }
@@ -44,8 +42,8 @@ export function LogoLockup({
       <LogoMark size={size} />
       {showWordmark && (
         <span
-          className="font-fraunces text-cream"
-          style={{ fontSize: size, fontWeight: 400, letterSpacing: "-0.01em", lineHeight: 1 }}
+          className="text-pearl"
+          style={{ fontSize: size, fontWeight: 600, letterSpacing: "-0.02em", lineHeight: 1 }}
         >
           Liznat Labs
         </span>

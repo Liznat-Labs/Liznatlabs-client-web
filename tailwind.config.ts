@@ -2,43 +2,45 @@ import type { Config } from "tailwindcss";
 
 const config: Config = {
   content: [
-    "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
     extend: {
       colors: {
-        bg: "#FFFFFF",
-        surface: "#F5F5F5",
-        cream: "#0A0A0A",
-        muted: "#7C7C7C",
-        "border-line": "#E2E2E2",
-        accent: "#6D28D9",
-        "accent-2": "#0891B2",
+        bg: "#05060A",
+        "bg-2": "#0A0C14",
+        pearl: "#F4F6FB",
+        "pearl-dim": "#AAB1C4",
+        muted: "#7A8299",
+        blue: "#3D7CFF",
+        "blue-bright": "#6AA8FF",
+        chrome: "#C8D0E0",
+        // Aliases kept for the legal pages
+        cream: "#F4F6FB",
+        accent: "#6AA8FF",
       },
       fontFamily: {
-        fraunces: ["var(--font-fraunces)", "Georgia", "serif"],
-        geist: ["var(--font-geist-sans)", "system-ui", "sans-serif"],
-        mono: ["var(--font-geist-mono)", "var(--font-jetbrains-mono)", "monospace"],
+        sans: ["var(--font-sora)", "system-ui", "sans-serif"],
+        mono: ["var(--font-space-grotesk)", "ui-monospace", "monospace"],
+        fraunces: ["var(--font-sora)", "system-ui", "sans-serif"],
+        geist: ["var(--font-sora)", "system-ui", "sans-serif"],
       },
-      screens: {
-        xs: "375px", sm: "640px", md: "768px",
-        lg: "1024px", xl: "1280px", "2xl": "1440px",
+      maxWidth: { shell: "1280px" },
+      keyframes: {
+        marquee: { from: { transform: "translateX(0)" }, to: { transform: "translateX(-50%)" } },
+        "scroll-line": {
+          "0%": { transform: "scaleY(0)", transformOrigin: "top" },
+          "50%": { transform: "scaleY(1)", transformOrigin: "top" },
+          "51%": { transform: "scaleY(1)", transformOrigin: "bottom" },
+          "100%": { transform: "scaleY(0)", transformOrigin: "bottom" },
+        },
+        pulse: { "0%,100%": { opacity: "1" }, "50%": { opacity: "0.35" } },
       },
       animation: {
-        marquee: "marquee 32s linear infinite",
-        "pulse-dot": "pulse-dot 2.5s ease-in-out infinite",
-      },
-      keyframes: {
-        marquee: {
-          "0%":   { transform: "translateX(0%)" },
-          "100%": { transform: "translateX(-50%)" },
-        },
-        "pulse-dot": {
-          "0%, 100%": { opacity: "1", transform: "scale(1)" },
-          "50%":       { opacity: "0.4", transform: "scale(0.7)" },
-        },
+        marquee: "marquee 40s linear infinite",
+        "scroll-line": "scroll-line 2.2s cubic-bezier(.65,.05,.36,1) infinite",
+        "pulse-soft": "pulse 2.4s ease-in-out infinite",
       },
     },
   },

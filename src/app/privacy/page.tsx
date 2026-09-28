@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 
 export const metadata: Metadata = {
   title: "Privacy Policy — Liznat Labs",
@@ -71,35 +70,10 @@ const sections = [
 
 export default function PrivacyPage() {
   return (
-    <div className="bg-bg min-h-screen">
-      {/* Top bar */}
-      <header style={{ borderBottom: "1px solid var(--border)" }}>
-        <div className="mx-auto flex max-w-4xl items-center justify-between px-6 py-4 xl:px-8">
-          <Link
-            href="/"
-            className="flex items-center gap-2.5 no-underline"
-            aria-label="Liznat Labs, home"
-          >
-            <span className="h-2 w-2 rounded-full bg-accent" aria-hidden="true" />
-            <span
-              className="font-fraunces text-cream"
-              style={{ fontSize: "1.05rem", fontWeight: 400 }}
-            >
-              Liznat Labs
-            </span>
-          </Link>
-          <Link
-            href="/"
-            className="font-mono text-xs text-muted transition-colors hover:text-accent"
-            style={{ letterSpacing: "0.06em" }}
-          >
-            ← Back to site
-          </Link>
-        </div>
-      </header>
+    <div className="relative min-h-screen">
 
       {/* Content */}
-      <main className="mx-auto max-w-4xl px-6 py-16 xl:px-8">
+      <div className="mx-auto max-w-4xl px-6 pb-24 pt-36 xl:px-8">
         {/* Heading */}
         <div className="mb-12">
           <span
@@ -153,7 +127,7 @@ export default function PrivacyPage() {
         {/* Footer note */}
         <div
           className="mt-16 rounded-sm p-6"
-          style={{ background: "rgba(109, 40, 217,0.05)", border: "1px solid rgba(109, 40, 217,0.2)" }}
+          style={{ background: "rgba(61,124,255,0.06)", border: "1px solid rgba(106,168,255,0.25)" }}
         >
           <p className="font-geist text-muted" style={{ fontSize: "0.875rem", lineHeight: 1.75 }}>
             Questions? Email us at{" "}
@@ -163,35 +137,7 @@ export default function PrivacyPage() {
             and we&apos;ll get back to you within 24 hours.
           </p>
         </div>
-      </main>
-
-      {/* Footer */}
-      <footer
-        className="mx-auto max-w-4xl px-6 py-8 xl:px-8"
-        style={{ borderTop: "1px solid var(--border)" }}
-      >
-        <div className="flex flex-col items-center justify-between gap-3 sm:flex-row">
-          <span className="font-mono text-xs text-muted" style={{ letterSpacing: "0.06em" }}>
-            © 2026 Liznat Labs · Bengaluru, India
-          </span>
-          <div className="flex gap-6">
-            <Link
-              href="/privacy"
-              className="font-mono text-xs text-accent"
-              style={{ letterSpacing: "0.04em" }}
-            >
-              Privacy Policy
-            </Link>
-            <Link
-              href="/terms"
-              className="font-mono text-xs text-muted transition-colors hover:text-accent"
-              style={{ letterSpacing: "0.04em" }}
-            >
-              Terms of Service
-            </Link>
-          </div>
-        </div>
-      </footer>
+      </div>
     </div>
   );
 }

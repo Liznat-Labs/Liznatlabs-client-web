@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { Resend } from "resend";
 
-const MAX_LENGTHS = { name: 200, email: 320, phone: 40, projectType: 100, message: 5000 };
+const MAX_LENGTHS = { name: 200, email: 320, phone: 40, company: 200, projectType: 100, message: 5000 };
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 function escapeHtml(value: string) {
@@ -28,10 +28,16 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ error: "Invalid request body" }, { status: 400 });
   }
 
+  // Honeypot field is hidden from people; bots that fill it get a silent success.
+  if (typeof body.company_website === "string" && body.company_website.trim()) {
+    return NextResponse.json({ ok: true });
+  }
+
   // Single-line fields go into the subject, so strip any newlines.
   const name = field(body, "name").replace(/[\r\n]+/g, " ");
   const email = field(body, "email");
   const phone = field(body, "phone");
+  const company = field(body, "company").replace(/[\r\n]+/g, " ");
   const projectType = field(body, "projectType").replace(/[\r\n]+/g, " ");
   const message = field(body, "message");
 
@@ -53,6 +59,7 @@ export async function POST(req: NextRequest) {
     name: escapeHtml(name),
     email: escapeHtml(email),
     phone: escapeHtml(phone),
+    company: escapeHtml(company),
     projectType: escapeHtml(projectType),
     message: escapeHtml(message),
   };
@@ -70,7 +77,8 @@ export async function POST(req: NextRequest) {
           <p><strong>Name:</strong> ${safe.name}</p>
           <p><strong>Email:</strong> <a href="mailto:${safe.email}">${safe.email}</a></p>
           <p><strong>Phone:</strong> ${safe.phone || "Not provided"}</p>
-          <p><strong>Project type:</strong> ${safe.projectType || "Not specified"}</p>
+          <p><strong>Company:</strong> ${safe.company || "Not provided"}</p>
+          <p><strong>Interested in:</strong> ${safe.projectType || "Not specified"}</p>
           <hr style="margin:16px 0"/>
           <p style="white-space:pre-wrap">${safe.message}</p>
         </div>

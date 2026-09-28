@@ -1,52 +1,36 @@
-import { Nav } from "@/components/layout/Nav";
-import { Hero } from "@/components/sections/Hero";
-import { MarqueeStrip } from "@/components/sections/MarqueeStrip";
-import { Services } from "@/components/sections/Services";
-import { Work } from "@/components/sections/Work";
-import { Process } from "@/components/sections/Process";
-import { About } from "@/components/sections/About";
-import { Pricing } from "@/components/sections/Pricing";
-import { FAQ } from "@/components/sections/FAQ";
-import { FinalCTA } from "@/components/sections/FinalCTA";
-import { Footer } from "@/components/layout/Footer";
-import { NoiseOverlay } from "@/components/ui/NoiseOverlay";
-import { AuroraBackground } from "@/components/ui/AuroraBackground";
-import { BookCallModal } from "@/components/ui/BookCallModal";
+import { home, processIntro } from "@/content/site";
+import { Section, SectionHeading, StatsRow } from "@/components/ui/primitives";
+import { CTABand, ProcessSteps, WhyUs } from "@/components/sections/shared";
+import { Ecosystem, Enterprise, Hero, IntelligenceLayer, Talent, WhatWeDo, WhoWeAre } from "@/components/sections/home";
 
-export default function Home() {
+export default function HomePage() {
   return (
     <>
-      {/* Skip to main content */}
-      <a
-        href="#main-content"
-        className="fixed left-0 top-0 z-[9999] -translate-y-full rounded-br-sm bg-accent px-4 py-2 font-mono text-xs text-bg transition-transform focus:translate-y-0"
-        style={{ letterSpacing: "0.04em" }}
-      >
-        Skip to content
-      </a>
+      <Hero />
+      <WhoWeAre />
+      <WhatWeDo />
+      <IntelligenceLayer />
+      <Enterprise />
+      <Talent />
 
-      {/* Full-screen animated aurora background */}
-      <AuroraBackground />
+      <Section id="how-it-works">
+        <SectionHeading
+          eyebrow="How it works"
+          title={[{ text: "From problem to " }, { text: "production", accent: true }, { text: "." }]}
+          body={processIntro}
+          className="mb-20"
+        />
+        <ProcessSteps />
+      </Section>
 
-      {/* Global contact modal */}
-      <BookCallModal />
+      <Section id="proof">
+        <SectionHeading eyebrow={home.proof.eyebrow} title={home.proof.title} className="mb-16" />
+        <StatsRow stats={home.proof.stats} />
+      </Section>
 
-      {/* Page structure */}
-      <Nav />
-
-      <main id="main-content">
-        <Hero />
-        <MarqueeStrip />
-        <Services />
-        <Work />
-        <Process />
-        <About />
-        <Pricing />
-        <FAQ />
-        <FinalCTA />
-      </main>
-
-      <Footer />
+      <Ecosystem />
+      <WhyUs {...home.whyUs} />
+      <CTABand />
     </>
   );
 }
