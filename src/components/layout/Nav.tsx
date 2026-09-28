@@ -57,7 +57,7 @@ export function Nav() {
       >
         <nav className="shell flex items-center justify-between" style={{ height: NAV_H }} aria-label="Main navigation">
           <Link href="/" aria-label="Liznat Labs, home" className={dark ? "text-white" : "text-ink"}>
-            <LogoLockup size={24} />
+            <LogoLockup size={26} />
           </Link>
 
           <div className="hidden items-center gap-10 md:flex">

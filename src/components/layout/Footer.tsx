@@ -17,8 +17,9 @@ export function Footer() {
       <div aria-hidden="true" className="pointer-events-none absolute -bottom-40 right-0 h-[26rem] w-[26rem] rounded-full bg-cyan opacity-15 blur-[120px]" />
       <div className="shell relative grid grid-cols-1 gap-12 pb-10 pt-20 md:grid-cols-[1.4fr_1fr_0.8fr]">
         <div className="flex flex-col gap-5">
-          <Link href="/" aria-label="Liznat Labs, home" className="text-white">
-            <LogoLockup size={24} />
+          {/* The logo's wordmark uses text-cream (var(--ink)); flip it to white on the dark footer */}
+          <Link href="/" aria-label="Liznat Labs, home" className="text-white" style={{ "--ink": "#FFFFFF" } as React.CSSProperties}>
+            <LogoLockup size={22} />
           </Link>
           <p className="max-w-sm text-white/80" style={{ fontSize: "0.92rem", lineHeight: 1.7 }}>
             {brand.statement}
