@@ -1,6 +1,6 @@
 import { home, processIntro } from "@/content/site";
-import { Section, SectionHeading, Sparkles } from "@/components/ui/primitives";
-import { CTABand, ProcessSteps, QuoteBand, Ribbon, WhyUs } from "@/components/sections/shared";
+import { Section, SectionHeading } from "@/components/ui/primitives";
+import { CTABand, MarqueeStrip, ProcessSteps, QuoteBand, WhyUs } from "@/components/sections/shared";
 import { Ecosystem, Enterprise, Proof, Talent, WhatWeDo, WhoWeAre } from "@/components/sections/home";
 import { LegacyHero } from "@/components/sections/LegacyHero";
 
@@ -8,13 +8,13 @@ export default function HomePage() {
   return (
     <>
       <LegacyHero />
+      <MarqueeStrip />
       <WhoWeAre />
       <WhatWeDo />
       <Enterprise />
       <Talent />
 
-      <Section id="how-it-works" tone="sky">
-        <Sparkles count={6} />
+      <Section id="how-it-works" tone="lilac">
         <SectionHeading
           eyebrow="How it works"
           title={[{ text: "From " }, { text: "problem", accent: true }, { text: " to production." }]}
@@ -28,7 +28,6 @@ export default function HomePage() {
       <Ecosystem />
       <QuoteBand {...home.quote} />
       <WhyUs {...home.whyUs} />
-      <Ribbon />
       <CTABand />
     </>
   );

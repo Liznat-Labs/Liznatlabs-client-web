@@ -1,31 +1,17 @@
 import type { Metadata, Viewport } from "next";
-import { Plus_Jakarta_Sans, Sora, Space_Grotesk } from "next/font/google";
+import { Plus_Jakarta_Sans } from "next/font/google";
 import { GeistSans } from "geist/font/sans";
 import { GeistMono } from "geist/font/mono";
 import { Nav } from "@/components/layout/Nav";
 import { Footer } from "@/components/layout/Footer";
 import "./globals.css";
 
-const sora = Sora({
-  subsets: ["latin"],
-  variable: "--font-sora",
-  display: "swap",
-  weight: ["200", "300", "400", "600", "700"],
-});
-
-const spaceGrotesk = Space_Grotesk({
-  subsets: ["latin"],
-  variable: "--font-space-grotesk",
-  display: "swap",
-  weight: ["300", "400", "500"],
-});
-
-// Fonts of the original homepage hero
+// Liznat Labs typography: Plus Jakarta Sans for headings, Geist for text, Geist Mono for labels
 const jakarta = Plus_Jakarta_Sans({
   subsets: ["latin"],
   variable: "--font-jakarta",
   display: "swap",
-  weight: ["700"],
+  weight: ["500", "600", "700", "800"],
   style: ["normal", "italic"],
 });
 
@@ -61,16 +47,16 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#FAFAF7",
+  themeColor: "#FAFAFB",
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`${sora.variable} ${spaceGrotesk.variable} ${jakarta.variable} ${GeistSans.variable} ${GeistMono.variable}`}>
+    <html lang="en" className={`${jakarta.variable} ${GeistSans.variable} ${GeistMono.variable}`}>
       <body className="bg-canvas text-ink antialiased">
         <a
           href="#main"
-          className="fixed left-4 top-4 z-[100] -translate-y-24 rounded-full bg-teal px-4 py-2 font-mono text-xs text-white transition-transform focus:translate-y-0"
+          className="fixed left-4 top-4 z-[100] -translate-y-24 rounded-full bg-brand px-4 py-2 font-mono text-xs text-white transition-transform focus:translate-y-0"
         >
           Skip to content
         </a>

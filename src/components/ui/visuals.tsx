@@ -1,139 +1,124 @@
-// Decorative SVG illustrations in the dark-teal style of the hero art.
-// All are aria-hidden; they carry no information.
+// Product-style illustrations. All are decorative (aria-hidden) and carry no information.
 
-const panel = "relative overflow-hidden rounded-2xl border border-white/10";
-const panelBg = { background: "radial-gradient(120% 90% at 50% 40%, #0B3A4A 0%, #062530 55%, #031419 100%)" };
-
-/** Streams of data converging on a central "AI" chip. */
-export function AINetworkVisual({ className = "" }: { className?: string }) {
-  const nodes = [
-    [70, 60], [150, 40], [250, 70], [330, 45], [410, 80], [60, 170], [120, 230], [380, 200], [430, 250], [200, 250], [300, 260], [90, 110], [440, 140],
-  ];
+function WindowChrome({ title }: { title: string }) {
   return (
-    <div aria-hidden="true" className={`${panel} ${className}`} style={panelBg}>
-      <svg viewBox="0 0 500 300" className="h-full w-full" preserveAspectRatio="xMidYMid slice">
-        <defs>
-          <radialGradient id="ai-glow" cx="50%" cy="50%" r="50%">
-            <stop offset="0%" stopColor="#7CCBDA" stopOpacity="0.55" />
-            <stop offset="100%" stopColor="#7CCBDA" stopOpacity="0" />
-          </radialGradient>
-        </defs>
-        {Array.from({ length: 16 }, (_, i) => {
-          const a = (i / 16) * Math.PI * 2;
-          const x = 250 + Math.cos(a) * 320;
-          const y = 150 + Math.sin(a) * 220;
-          return (
-            <path
-              key={i}
-              d={`M${x} ${y} Q ${250 + Math.cos(a + 0.6) * 120} ${150 + Math.sin(a + 0.6) * 80} 250 150`}
-              stroke="#7CCBDA"
-              strokeOpacity={0.18 + (i % 4) * 0.08}
-              strokeWidth="0.8"
-              fill="none"
-            >
-              <animate attributeName="stroke-dasharray" values="0 600;600 0" dur={`${5 + (i % 5)}s`} repeatCount="indefinite" />
-            </path>
-          );
-        })}
-        {nodes.map(([x, y], i) => (
-          <circle key={i} cx={x} cy={y} r={i % 3 === 0 ? 2.6 : 1.6} fill="#BFE6EE" opacity="0.8">
-            <animate attributeName="opacity" values="0.3;1;0.3" dur={`${3 + (i % 4)}s`} repeatCount="indefinite" />
-          </circle>
-        ))}
-        {[[120, 90], [360, 110], [150, 200], [340, 215]].map(([x, y], i) => (
-          <g key={i} opacity="0.55">
-            <rect x={x - 18} y={y - 12} width="36" height="24" rx="3" fill="#0E4A5C" stroke="#7CCBDA" strokeOpacity="0.5" />
-            <path d={`M${x - 11} ${y + 5} l6 -6 l6 4 l8 -9`} stroke="#E37C78" strokeWidth="1.4" fill="none" />
-          </g>
-        ))}
-        <circle cx="250" cy="150" r="70" fill="url(#ai-glow)" />
-        <rect x="226" y="126" width="48" height="48" rx="10" fill="#0E4A5C" stroke="#BFE6EE" strokeWidth="1.2" />
-        <text x="250" y="157" textAnchor="middle" fill="#FFFFFF" fontSize="18" fontWeight="700" fontFamily="var(--font-sora), sans-serif">AI</text>
-      </svg>
+    <div className="flex items-center gap-2 border-b border-line bg-surface px-4 py-2.5">
+      <span className="h-2.5 w-2.5 rounded-full bg-[#FF5F57]" />
+      <span className="h-2.5 w-2.5 rounded-full bg-[#FEBC2E]" />
+      <span className="h-2.5 w-2.5 rounded-full bg-[#28C840]" />
+      <span className="ml-3 font-mono text-[0.62rem] text-ink-soft">{title}</span>
     </div>
   );
 }
 
-/** A wireframe skyline rising out of a data grid. */
-export function CityVisual({ className = "" }: { className?: string }) {
-  const towers = [
-    [40, 70], [80, 110], [120, 60], [150, 150], [195, 95], [230, 190], [270, 120], [305, 160], [345, 80], [380, 130], [420, 60], [455, 100],
-  ];
+/** A knowledge-assistant chat window: question, cited answer, typing cursor. */
+export function AssistantVisual({ className = "" }: { className?: string }) {
   return (
-    <div aria-hidden="true" className={`${panel} ${className}`} style={panelBg}>
-      <svg viewBox="0 0 500 300" className="h-full w-full" preserveAspectRatio="xMidYMid slice">
-        {Array.from({ length: 9 }, (_, i) => (
-          <path key={`g${i}`} d={`M${-100 + i * 90} 300 L ${250 + (i - 4) * 18} 230`} stroke="#7CCBDA" strokeOpacity="0.18" strokeWidth="0.8" />
-        ))}
-        {Array.from({ length: 4 }, (_, i) => (
-          <path key={`h${i}`} d={`M0 ${240 + i * 16} H500`} stroke="#7CCBDA" strokeOpacity={0.1 + i * 0.04} strokeWidth="0.8" />
-        ))}
-        {towers.map(([x, h], i) => (
-          <g key={i}>
-            <rect x={x} y={232 - h} width={i % 3 === 0 ? 22 : 16} height={h} fill="#0A3645" fillOpacity="0.7" stroke="#7CCBDA" strokeOpacity="0.55" strokeWidth="0.8" />
-            {Array.from({ length: Math.floor(h / 14) }, (_, k) => (
-              <rect key={k} x={x + 4} y={236 - h + k * 14} width="3" height="3" fill="#BFE6EE" opacity={(k + i) % 3 === 0 ? 0.9 : 0.25} />
-            ))}
-            <circle cx={x + 8} cy={228 - h} r="1.8" fill="#BFE6EE">
-              <animate attributeName="opacity" values="0.2;1;0.2" dur={`${2.5 + (i % 4)}s`} repeatCount="indefinite" />
-            </circle>
-          </g>
-        ))}
-        {Array.from({ length: 30 }, (_, i) => (
-          <circle key={`s${i}`} cx={(i * 97) % 500} cy={(i * 53) % 120} r="0.9" fill="#BFE6EE" opacity="0.5" />
-        ))}
-      </svg>
+    <div aria-hidden="true" className={`overflow-hidden rounded-xl border border-white/15 bg-white text-left shadow-[0_20px_50px_rgba(0,0,0,0.35)] ${className}`}>
+      <WindowChrome title="assistant.liznatlabs.app" />
+      <div className="flex flex-col gap-3 p-4 text-[0.72rem] leading-relaxed">
+        <div className="ml-auto max-w-[75%] rounded-2xl rounded-br-sm bg-ink px-3.5 py-2 text-white">
+          Which invoices from March are still unpaid?
+        </div>
+        <div className="flex max-w-[88%] gap-2.5">
+          <span className="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-brand to-cyan text-[0.55rem] font-bold text-white">AI</span>
+          <div className="flex flex-col gap-2 rounded-2xl rounded-tl-sm bg-lilac px-3.5 py-2.5 text-ink">
+            <span>
+              3 invoices totalling <b>₹4,82,500</b> are unpaid. The oldest is 26 days overdue — I&apos;ve drafted reminders for all three.
+            </span>
+            <span className="flex flex-wrap gap-1.5">
+              {["ledger.xlsx", "CRM · Accounts", "Policy p.4"].map((s) => (
+                <span key={s} className="rounded-md border border-brand-lt bg-white px-1.5 py-0.5 font-mono text-[0.58rem] text-brand">{s}</span>
+              ))}
+            </span>
+          </div>
+        </div>
+        <div className="flex items-center gap-2 rounded-full border border-line px-3 py-2 text-ink-soft">
+          Ask about your data
+          <span className="h-3.5 w-px animate-blink bg-brand" />
+        </div>
+      </div>
     </div>
   );
 }
 
-/** Glowing hub with arcs out to delivery locations. */
-export function GlobeVisual({ className = "" }: { className?: string }) {
-  const spots = [
-    [70, 70], [120, 200], [200, 40], [330, 50], [420, 90], [440, 210], [300, 250], [80, 250],
+/** A live system diagram with data flowing between services. */
+export function ArchitectureVisual({ className = "" }: { className?: string }) {
+  const box = (x: number, y: number, w: number, label: string, sub: string, accent = false) => (
+    <g key={label}>
+      <rect x={x} y={y} width={w} height="46" rx="9" fill={accent ? "#6D28D9" : "#FFFFFF"} stroke={accent ? "#6D28D9" : "#E4E4EA"} />
+      <text x={x + 12} y={y + 20} fontSize="11" fontWeight="700" fill={accent ? "#FFFFFF" : "#0A0A0A"} fontFamily="var(--font-jakarta), sans-serif">{label}</text>
+      <text x={x + 12} y={y + 35} fontSize="8.5" fill={accent ? "#E9DDFF" : "#52525B"} fontFamily="var(--font-geist-mono), monospace">{sub}</text>
+    </g>
+  );
+  const flows = [
+    "M110 63 H175", "M110 143 H175", "M285 103 H330", "M285 103 V63 H330", "M285 103 V143 H330",
+    "M440 63 H470 V103", "M440 143 H470 V103", "M440 103 H470", "M385 166 V205",
   ];
   return (
-    <div aria-hidden="true" className={`${panel} ${className}`} style={{ background: "radial-gradient(120% 90% at 50% 45%, #2A1A1A 0%, #120B10 50%, #06070B 100%)" }}>
-      <svg viewBox="0 0 500 300" className="h-full w-full" preserveAspectRatio="xMidYMid slice">
-        <defs>
-          <radialGradient id="hub-glow" cx="50%" cy="50%" r="50%">
-            <stop offset="0%" stopColor="#FFB38A" stopOpacity="0.9" />
-            <stop offset="100%" stopColor="#E37C78" stopOpacity="0" />
-          </radialGradient>
-        </defs>
-        <g stroke="#E37C78" strokeOpacity="0.14" fill="none">
-          <ellipse cx="250" cy="150" rx="210" ry="110" />
-          <ellipse cx="250" cy="150" rx="140" ry="110" />
-          <ellipse cx="250" cy="150" rx="70" ry="110" />
-          <path d="M40 150 H460 M60 95 H440 M60 205 H440" />
+    <div aria-hidden="true" className={`grid-lines relative overflow-hidden rounded-xl border border-white/15 bg-white ${className}`}>
+      <svg viewBox="0 0 560 260" className="h-full w-full">
+        {flows.map((d, i) => (
+          <g key={d}>
+            <path d={d} stroke="#C4B5FD" strokeWidth="1.5" fill="none" />
+            <path d={d} stroke={i % 2 ? "#0891B2" : "#6D28D9"} strokeWidth="2" fill="none" strokeDasharray="4 20" className="animate-flow" style={{ animationDelay: `${i * 0.15}s` }} />
+          </g>
+        ))}
+        {box(10, 40, 100, "Web app", "next.js")}
+        {box(10, 120, 100, "Mobile", "android")}
+        {box(175, 80, 110, "API gateway", "auth · rate limit", true)}
+        {box(330, 40, 110, "Orders", "node service")}
+        {box(330, 80, 110, "AI agent", "tools · guardrails")}
+        {box(330, 120, 110, "Billing", "node service")}
+        {box(470, 80, 80, "Postgres", "primary")}
+        {box(330, 205, 110, "Monitoring", "logs · alerts")}
+        <g>
+          <rect x="175" y="205" width="110" height="46" rx="9" fill="#E8F6FA" stroke="#CDEBF3" />
+          <text x="187" y="225" fontSize="11" fontWeight="700" fill="#0E7490" fontFamily="var(--font-jakarta), sans-serif">99.9% uptime</text>
+          <text x="187" y="240" fontSize="8.5" fill="#0E7490" fontFamily="var(--font-geist-mono), monospace">last 30 days</text>
         </g>
-        {spots.map(([x, y], i) => (
-          <g key={i}>
-            <path d={`M250 150 Q ${(250 + x) / 2} ${Math.min(y, 150) - 60} ${x} ${y}`} stroke="#FFB38A" strokeOpacity="0.55" strokeWidth="1" fill="none" strokeDasharray="2 4">
-              <animate attributeName="stroke-dashoffset" values="60;0" dur={`${2 + (i % 3)}s`} repeatCount="indefinite" />
-            </path>
-            <circle cx={x} cy={y} r="3" fill="#FFD9C2" />
-            <circle cx={x} cy={y} r="8" fill="none" stroke="#FFB38A" strokeOpacity="0.5">
-              <animate attributeName="r" values="3;12;3" dur={`${3 + (i % 3)}s`} repeatCount="indefinite" />
-              <animate attributeName="stroke-opacity" values="0.6;0;0.6" dur={`${3 + (i % 3)}s`} repeatCount="indefinite" />
-            </circle>
-          </g>
-        ))}
-        <circle cx="250" cy="150" r="46" fill="url(#hub-glow)" />
-        <circle cx="250" cy="150" r="6" fill="#FFF1E6" />
       </svg>
     </div>
   );
 }
 
-/** Concentric target rings used as a card watermark. */
-export function Rings({ className = "", color = "rgba(255,255,255,0.18)" }: { className?: string; color?: string }) {
+/** Engineering pods with roles and the time zones they cover. */
+export function TeamVisual({ className = "" }: { className?: string }) {
+  const pods = [
+    { name: "Pod A · Product", people: ["FE", "BE", "MO", "QA"], roles: ["Full-stack", "Mobile", "QA"] },
+    { name: "Pod B · AI & Data", people: ["ML", "DS", "AI"], roles: ["ML", "Data", "LLM ops"] },
+  ];
+  const colors = ["bg-brand", "bg-cyan", "bg-indigo", "bg-ink"];
   return (
-    <svg aria-hidden="true" viewBox="0 0 200 200" className={`pointer-events-none absolute ${className}`}>
-      {[96, 72, 48].map((r) => (
-        <circle key={r} cx="100" cy="100" r={r} fill="none" stroke={color} strokeWidth="10" />
+    <div aria-hidden="true" className={`relative flex flex-col gap-3 overflow-hidden rounded-xl border border-line bg-gradient-to-br from-lilac via-white to-ice p-5 ${className}`}>
+      <div className="flex items-center justify-between">
+        <span className="font-mono text-[0.62rem] uppercase tracking-[0.16em] text-ink-soft">Your engineering team</span>
+        <span className="flex items-center gap-1.5 rounded-full bg-white px-2.5 py-1 font-mono text-[0.6rem] text-cyan-dk shadow-sm">
+          <span className="h-1.5 w-1.5 rounded-full bg-[#28C840]" /> Online now
+        </span>
+      </div>
+      {pods.map((pod) => (
+        <div key={pod.name} className="rounded-lg border border-line bg-white p-3.5 shadow-sm">
+          <div className="mb-2.5 flex items-center justify-between">
+            <span className="font-display text-[0.8rem] font-bold text-ink">{pod.name}</span>
+            <span className="flex -space-x-2">
+              {pod.people.map((p, i) => (
+                <span key={p} className={`flex h-7 w-7 items-center justify-center rounded-full border-2 border-white text-[0.55rem] font-bold text-white ${colors[i % colors.length]}`}>{p}</span>
+              ))}
+            </span>
+          </div>
+          <div className="flex flex-wrap gap-1.5">
+            {pod.roles.map((r) => (
+              <span key={r} className="rounded-md bg-surface px-2 py-0.5 font-mono text-[0.6rem] text-ink-soft">{r}</span>
+            ))}
+          </div>
+        </div>
       ))}
-      <circle cx="100" cy="100" r="22" fill={color} />
-    </svg>
+      <div className="flex flex-wrap gap-1.5 pt-1">
+        {["IST · Bengaluru", "GST · Dubai", "GMT · London", "EST · New York"].map((z, i) => (
+          <span key={z} className={`rounded-full px-2.5 py-1 font-mono text-[0.58rem] ${i === 0 ? "bg-ink text-white" : "border border-line bg-white text-ink-soft"}`}>{z}</span>
+        ))}
+      </div>
+    </div>
   );
 }

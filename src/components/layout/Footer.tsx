@@ -4,7 +4,7 @@ import { LogoLockup } from "@/components/ui/Logo";
 
 function Icon({ d }: { d: string }) {
   return (
-    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" className="mt-[0.3em] shrink-0 text-teal-lt" aria-hidden="true">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" className="mt-[0.3em] shrink-0 text-brand-lt" aria-hidden="true">
       <path d={d} />
     </svg>
   );
@@ -12,7 +12,7 @@ function Icon({ d }: { d: string }) {
 
 export function Footer() {
   return (
-    <footer className="relative overflow-hidden text-white" style={{ background: "linear-gradient(180deg, #00627A 0%, #004858 100%)" }}>
+    <footer className="relative overflow-hidden text-white" style={{ background: "linear-gradient(180deg, #5B21B6 0%, #4C1D95 100%)" }}>
       <div className="shell relative grid grid-cols-1 gap-12 pb-10 pt-20 md:grid-cols-[1.4fr_1fr_0.8fr]">
         <div className="flex flex-col gap-5">
           <Link href="/" aria-label="Liznat Labs, home" className="text-white">
@@ -25,7 +25,7 @@ export function Footer() {
 
         <div className="flex flex-col gap-4">
           <span className="kicker !text-[0.66rem] text-white/70">Reach out to us</span>
-          <a href={`mailto:${brand.email}`} className="flex items-start gap-3 text-sm hover:text-pink">
+          <a href={`mailto:${brand.email}`} className="flex items-start gap-3 text-sm hover:text-brand-lt">
             <Icon d="M4 6h16v12H4z M4 7l8 6 8-6" />
             {brand.email}
           </a>
@@ -33,11 +33,11 @@ export function Footer() {
             <Icon d="M12 21s-7-6.2-7-11a7 7 0 1 1 14 0c0 4.8-7 11-7 11z M12 12.5a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5" />
             {brand.location}
           </span>
-          <a href={brand.whatsapp} target="_blank" rel="noopener noreferrer" className="flex items-start gap-3 text-sm hover:text-pink">
+          <a href={brand.whatsapp} target="_blank" rel="noopener noreferrer" className="flex items-start gap-3 text-sm hover:text-brand-lt">
             <Icon d="M20 12a8 8 0 0 1-11.8 7L4 20l1-4.2A8 8 0 1 1 20 12z" />
             WhatsApp
           </a>
-          <a href={brand.linkedin} target="_blank" rel="noopener noreferrer" className="flex items-start gap-3 text-sm hover:text-pink">
+          <a href={brand.linkedin} target="_blank" rel="noopener noreferrer" className="flex items-start gap-3 text-sm hover:text-brand-lt">
             <Icon d="M4 9h4v11H4z M6 4.5a2 2 0 1 1 0 4 2 2 0 0 1 0-4 M10 9h4v1.6c.6-1 1.9-1.8 3.5-1.8 2.8 0 3.5 1.8 3.5 4.4V20h-4v-5.8c0-1.4-.4-2.3-1.7-2.3S14 13 14 14.3V20h-4z" />
             LinkedIn
           </a>
@@ -48,7 +48,7 @@ export function Footer() {
           <ul className="flex flex-col gap-2.5" role="list">
             {[...navLinks, { label: "Contact", href: "/contact" }].map((l) => (
               <li key={l.href}>
-                <Link href={l.href} className="text-sm text-white/90 hover:text-pink">{l.label}</Link>
+                <Link href={l.href} className="text-sm text-white/90 hover:text-brand-lt">{l.label}</Link>
               </li>
             ))}
           </ul>

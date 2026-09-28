@@ -6,12 +6,12 @@ import { contactPage } from "@/content/site";
 type Status = "idle" | "sending" | "success" | "error";
 
 const inputCls =
-  "w-full rounded-xl border border-teal-lt bg-white px-4 py-3.5 text-ink placeholder:text-ink-soft/60 outline-none transition-[border-color,box-shadow] focus:border-teal focus:shadow-[0_0_0_3px_rgba(0,96,120,0.12)]";
+  "w-full rounded-xl border border-brand-lt bg-white px-4 py-3.5 text-ink placeholder:text-ink-soft/60 outline-none transition-[border-color,box-shadow] focus:border-brand focus:shadow-[0_0_0_3px_rgba(109,40,217,0.12)]";
 
 function Field({ id, label, children }: { id: string; label: string; children: React.ReactNode }) {
   return (
     <div className="flex flex-col gap-2">
-      <label htmlFor={id} className="kicker !text-[0.64rem] text-teal">{label}</label>
+      <label htmlFor={id} className="kicker !text-[0.64rem] text-brand">{label}</label>
       {children}
     </div>
   );
@@ -48,10 +48,10 @@ export function ContactForm() {
 
   if (status === "success") {
     return (
-      <div className="flex flex-col items-start gap-6 rounded-card border border-teal-lt bg-sky p-10" role="status">
-        <span className="flex h-12 w-12 items-center justify-center rounded-full bg-teal text-white">✓</span>
-        <p className="text-2xl font-light text-ink">{contactPage.success}</p>
-        <button type="button" onClick={() => setStatus("idle")} className="kicker text-teal hover:text-coral-tx">
+      <div className="flex flex-col items-start gap-6 rounded-card border border-brand-lt bg-lilac p-10" role="status">
+        <span className="flex h-12 w-12 items-center justify-center rounded-full bg-brand text-white">✓</span>
+        <p className="font-display text-2xl font-semibold text-ink">{contactPage.success}</p>
+        <button type="button" onClick={() => setStatus("idle")} className="kicker text-brand hover:text-cyan-dk">
           Send another message
         </button>
       </div>
@@ -92,12 +92,12 @@ export function ContactForm() {
         <input id="c-website" name="company_website" type="text" tabIndex={-1} autoComplete="off" />
       </div>
 
-      {status === "error" && <p role="alert" className="text-sm text-coral-dp">{error}</p>}
+      {status === "error" && <p role="alert" className="text-sm text-danger">{error}</p>}
 
       <button
         type="submit"
         disabled={status === "sending"}
-        className="group inline-flex items-center justify-center gap-2.5 self-start rounded-full bg-teal px-7 py-3.5 text-sm font-semibold text-white shadow-[0_8px_24px_rgba(0,96,120,0.25)] transition-colors hover:bg-teal-dk disabled:opacity-60"
+        className="group inline-flex items-center justify-center gap-2.5 self-start rounded-full bg-brand px-7 py-3.5 text-sm font-semibold text-white shadow-[0_8px_24px_rgba(109,40,217,0.25)] transition-colors hover:bg-brand-dk disabled:opacity-60"
       >
         {status === "sending" ? "Sending…" : "Send message"}
         <span aria-hidden="true" className="transition-transform group-hover:translate-x-1">→</span>

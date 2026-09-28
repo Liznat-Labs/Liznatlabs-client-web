@@ -3,24 +3,18 @@
 @tailwind utilities;
 
 :root {
-  --canvas: #fafaf7;
-  --sky: #e4f0f3;
-  --soft: #fafeed;
-  --pink: #ffd4d1;
-  --coral: #e37c78;
-  --coral-tx: #d95f5b;
-  --teal: #006078;
-  --teal-dk: #004858;
-  --teal-lt: #82bac4;
-  --ink: #17343d;
-  --ink-soft: #354a53;
-  --line: #cfe0e5;
-  --ease: cubic-bezier(0.22, 1, 0.36, 1);
+  --canvas: #fafafb;
+  --brand: #6d28d9;
+  --brand-dk: #4c1d95;
+  --cyan: #0891b2;
+  --ink: #0a0a0a;
+  --ink-soft: #52525b;
+  --line: #e4e4ea;
   /* Legacy names used by the legal pages */
   --text: var(--ink);
   --muted: var(--ink-soft);
   --border: var(--line);
-  --accent: var(--teal);
+  --accent: var(--brand);
 }
 
 *, *::before, *::after { box-sizing: border-box; }
@@ -30,47 +24,42 @@ html { scroll-behavior: smooth; color-scheme: light; }
 body {
   background: var(--canvas);
   color: var(--ink);
-  font-family: var(--font-sora), system-ui, sans-serif;
+  font-family: var(--font-geist-sans), system-ui, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   overflow-x: hidden;
   line-height: 1.6;
 }
 
-:focus-visible { outline: 2px solid var(--teal); outline-offset: 3px; border-radius: 6px; }
-::selection { background: rgba(0, 96, 120, 0.16); }
+:focus-visible { outline: 2px solid var(--brand); outline-offset: 3px; border-radius: 6px; }
+::selection { background: rgba(109, 40, 217, 0.14); }
 
 @layer utilities {
   .shell { width: 100%; max-width: 1280px; margin-inline: auto; padding-inline: clamp(20px, 5vw, 64px); }
   .text-cream { color: var(--ink); }
   .text-muted { color: var(--ink-soft); }
-  .text-accent { color: var(--teal); }
-  .bg-accent { background-color: var(--teal); }
+  .text-accent { color: var(--brand); }
+  .bg-accent { background-color: var(--brand); }
   .text-bg { color: #fff; }
+  /* Small uppercase label, in Liznat's mono */
   .kicker {
-    font-family: var(--font-space-grotesk), monospace;
+    font-family: var(--font-geist-mono), monospace;
     font-weight: 500;
-    font-size: 0.7rem;
-    letter-spacing: 0.2em;
+    font-size: 0.68rem;
+    letter-spacing: 0.18em;
     text-transform: uppercase;
   }
-  .hero-gradient {
-    background: linear-gradient(100deg, #3d7cff 0%, #6aa8ff 45%, #e8eeff 100%);
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
-  }
-  .gradient-text { color: var(--coral); }
-  /* Headline gradient of the original homepage hero */
-  .legacy-gradient-text {
+  /* Liznat's signature purple → indigo → cyan gradient */
+  .legacy-gradient-text,
+  .gradient-text {
     background: linear-gradient(135deg, #7c3aed 0%, #4f46e5 40%, #0891b2 100%);
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
   }
-  .dot-grid {
-    background-image: radial-gradient(rgba(0, 96, 120, 0.14) 1px, transparent 1px);
-    background-size: 22px 22px;
+  .grid-lines {
+    background-image: linear-gradient(rgba(109, 40, 217, 0.07) 1px, transparent 1px), linear-gradient(90deg, rgba(109, 40, 217, 0.07) 1px, transparent 1px);
+    background-size: 32px 32px;
   }
 }
 

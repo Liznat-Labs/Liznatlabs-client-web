@@ -40,6 +40,8 @@ export const navLinks = [
 
 export const disciplines = ["AI Applications", "AI & IT Solutions", "IT Staffing"];
 
+export const marqueeItems = ["AI Agents", "Voice AI", "Knowledge Assistants", "Cloud", "Cybersecurity", "IT Staffing", "Websites", "Android Apps", "Custom Software"];
+
 // ─── Home hero (original Liznat Labs hero, unchanged) ─────────────────────────
 
 export const heroContent = {
@@ -158,8 +160,6 @@ export const home = {
     body: "Not concepts — real products in production, used every day, across commerce, fintech, SaaS and events.",
     cta: "See all work",
   },
-
-  ecosystemImages: ["/work/azha-packaging.png", "/work/loan-manager.png", "/work/devfest.png"],
 
   quote: {
     quote: "Not concepts — products in production, used every day.",

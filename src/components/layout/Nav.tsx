@@ -52,7 +52,7 @@ export function Nav() {
     <>
       <header
         className={`fixed inset-x-0 top-0 z-50 transition-[background-color,border-color,color] duration-500 ${
-          dark ? "border-b border-transparent text-white" : "border-b border-line/80 bg-sky/85 text-ink backdrop-blur-xl"
+          dark ? "border-b border-transparent text-white" : "border-b border-line/80 bg-lilac/85 text-ink backdrop-blur-xl"
         }`}
       >
         <nav className="shell flex items-center justify-between" style={{ height: NAV_H }} aria-label="Main navigation">
@@ -68,12 +68,12 @@ export function Nav() {
                     href={l.href}
                     aria-current={isActive(l.href) ? "page" : undefined}
                     className={`relative py-1 text-sm tracking-wide transition-colors duration-300 ${
-                      isActive(l.href) ? (dark ? "text-white" : "text-teal") : dark ? "text-white/75 hover:text-white" : "text-ink-soft hover:text-teal"
+                      isActive(l.href) ? (dark ? "text-white" : "text-brand") : dark ? "text-white/75 hover:text-white" : "text-ink-soft hover:text-brand"
                     }`}
                   >
                     {l.label}
                     <span
-                      className={`absolute inset-x-0 -bottom-1.5 h-[2px] origin-left rounded-full transition-transform duration-500 ${dark ? "bg-white" : "bg-coral"} ${
+                      className={`absolute inset-x-0 -bottom-1.5 h-[2px] origin-left rounded-full transition-transform duration-500 ${dark ? "bg-white" : "bg-cyan"} ${
                         isActive(l.href) ? "scale-x-100" : "scale-x-0"
                       }`}
                     />
@@ -84,7 +84,7 @@ export function Nav() {
             <Link
               href="/contact"
               className={`rounded-full px-5 py-2.5 text-sm font-semibold tracking-wide transition-colors duration-300 ${
-                dark ? "border border-white/25 bg-white/10 text-white hover:bg-white/20" : "bg-teal text-white hover:bg-teal-dk"
+                dark ? "border border-white/25 bg-white/10 text-white hover:bg-white/20" : "bg-brand text-white hover:bg-brand-dk"
               }`}
             >
               Let&apos;s Talk
@@ -129,9 +129,9 @@ export function Nav() {
                   <Link
                     href={l.href}
                     aria-current={isActive(l.href) ? "page" : undefined}
-                    className={`flex items-baseline gap-4 py-5 text-3xl font-light ${isActive(l.href) ? "text-teal" : "text-ink"}`}
+                    className={`flex items-baseline gap-4 py-5 font-display text-3xl font-bold ${isActive(l.href) ? "text-brand" : "text-ink"}`}
                   >
-                    <span className="kicker text-coral">{String(i + 1).padStart(2, "0")}</span>
+                    <span className="kicker text-cyan">{String(i + 1).padStart(2, "0")}</span>
                     {l.label}
                   </Link>
                 </motion.li>
