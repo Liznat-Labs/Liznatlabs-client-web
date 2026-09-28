@@ -112,12 +112,13 @@ export function SectionHeading({
 
 export type Tone = "canvas" | "white" | "surface" | "lilac" | "ice" | "night";
 
+// No plain white bands: every tone is a soft tint so white cards stand out
 const sectionTone: Record<Tone, string> = {
-  canvas: "bg-canvas",
-  white: "bg-white",
-  surface: "bg-surface",
-  lilac: "bg-lilac",
-  ice: "bg-ice",
+  canvas: "tint-lavender",
+  white: "tint-sky",
+  surface: "tint-mint",
+  lilac: "tint-periwinkle",
+  ice: "tint-mint",
   night: "bg-night text-white",
 };
 

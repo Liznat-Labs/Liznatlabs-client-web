@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 :root {
-  --canvas: #fafafb;
+  --canvas: #efe9ff;
   --brand: #6d28d9;
   --brand-dk: #4c1d95;
   --cyan: #0891b2;
@@ -57,6 +57,11 @@ body {
     background-clip: text;
     -webkit-text-fill-color: transparent;
   }
+  /* Soft section tints (Liznat palette) */
+  .tint-lavender { background: linear-gradient(180deg, #efe7ff 0%, #e7eaff 100%); }
+  .tint-sky { background: linear-gradient(180deg, #e3efff 0%, #dcf1f8 100%); }
+  .tint-mint { background: linear-gradient(180deg, #ddf5ec 0%, #dcedf8 100%); }
+  .tint-periwinkle { background: linear-gradient(135deg, #e5dfff 0%, #d8ebfa 100%); }
   .grid-lines {
     background-image: linear-gradient(rgba(109, 40, 217, 0.07) 1px, transparent 1px), linear-gradient(90deg, rgba(109, 40, 217, 0.07) 1px, transparent 1px);
     background-size: 32px 32px;

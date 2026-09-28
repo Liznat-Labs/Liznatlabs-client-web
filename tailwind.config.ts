@@ -6,7 +6,7 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        canvas: "#FAFAFB",
+        canvas: "#EFE9FF",
         surface: "#F5F5F5",
         lilac: "#F2EDFF",
         ice: "#E8F6FA",
@@ -26,7 +26,7 @@ const config: Config = {
         cream: "#0A0A0A",
         accent: "#6D28D9",
         muted: "#52525B",
-        bg: "#FAFAFB",
+        bg: "#EFE9FF",
       },
       fontFamily: {
         sans: ["var(--font-geist-sans)", "system-ui", "sans-serif"],

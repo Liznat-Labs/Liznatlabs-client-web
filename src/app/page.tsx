@@ -14,7 +14,7 @@ export default function HomePage() {
       <Enterprise />
       <Talent />
 
-      <Section id="how-it-works" tone="lilac">
+      <Section id="how-it-works" tone="white">
         <SectionHeading
           eyebrow="How it works"
           title={[{ text: "From " }, { text: "problem", accent: true }, { text: " to production." }]}

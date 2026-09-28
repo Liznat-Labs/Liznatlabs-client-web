@@ -84,7 +84,7 @@ export default function WorkPage() {
         </div>
       </Section>
 
-      <section className="bg-canvas pb-28">
+      <section className="tint-lavender pb-28">
         <div className="shell flex flex-col items-center gap-8 text-center">
           <Reveal>
             <h2 className="font-display font-bold text-ink" style={{ fontSize: "clamp(2.4rem, 5.6vw, 4.6rem)", lineHeight: 1.05, letterSpacing: "-0.03em" }}>

@@ -150,7 +150,7 @@ export function MarqueeStrip() {
     </span>
   );
   return (
-    <section aria-label="What we build" className="overflow-hidden border-y border-line bg-white py-8">
+    <section aria-label="What we build" className="tint-periwinkle overflow-hidden border-y border-[#E2DCFB] py-8">
       <div className={`flex w-max ${reduce ? "" : "animate-marquee"}`} aria-hidden="true">
         {row}
         {row}
@@ -224,7 +224,7 @@ export function CTABand({
   secondary?: { label: string; href: string } | null;
 }) {
   return (
-    <section className="relative bg-canvas py-24 md:py-28">
+    <section className="tint-lavender relative py-24 md:py-28">
       <Glow />
       <div className="shell relative">
         <Reveal>

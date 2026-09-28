@@ -160,7 +160,7 @@ export function Enterprise() {
 export function Talent() {
   const c = home.talent;
   return (
-    <Section id="talent" tone="white">
+    <Section id="talent" tone="surface">
       <div className="grid grid-cols-1 items-center gap-14 lg:grid-cols-2">
         <Reveal className="order-2 lg:order-1">
           <TeamVisual className="w-full shadow-[0_24px_60px_rgba(76,29,149,0.12)]" />
@@ -180,7 +180,7 @@ export function Talent() {
 export function Proof() {
   const c = home.proof;
   return (
-    <Section id="proof" tone="white" tight>
+    <Section id="proof" tone="lilac" tight>
       <div className="grid grid-cols-1 items-end gap-10 lg:grid-cols-[0.8fr_2fr]">
         <SectionHeading eyebrow={c.eyebrow} title={c.title} size="md" />
         <StatsRow stats={c.stats} />

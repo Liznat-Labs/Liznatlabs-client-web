@@ -124,7 +124,7 @@ export function PageHero({
       </section>
 
       {stats && (
-        <section className="bg-canvas">
+        <section className="tint-periwinkle">
           <div className="shell">
             <div className="border-b border-line py-10">
               <StatsRow stats={stats} />
