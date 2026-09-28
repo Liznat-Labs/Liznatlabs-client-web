@@ -50,6 +50,7 @@ export const websiteLd = {
   "@type": "WebSite",
   "@id": `${SITE_URL}/#website`,
   name: brand.name,
+  alternateName: ["Liznat", "liznatlabs.com"],
   url: SITE_URL,
   publisher: { "@id": ORG_ID },
   inLanguage: "en-IN",
