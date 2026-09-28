@@ -12,6 +12,7 @@ export type Service = {
   title: string;
   body: string;
   tags: ServiceTag[];
+  href: string;
 };
 
 export type WorkItem = {
@@ -81,7 +82,7 @@ export const heroContent = {
     },
   ] satisfies HeadlineLine[],
   subhead:
-    "Liznat Labs is a Bengaluru-based dev studio building modern websites, Android apps, and custom software for ambitious teams. Co-founder care. Fixed pricing. Real results.",
+    "Liznat Labs is a Bengaluru-based studio building AI applications, enterprise IT solutions, modern websites and apps — and the engineering teams to run them. Co-founder care. Fixed pricing. Real results.",
   ctas: [
     { label: "Start a project →", href: "#contact", primary: true },
     { label: "See our work", href: "#work", primary: false },
@@ -97,6 +98,12 @@ export const heroContent = {
 // ─── Marquee ──────────────────────────────────────────────────────────────────
 
 export const marqueeItems = [
+  "AI APPLICATIONS",
+  "AI AGENTS",
+  "VOICE AI",
+  "CLOUD",
+  "CYBERSECURITY",
+  "IT STAFFING",
   "WEBSITES",
   "ANDROID APPS",
   "CUSTOM SOFTWARE",
@@ -113,27 +120,57 @@ export const marqueeItems = [
 export const servicesContent: Service[] = [
   {
     number: "01",
+    category: "AI",
+    title: "AI Applications",
+    body:
+      "Assistants, voice agents, document intelligence and custom AI builds — grounded in your data, secured with access controls and tied to a business goal.",
+    tags: ["AI Agents", "RAG", "Voice AI", "Custom Models"],
+    href: "/services#ai-applications",
+  },
+  {
+    number: "02",
+    category: "Enterprise IT",
+    title: "AI & IT Solutions",
+    body:
+      "Cloud, infrastructure, data, cybersecurity, and smart campus and city systems — complete IT delivery with round-the-clock support.",
+    tags: ["Cloud", "Data", "Cybersecurity", "Smart Campus"],
+    href: "/services#it-solutions",
+  },
+  {
+    number: "03",
+    category: "Talent",
+    title: "IT Staffing",
+    body:
+      "Vetted full-stack, AI and QA engineers — individually or as dedicated pods — productive from week one, with payroll and HR handled by us.",
+    tags: ["Dedicated Pods", "AI Engineers", "Staff Augmentation"],
+    href: "/services#staffing",
+  },
+  {
+    number: "04",
     category: "Web",
     title: "Modern Websites",
     body:
       "Fast, conversion-focused websites that actually represent your brand. From sharp landing pages to full multi-page sites — built for performance, not bloat.",
     tags: ["Next.js", "React", "Tailwind", "CMS-ready"],
+    href: "#pricing",
   },
   {
-    number: "02",
+    number: "05",
     category: "Mobile",
     title: "Android Apps",
     body:
       "Native-quality Android apps built with Kotlin or React Native. Clean architecture, offline-first where it matters, and shipped to the Play Store.",
     tags: ["Kotlin", "React Native", "Play Store", "Offline-first"],
+    href: "#pricing",
   },
   {
-    number: "03",
+    number: "06",
     category: "Custom",
     title: "Custom Software",
     body:
       "Bespoke tools, internal dashboards, APIs, and automation systems. If you have a workflow problem, we build the exact thing that solves it.",
     tags: ["Node.js", "PostgreSQL", "REST / GraphQL", "Automation"],
+    href: "#pricing",
   },
 ];
 
@@ -332,6 +369,7 @@ export const footerContent = {
   },
   studioLinks: [
     { label: "Services", href: "#services" },
+    { label: "All Services", href: "/services" },
     { label: "Selected Work", href: "#work" },
     { label: "Our Process", href: "#process" },
     { label: "Pricing", href: "#pricing" },

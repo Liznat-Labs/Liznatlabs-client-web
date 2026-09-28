@@ -19,7 +19,9 @@ export function Nav() {
     setMenuOpen(false);
     if (href.startsWith("#")) {
       const el = document.querySelector(href);
-      el?.scrollIntoView({ behavior: "smooth" });
+      // On other pages (e.g. /services) the section lives on the homepage
+      if (el) el.scrollIntoView({ behavior: "smooth" });
+      else window.location.assign("/" + href);
     }
   };
 
@@ -45,8 +47,12 @@ export function Nav() {
       >
         {/* Logo */}
         <a
-          href="#"
-          onClick={(e) => { e.preventDefault(); window.scrollTo({ top: 0, behavior: "smooth" }); }}
+          href="/"
+          onClick={(e) => {
+            if (window.location.pathname !== "/") return;
+            e.preventDefault();
+            window.scrollTo({ top: 0, behavior: "smooth" });
+          }}
           className="flex items-center no-underline"
           style={{ color: "var(--text)" }}
           aria-label="Liznat Labs, home"

@@ -244,6 +244,9 @@ export function BookCallModal() {
                       onBlur={blurBorder}
                     >
                       <option value="" disabled>Select a type…</option>
+                      <option value="AI Applications">AI Applications</option>
+                      <option value="AI & IT Solutions">AI &amp; IT Solutions</option>
+                      <option value="IT Staffing">IT Staffing</option>
                       <option value="Website">Website</option>
                       <option value="Android App">Android App</option>
                       <option value="Custom Software">Custom Software</option>

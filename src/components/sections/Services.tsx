@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { motion, useReducedMotion } from "framer-motion";
 import { servicesContent } from "@/content/site";
 
@@ -35,7 +36,39 @@ function CodeIcon() {
   );
 }
 
-const icons = [WebIcon, MobileIcon, CodeIcon];
+function AIIcon() {
+  return (
+    <svg width="32" height="32" viewBox="0 0 32 32" fill="none" stroke="currentColor"
+      strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+      <rect x="8" y="8" width="16" height="16" rx="3" />
+      <path d="M13 13 H19 V19 H13 Z" />
+      <path d="M12 4 V8 M20 4 V8 M12 24 V28 M20 24 V28 M4 12 H8 M4 20 H8 M24 12 H28 M24 20 H28" />
+    </svg>
+  );
+}
+function ServerIcon() {
+  return (
+    <svg width="32" height="32" viewBox="0 0 32 32" fill="none" stroke="currentColor"
+      strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+      <rect x="5" y="5" width="22" height="8" rx="2" />
+      <rect x="5" y="19" width="22" height="8" rx="2" />
+      <path d="M9 9 H9.01 M9 23 H9.01 M16 13 V19" />
+    </svg>
+  );
+}
+function TeamIcon() {
+  return (
+    <svg width="32" height="32" viewBox="0 0 32 32" fill="none" stroke="currentColor"
+      strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+      <circle cx="12" cy="11" r="4" />
+      <circle cx="22" cy="12" r="3" />
+      <path d="M4 26 C4 20.5, 20 20.5, 20 26" />
+      <path d="M19 20.5 C23.5 19.5, 28 21, 28 25" />
+    </svg>
+  );
+}
+
+const icons = [AIIcon, ServerIcon, TeamIcon, WebIcon, MobileIcon, CodeIcon];
 
 function ArrowCta({ label }: { label: string }) {
   return (
@@ -92,12 +125,12 @@ export function Services() {
             className="font-fraunces"
             style={{ fontSize: "clamp(2rem, 4vw, 2.75rem)", fontWeight: 600, lineHeight: 1.1, color: "var(--text)", marginTop: "1rem" }}
           >
-            End-to-end digital products.
+            AI, enterprise IT, talent — and the software on top.
           </h2>
         </motion.div>
 
         {/* Cards grid */}
-        <ul className="grid grid-cols-1 gap-px md:grid-cols-3" style={{ listStyle: "none", padding: 0, margin: 0, background: "var(--border)", border: "1px solid var(--border)" }}>
+        <ul className="grid grid-cols-1 gap-px md:grid-cols-2 lg:grid-cols-3" style={{ listStyle: "none", padding: 0, margin: 0, background: "var(--border)", border: "1px solid var(--border)" }}>
           {servicesContent.map((service, i) => {
             const Icon = icons[i];
             return (
@@ -181,13 +214,37 @@ export function Services() {
 
                   {/* Arrow CTA */}
                   <div style={{ borderTop: "1px solid var(--border)", paddingTop: "1.25rem" }}>
-                    <ArrowCta label="Learn more" />
+                    <Link href={service.href} aria-label={`Learn more about ${service.title}`}>
+                      <ArrowCta label="Learn more" />
+                    </Link>
                   </div>
                 </motion.article>
               </li>
             );
           })}
         </ul>
+
+        <div style={{ marginTop: "3rem", display: "flex", justifyContent: "center" }}>
+          <Link
+            href="/services"
+            className="group inline-flex items-center gap-2"
+            style={{
+              borderRadius: "9999px",
+              background: "#0A0A0A",
+              color: "#FFFFFF",
+              padding: "0.85rem 1.75rem",
+              fontSize: "0.875rem",
+              fontWeight: 500,
+              fontFamily: "var(--font-geist-sans), system-ui, sans-serif",
+              transition: "background 0.25s ease",
+            }}
+          >
+            <span className="transition-transform duration-300 group-hover:-translate-x-0.5">Explore all services</span>
+            <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true" className="transition-transform duration-300 group-hover:translate-x-0.5">
+              <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+            </svg>
+          </Link>
+        </div>
       </div>
     </section>
   );

@@ -40,9 +40,13 @@ export function Footer() {
                   <a
                     href={link.href}
                     onClick={(e) => {
-                      if (link.href.startsWith("#")) {
+                      const el = link.href.startsWith("#") && document.querySelector(link.href);
+                      if (el) {
                         e.preventDefault();
-                        document.querySelector(link.href)?.scrollIntoView({ behavior: "smooth" });
+                        el.scrollIntoView({ behavior: "smooth" });
+                      } else if (link.href.startsWith("#")) {
+                        e.preventDefault();
+                        window.location.assign("/" + link.href);
                       }
                     }}
                     className="font-geist text-muted transition-colors hover:text-accent"
@@ -73,9 +77,13 @@ export function Footer() {
                     target={link.href.startsWith("http") ? "_blank" : undefined}
                     rel={link.href.startsWith("http") ? "noopener noreferrer" : undefined}
                     onClick={(e) => {
-                      if (link.href.startsWith("#")) {
+                      const el = link.href.startsWith("#") && document.querySelector(link.href);
+                      if (el) {
                         e.preventDefault();
-                        document.querySelector(link.href)?.scrollIntoView({ behavior: "smooth" });
+                        el.scrollIntoView({ behavior: "smooth" });
+                      } else if (link.href.startsWith("#")) {
+                        e.preventDefault();
+                        window.location.assign("/" + link.href);
                       }
                     }}
                     className="font-geist text-muted transition-colors hover:text-accent"
