@@ -1,7 +1,8 @@
 "use client";
 
 import Link from "next/link";
-import { motion, useReducedMotion } from "framer-motion";
+import { useEffect, useRef, useState } from "react";
+import { animate, motion, useInView, useReducedMotion } from "framer-motion";
 import type { Card, Segment, Stat } from "@/content/site";
 
 const EASE = [0.16, 1, 0.3, 1] as const;
@@ -56,6 +57,43 @@ export function Segments({ segments, accent = "gradient", light = false }: { seg
   );
 }
 
+/** Heading text that rises into view one word at a time. */
+function WordReveal({ segments, accent, light }: { segments: Segment[]; accent: Accent; light: boolean }) {
+  const reduce = useReducedMotion();
+  const ref = useRef<HTMLSpanElement>(null);
+  const inView = useInView(ref, { once: true, margin: "-40px" });
+  if (reduce) return <Segments segments={segments} accent={accent} light={light} />;
+  let n = 0;
+  return (
+    <span ref={ref}>
+      {segments.map((seg, si) => {
+        const cls = seg.accent
+          ? accent === "gradient"
+            ? `italic ${light ? "text-[#A5F3FC]" : "gradient-text"}`
+            : light ? "text-brand-lt" : "text-brand"
+          : "";
+        return seg.text.split(/(\s+)/).map((word, wi) => {
+          if (!word) return null;
+          if (/^\s+$/.test(word)) return <span key={`${si}-${wi}`}>{word}</span>;
+          const delay = n++ * 0.05;
+          return (
+            <span key={`${si}-${wi}`} className="inline-block overflow-hidden pb-[0.12em] align-bottom">
+              <motion.span
+                className={`inline-block ${cls}`}
+                initial={{ y: "110%" }}
+                animate={inView ? { y: 0 } : undefined}
+                transition={{ duration: 0.75, ease: EASE, delay }}
+              >
+                {word}
+              </motion.span>
+            </span>
+          );
+        });
+      })}
+    </span>
+  );
+}
+
 export function Eyebrow({ children, variant = "pill", light = false }: { children: React.ReactNode; variant?: "pill" | "plain"; light?: boolean }) {
   if (variant === "plain") {
     return <span className={`kicker ${light ? "text-brand-lt" : "text-ink-soft"}`}>{children}</span>;
@@ -99,7 +137,7 @@ export function SectionHeading({
     <Reveal className={`flex max-w-3xl flex-col gap-5 ${className}`}>
       {eyebrow && <Eyebrow variant={eyebrowVariant} light={light}>{eyebrow}</Eyebrow>}
       <Tag className={`font-display font-semibold ${light ? "text-white" : "text-ink"}`} style={{ fontSize, lineHeight: 1.1, letterSpacing: "-0.02em" }}>
-        <Segments segments={title} accent={accent} light={light} />
+        <WordReveal segments={title} accent={accent} light={light} />
       </Tag>
       {body && (
         <p className={`max-w-2xl ${light ? "text-white/75" : "text-ink-soft"}`} style={{ fontSize: "1rem", lineHeight: 1.75 }}>
@@ -224,7 +262,22 @@ export function Tile({
 }) {
   const dark = isDarkTone(tone);
   return (
-    <div className={`relative overflow-hidden rounded-card border transition-[transform,box-shadow] duration-500 hover:-translate-y-1 hover:shadow-[0_16px_40px_rgba(76,29,149,0.10)] ${cardTone[tone]} ${className}`}>
+    <div
+      className={`group/tile relative overflow-hidden rounded-card border transition-[transform,box-shadow] duration-500 hover:-translate-y-1 hover:shadow-[0_16px_40px_rgba(76,29,149,0.10)] ${cardTone[tone]} ${className}`}
+      onPointerMove={(e) => {
+        const r = e.currentTarget.getBoundingClientRect();
+        e.currentTarget.style.setProperty("--mx", `${e.clientX - r.left}px`);
+        e.currentTarget.style.setProperty("--my", `${e.clientY - r.top}px`);
+      }}
+    >
+      {/* Soft glow that follows the cursor */}
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-500 group-hover/tile:opacity-100"
+        style={{
+          background: `radial-gradient(360px circle at var(--mx, 50%) var(--my, 0%), ${dark ? "rgba(196,181,253,0.18)" : "rgba(109,40,217,0.10)"}, transparent 60%)`,
+        }}
+      />
       {tone === "night" && (
         <div aria-hidden="true" className="pointer-events-none absolute -right-20 -top-20 h-64 w-64 rounded-full bg-brand opacity-40 blur-[80px]" />
       )}
@@ -299,6 +352,27 @@ export function CardGrid({
   );
 }
 
+/** Counts the leading number up from zero when it scrolls into view ("24h", "5+", "2–4"). */
+function CountUp({ value }: { value: string }) {
+  const reduce = useReducedMotion();
+  const ref = useRef<HTMLSpanElement>(null);
+  const inView = useInView(ref, { once: true, margin: "-40px" });
+  const match = value.match(/^(\d+)(.*)$/);
+  const target = match ? parseInt(match[1], 10) : NaN;
+  // Years and non-numbers are shown as-is
+  const animateIt = !reduce && match && target > 0 && target < 1000;
+  const [n, setN] = useState(animateIt ? 0 : target);
+
+  useEffect(() => {
+    if (!animateIt || !inView) return;
+    const controls = animate(0, target, { duration: 1.4, ease: [0.16, 1, 0.3, 1], onUpdate: (v) => setN(Math.round(v)) });
+    return () => controls.stop();
+  }, [animateIt, inView, target]);
+
+  if (!match) return <span ref={ref}>{value}</span>;
+  return <span ref={ref}>{animateIt ? n : match[1]}{match[2]}</span>;
+}
+
 export function StatsRow({ stats, color = "gradient" }: { stats: Stat[]; color?: "gradient" | "brand" }) {
   return (
     <dl className="grid grid-cols-2 gap-y-10 md:grid-cols-4">
@@ -309,7 +383,7 @@ export function StatsRow({ stats, color = "gradient" }: { stats: Stat[]; color?:
             className={`order-1 font-display font-bold ${color === "gradient" ? "gradient-text" : "text-brand"}`}
             style={{ fontSize: "clamp(2.2rem, 4vw, 3.2rem)", lineHeight: 1, letterSpacing: "-0.03em" }}
           >
-            {s.value}
+            <CountUp value={s.value} />
           </dd>
         </Reveal>
       ))}

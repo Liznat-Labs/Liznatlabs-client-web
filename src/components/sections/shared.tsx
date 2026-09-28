@@ -10,10 +10,14 @@ import { Button, Glow, LMark, Reveal, Section, SectionHeading, Segments, Tile, t
 export function ProcessSteps() {
   return (
     <ol className="relative grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-5" role="list">
-      <span
+      <motion.span
         aria-hidden="true"
-        className="absolute left-6 right-6 top-[30px] hidden h-[2px] rounded-full lg:block"
+        className="absolute left-6 right-6 top-[30px] hidden h-[2px] origin-left rounded-full lg:block"
         style={{ background: "linear-gradient(90deg, #7C3AED, #4F46E5, #0891B2)" }}
+        initial={{ scaleX: 0 }}
+        whileInView={{ scaleX: 1 }}
+        viewport={{ once: true, margin: "-80px" }}
+        transition={{ duration: 1.6, ease: [0.16, 1, 0.3, 1], delay: 0.2 }}
       />
       {processSteps.map((s, i) => (
         <Reveal as="li" key={s.title} delay={i * 0.08} className="relative flex flex-col gap-4">
@@ -75,6 +79,7 @@ function hostOf(url: string) {
 
 export function WorkGrid({ limit, cols = 3 }: { limit?: number; cols?: 3 | 4 }) {
   const items = limit ? workContent.slice(0, limit) : workContent;
+  const reduce = useReducedMotion();
   return (
     <div className={`grid grid-cols-1 gap-5 sm:grid-cols-2 ${cols === 4 ? "lg:grid-cols-4" : "lg:grid-cols-3"}`}>
       {items.map((w, i) => (
@@ -87,7 +92,16 @@ export function WorkGrid({ limit, cols = 3 }: { limit?: number; cols?: 3 | 4 }) 
           >
             <div className="relative aspect-[16/10] overflow-hidden border-b border-line bg-surface">
               {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src={w.image} alt={`${w.title} website`} loading="lazy" className="h-full w-full object-cover object-top transition-transform duration-700 group-hover:scale-105" />
+              <motion.img
+                src={w.image}
+                alt={`${w.title} website`}
+                loading="lazy"
+                className="h-full w-full object-cover object-top transition-transform duration-700 group-hover:scale-105"
+                initial={reduce ? false : { clipPath: "inset(0 0 100% 0)" }}
+                whileInView={{ clipPath: "inset(0 0 0% 0)" }}
+                viewport={{ once: true, margin: "-60px" }}
+                transition={{ duration: 1.1, ease: [0.65, 0.05, 0.36, 1], delay: 0.1 + (i % 4) * 0.08 }}
+              />
               <span className="kicker absolute left-3 top-3 rounded-full bg-white/90 px-2.5 py-1 !text-[0.6rem] text-ink backdrop-blur">
                 {w.category}
               </span>
