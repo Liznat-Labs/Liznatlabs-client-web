@@ -1,6 +1,7 @@
 // Central content store — edit copy here, never in components.
 
-export type Segment = { text: string; accent?: boolean };
+export type Segment = { text: string; accent?: boolean; italic?: boolean };
+export type HeadlineLine = { segments: Segment[] };
 export type Card = { title: string; kicker?: string; body: string; points?: string[] };
 export type Stat = { value: string; label: string };
 export type Step = { title: string; body: string };
@@ -39,19 +40,21 @@ export const navLinks = [
 
 export const disciplines = ["AI Applications", "AI & IT Solutions", "IT Staffing"];
 
+// ─── Home hero (original Liznat Labs hero, unchanged) ─────────────────────────
+
+export const heroContent = {
+  headlineLines: [
+    { segments: [{ text: "Software" }] },
+    { segments: [{ text: "crafted with " }, { text: "intent,", italic: true, accent: true }] },
+    { segments: [{ text: "shipped with " }, { text: "speed.", italic: true, accent: true }] },
+  ] satisfies HeadlineLine[],
+  subhead:
+    "Liznat Labs is a Bengaluru-based dev studio building modern websites, Android apps, and custom software for ambitious teams. Co-founder care. Fixed pricing. Real results.",
+};
+
 // ─── Home ─────────────────────────────────────────────────────────────────────
 
 export const home = {
-  hero: {
-    eyebrow: "Built in Bengaluru · Shipped worldwide",
-    // Two headlines that cross-fade in a loop; each is a list of lines.
-    headlines: [
-      [[{ text: "Software" }], [{ text: "built with " }, { text: "intent", accent: true }, { text: "." }]],
-      [[{ text: "Shipped" }], [{ text: "with " }, { text: "speed", accent: true }, { text: "." }]],
-    ] as Segment[][][],
-    scroll: "Scroll to explore",
-  },
-
   whoWeAre: {
     eyebrow: "Who we are",
     title: [{ text: "A studio that ships, " }, { text: "not slides.", accent: true }] as Segment[],

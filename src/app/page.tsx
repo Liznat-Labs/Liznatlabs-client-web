@@ -1,12 +1,13 @@
 import { home, processIntro } from "@/content/site";
 import { Section, SectionHeading, Sparkles } from "@/components/ui/primitives";
 import { CTABand, ProcessSteps, QuoteBand, Ribbon, WhyUs } from "@/components/sections/shared";
-import { Ecosystem, Enterprise, Hero, Proof, Talent, WhatWeDo, WhoWeAre } from "@/components/sections/home";
+import { Ecosystem, Enterprise, Proof, Talent, WhatWeDo, WhoWeAre } from "@/components/sections/home";
+import { LegacyHero } from "@/components/sections/LegacyHero";
 
 export default function HomePage() {
   return (
     <>
-      <Hero />
+      <LegacyHero />
       <WhoWeAre />
       <WhatWeDo />
       <Enterprise />

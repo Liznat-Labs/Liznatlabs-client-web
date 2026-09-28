@@ -1,9 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
-import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import { home } from "@/content/site";
-import { ParticleField } from "@/components/ui/ParticleField";
 import {
   Button,
   CheckList,
@@ -20,80 +17,6 @@ import {
 import { AINetworkVisual, CityVisual, GlobeVisual, Rings } from "@/components/ui/visuals";
 import { WorkGrid } from "@/components/sections/shared";
 
-const EASE = [0.22, 1, 0.36, 1] as const;
-
-// ─── Hero ────────────────────────────────────────────────────────────────────
-
-export function Hero() {
-  const reduce = useReducedMotion();
-  const [index, setIndex] = useState(0);
-  const { headlines } = home.hero;
-
-  useEffect(() => {
-    if (reduce) return;
-    const id = setInterval(() => setIndex((i) => (i + 1) % headlines.length), 4200);
-    return () => clearInterval(id);
-  }, [reduce, headlines.length]);
-
-  return (
-    <section
-      data-nav-dark
-      aria-label="Introduction"
-      className="relative flex min-h-[100svh] flex-col justify-center overflow-hidden text-white"
-      style={{ background: "radial-gradient(1000px 600px at 70% 10%, rgba(61,124,255,0.18), transparent 60%), #05060A" }}
-    >
-      <ParticleField density={1.2} />
-      <div className="shell relative pb-32 pt-36">
-        <motion.span
-          className="kicker block text-[#6AA8FF]"
-          initial={reduce ? false : { opacity: 0, letterSpacing: "0.6em" }}
-          animate={{ opacity: 1, letterSpacing: "0.32em" }}
-          transition={{ duration: 1.4, ease: EASE }}
-        >
-          {home.hero.eyebrow}
-        </motion.span>
-
-        <h1 className="relative mt-8 font-extralight" style={{ fontSize: "clamp(3rem, 8.4vw, 8.5rem)", lineHeight: 0.98, letterSpacing: "-0.045em" }}>
-          <span className="sr-only">Software built with intent. Shipped with speed.</span>
-          <span aria-hidden="true" className="relative block min-h-[2.1em]">
-            <AnimatePresence mode="wait">
-              <motion.span key={index} className="block">
-                {headlines[index].map((line, li) => (
-                  <span key={li} className="block overflow-hidden pb-[0.08em]">
-                    <motion.span
-                      className="block"
-                      initial={reduce ? false : { y: "105%" }}
-                      animate={{ y: 0 }}
-                      exit={{ y: "-105%", transition: { duration: 0.6, ease: [0.65, 0.05, 0.36, 1] } }}
-                      transition={{ duration: 1, ease: EASE, delay: 0.1 + li * 0.08 }}
-                    >
-                      <Segments segments={line} accent="hero" />
-                    </motion.span>
-                  </span>
-                ))}
-              </motion.span>
-            </AnimatePresence>
-          </span>
-        </h1>
-
-        <motion.div
-          className="mt-12 flex flex-wrap gap-3"
-          initial={reduce ? false : { opacity: 0, y: 16 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, ease: EASE, delay: 0.6 }}
-        >
-          <Button href="/contact" variant="white">Book a strategy call</Button>
-          <Button href="/services" variant="outline-light">Explore services</Button>
-        </motion.div>
-      </div>
-
-      <div className="absolute bottom-10 left-1/2 flex -translate-x-1/2 flex-col items-center gap-4" aria-hidden="true">
-        <span className="kicker !text-[0.6rem] !tracking-[0.4em] text-white/50">{home.hero.scroll}</span>
-        <span className="h-12 w-px animate-scroll-line bg-gradient-to-b from-[#6AA8FF] to-transparent" />
-      </div>
-    </section>
-  );
-}
 
 // ─── Who we are ──────────────────────────────────────────────────────────────
 

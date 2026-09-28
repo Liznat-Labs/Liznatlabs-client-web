@@ -1,5 +1,7 @@
 import type { Metadata, Viewport } from "next";
-import { Sora, Space_Grotesk } from "next/font/google";
+import { Plus_Jakarta_Sans, Sora, Space_Grotesk } from "next/font/google";
+import { GeistSans } from "geist/font/sans";
+import { GeistMono } from "geist/font/mono";
 import { Nav } from "@/components/layout/Nav";
 import { Footer } from "@/components/layout/Footer";
 import "./globals.css";
@@ -16,6 +18,15 @@ const spaceGrotesk = Space_Grotesk({
   variable: "--font-space-grotesk",
   display: "swap",
   weight: ["300", "400", "500"],
+});
+
+// Fonts of the original homepage hero
+const jakarta = Plus_Jakarta_Sans({
+  subsets: ["latin"],
+  variable: "--font-jakarta",
+  display: "swap",
+  weight: ["700"],
+  style: ["normal", "italic"],
 });
 
 const title = "Liznat Labs — AI, Enterprise Technology & Engineering Talent";
@@ -55,7 +66,7 @@ export const viewport: Viewport = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`${sora.variable} ${spaceGrotesk.variable}`}>
+    <html lang="en" className={`${sora.variable} ${spaceGrotesk.variable} ${jakarta.variable} ${GeistSans.variable} ${GeistMono.variable}`}>
       <body className="bg-canvas text-ink antialiased">
         <a
           href="#main"
