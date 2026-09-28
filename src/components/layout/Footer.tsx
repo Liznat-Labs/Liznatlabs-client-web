@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import { footerContent } from "@/content/site";
 import { LogoLockup } from "@/components/ui/Logo";
