@@ -41,7 +41,7 @@ export default function ServicesPage() {
       <SubNav label="Disciplines" items={c.subnav} />
 
       <Section id="overview">
-        <SectionHeading eyebrow={c.overview.eyebrow} eyebrowVariant="plain" title={c.overview.title} body={c.overview.body} accent="brand" className="mb-12" />
+        <SectionHeading eyebrow={c.overview.eyebrow} eyebrowVariant="plain" title={c.overview.title} body={c.overview.body} className="mb-12" />
         <CardGrid items={c.overview.items.map((x) => ({ ...x, kicker: x.title, title: "" }))} cols={4} numbered tones={["lilac", "ice", "mist", "lilac"]} />
       </Section>
 
@@ -80,16 +80,16 @@ export default function ServicesPage() {
           <div className="flex flex-col gap-4">
             {ai.capabilities.map((cap, i) => {
               const [label, tag] = (cap.kicker ?? "").split(" · ");
-              const pinkCard = i % 2 === 1;
+              const altCard = i % 2 === 1;
               return (
                 <Reveal key={cap.title}>
-                  <Tile tone={pinkCard ? "pink" : "white"} className="border-line">
+                  <Tile tone={altCard ? "mist" : "white"} className="border-line">
                     <div className="grid grid-cols-1 gap-8 p-7 md:p-10 lg:grid-cols-[1.4fr_1fr] lg:items-center">
                       <div className="flex flex-col gap-4">
                         <div className="flex flex-wrap items-center justify-between gap-3">
-                          <span className={`kicker ${pinkCard ? "text-cyan-dk" : "text-brand"}`}>{label}</span>
+                          <span className={`kicker ${altCard ? "text-cyan-dk" : "text-brand"}`}>{label}</span>
                           {tag && (
-                            <span className={`kicker rounded-full border px-3 py-1 !text-[0.6rem] ${pinkCard ? "border-cyan text-cyan-dk" : "border-brand-lt text-brand"}`}>
+                            <span className={`kicker rounded-full border px-3 py-1 !text-[0.6rem] ${altCard ? "border-cyan text-cyan-dk" : "border-brand-lt text-brand"}`}>
                               {tag}
                             </span>
                           )}
@@ -98,7 +98,7 @@ export default function ServicesPage() {
                         <p className="text-ink-soft" style={{ lineHeight: 1.75 }}>{cap.body}</p>
                       </div>
                       <div className="flex flex-col gap-6">
-                        {cap.points && <CheckList points={cap.points} color={pinkCard ? "cyan" : "brand"} />}
+                        {cap.points && <CheckList points={cap.points} color={altCard ? "cyan" : "brand"} />}
                         <Button href="/contact" variant="brand">Discuss this</Button>
                       </div>
                     </div>
@@ -117,7 +117,7 @@ export default function ServicesPage() {
       </Section>
 
       <Section id="it-solutions">
-        <SectionHeading eyebrow={it.eyebrow} eyebrowVariant="plain" title={it.title} body={it.body} accent="brand" className="mb-12" />
+        <SectionHeading eyebrow={it.eyebrow} eyebrowVariant="plain" title={it.title} body={it.body} className="mb-12" />
         <CardGrid items={it.items} cols={3} tones={["lilac", "ice", "mist", "white", "lilac", "ice"]} />
 
         <div className="mt-24 border-t border-brand-lt/60 pt-20">

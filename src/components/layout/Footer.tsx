@@ -12,7 +12,9 @@ function Icon({ d }: { d: string }) {
 
 export function Footer() {
   return (
-    <footer className="relative overflow-hidden text-white" style={{ background: "linear-gradient(180deg, #5B21B6 0%, #4C1D95 100%)" }}>
+    <footer className="relative overflow-hidden bg-night text-white">
+      <div aria-hidden="true" className="pointer-events-none absolute -left-40 -top-40 h-[30rem] w-[30rem] rounded-full bg-brand opacity-25 blur-[120px]" />
+      <div aria-hidden="true" className="pointer-events-none absolute -bottom-40 right-0 h-[26rem] w-[26rem] rounded-full bg-cyan opacity-15 blur-[120px]" />
       <div className="shell relative grid grid-cols-1 gap-12 pb-10 pt-20 md:grid-cols-[1.4fr_1fr_0.8fr]">
         <div className="flex flex-col gap-5">
           <Link href="/" aria-label="Liznat Labs, home" className="text-white">

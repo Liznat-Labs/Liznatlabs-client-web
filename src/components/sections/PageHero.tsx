@@ -5,7 +5,7 @@ import type { Segment, Stat } from "@/content/site";
 import { StatsRow } from "@/components/ui/primitives";
 
 // Same look as the homepage hero (LegacyHero): photo background, light overlay,
-// bold Plus Jakarta Sans headline with the purple-to-teal italic accent, Geist body.
+// bold Plus Jakarta Sans headline with the purple-to-cyan italic accent, Geist body.
 const JAKARTA = "var(--font-jakarta), system-ui, sans-serif";
 const GEIST = "var(--font-geist-sans), system-ui, sans-serif";
 
@@ -126,8 +126,8 @@ export function PageHero({
       {stats && (
         <section className="bg-canvas">
           <div className="shell">
-            <div className="border-b border-teal/30 py-10">
-              <StatsRow stats={stats} color="teal" />
+            <div className="border-b border-line py-10">
+              <StatsRow stats={stats} />
             </div>
           </div>
         </section>

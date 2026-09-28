@@ -59,12 +59,12 @@ export default function AboutPage() {
       <PageHero eyebrow={c.hero.eyebrow} title={c.hero.title} body={c.hero.body} stats={c.hero.stats} />
 
       <Section id="story">
-        <SectionHeading eyebrow={c.story.eyebrow} eyebrowVariant="plain" title={c.story.title} body={c.story.body} accent="brand" className="mb-12" />
+        <SectionHeading eyebrow={c.story.eyebrow} eyebrowVariant="plain" title={c.story.title} body={c.story.body} className="mb-12" />
         <ol className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4" role="list">
           {c.story.timeline.map((t, i) => {
             const [num, label] = (t.kicker ?? "").split(" — ");
             const tone = storyTones[i];
-            const dark = tone === "brand" || tone === "red";
+            const dark = tone === "night" || tone === "brand";
             return (
               <Reveal as="li" key={t.title} delay={i * 0.08}>
                 <Tile tone={tone} className="h-full">
@@ -94,7 +94,7 @@ export default function AboutPage() {
               <p className="text-ink-soft" style={{ lineHeight: 1.75 }}>{c.foundation.body}</p>
             </div>
             <div className="flex flex-col justify-center gap-6">
-              <blockquote className="rounded-2xl p-6 italic text-white shadow-[0_14px_30px_rgba(76,29,149,0.25)]" style={{ background: "linear-gradient(135deg, #4C1D95, #5B21B6)", lineHeight: 1.6 }}>
+              <blockquote className="rounded-2xl bg-night p-6 font-display text-lg font-semibold italic text-white shadow-[0_14px_30px_rgba(76,29,149,0.25)]" style={{ lineHeight: 1.5 }}>
                 &ldquo;{c.foundation.quote}&rdquo;
               </blockquote>
               <p className="text-ink-soft" style={{ fontSize: "0.93rem", lineHeight: 1.75 }}>{c.foundation.footnote}</p>
@@ -114,7 +114,7 @@ export default function AboutPage() {
           <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
             {f.people.map((p, i) => (
               <Reveal key={p.name} delay={i * 0.1}>
-                <Tile tone={i === 0 ? "sky" : "pink"} className="h-full">
+                <Tile tone={i === 0 ? "lilac" : "ice"} className="h-full">
                   <div className="flex h-full flex-col gap-6 p-7">
                     <span className="flex h-16 w-16 items-center justify-center rounded-full bg-brand text-xl font-semibold text-white shadow-[0_10px_24px_rgba(109,40,217,0.3)]">
                       {initials(p.name)}

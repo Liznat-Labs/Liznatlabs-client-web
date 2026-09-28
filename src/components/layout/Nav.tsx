@@ -52,7 +52,7 @@ export function Nav() {
     <>
       <header
         className={`fixed inset-x-0 top-0 z-50 transition-[background-color,border-color,color] duration-500 ${
-          dark ? "border-b border-transparent text-white" : "border-b border-line/80 bg-lilac/85 text-ink backdrop-blur-xl"
+          dark ? "border-b border-transparent text-white" : "border-b border-line/80 bg-white/85 text-ink backdrop-blur-xl"
         }`}
       >
         <nav className="shell flex items-center justify-between" style={{ height: NAV_H }} aria-label="Main navigation">
@@ -73,7 +73,7 @@ export function Nav() {
                   >
                     {l.label}
                     <span
-                      className={`absolute inset-x-0 -bottom-1.5 h-[2px] origin-left rounded-full transition-transform duration-500 ${dark ? "bg-white" : "bg-cyan"} ${
+                      className={`absolute inset-x-0 -bottom-1.5 h-[2px] origin-left rounded-full transition-transform duration-500 ${dark ? "bg-white" : "bg-brand"} ${
                         isActive(l.href) ? "scale-x-100" : "scale-x-0"
                       }`}
                     />
@@ -84,7 +84,7 @@ export function Nav() {
             <Link
               href="/contact"
               className={`rounded-full px-5 py-2.5 text-sm font-semibold tracking-wide transition-colors duration-300 ${
-                dark ? "border border-white/25 bg-white/10 text-white hover:bg-white/20" : "bg-brand text-white hover:bg-brand-dk"
+                dark ? "border border-white/25 bg-white/10 text-white hover:bg-white/20" : "bg-ink text-white hover:bg-brand"
               }`}
             >
               Let&apos;s Talk

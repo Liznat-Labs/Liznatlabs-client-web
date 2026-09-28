@@ -56,7 +56,7 @@ export default function WorkPage() {
         <div className="mt-20 grid grid-cols-1 gap-4 lg:grid-cols-[1.3fr_1fr_1fr]">
           <Reveal className="lg:row-span-2">
             <Tile tone="night" className="h-full">
-              <div className="flex h-full flex-col gap-5 p-8 md:p-10" style={{ background: "linear-gradient(135deg, #4C1D95, #5B21B6 60%, #7C3AED)" }}>
+              <div className="flex h-full flex-col gap-5 p-8 md:p-10">
                 <span className="kicker text-brand-lt">The team behind it</span>
                 <h2 className="font-display font-bold" style={{ fontSize: "clamp(2rem, 3.6vw, 2.8rem)", lineHeight: 1.1 }}>Founded in 2026.</h2>
                 <p className="text-white/85" style={{ lineHeight: 1.75 }}>
