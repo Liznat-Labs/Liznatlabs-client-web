@@ -1,52 +1,36 @@
-import { Nav } from "@/components/layout/Nav";
-import { Hero } from "@/components/sections/Hero";
-import { MarqueeStrip } from "@/components/sections/MarqueeStrip";
-import { Services } from "@/components/sections/Services";
-import { Work } from "@/components/sections/Work";
-import { Process } from "@/components/sections/Process";
-import { About } from "@/components/sections/About";
-import { Pricing } from "@/components/sections/Pricing";
-import { FAQ } from "@/components/sections/FAQ";
-import { FinalCTA } from "@/components/sections/FinalCTA";
-import { Footer } from "@/components/layout/Footer";
-import { NoiseOverlay } from "@/components/ui/NoiseOverlay";
-import { AuroraBackground } from "@/components/ui/AuroraBackground";
-import { BookCallModal } from "@/components/ui/BookCallModal";
+import { home, processIntro } from "@/content/site";
+import { Section, SectionHeading } from "@/components/ui/primitives";
+import { CTABand, MarqueeStrip, ProcessSteps, QuoteBand, WhyUs } from "@/components/sections/shared";
+import { Ecosystem, Enterprise, Proof, Talent, WhatWeDo, WhoWeAre } from "@/components/sections/home";
+import { LegacyHero } from "@/components/sections/LegacyHero";
+import { ZynkWorks } from "@/components/sections/ZynkWorks";
 
-export default function Home() {
+export default function HomePage() {
   return (
     <>
-      {/* Skip to main content */}
-      <a
-        href="#main-content"
-        className="fixed left-0 top-0 z-[9999] -translate-y-full rounded-br-sm bg-accent px-4 py-2 font-mono text-xs text-bg transition-transform focus:translate-y-0"
-        style={{ letterSpacing: "0.04em" }}
-      >
-        Skip to content
-      </a>
+      <LegacyHero />
+      <MarqueeStrip />
+      <WhoWeAre />
+      <WhatWeDo />
+      <Enterprise />
+      <Talent />
 
-      {/* Full-screen animated aurora background */}
-      <AuroraBackground />
+      <Section id="how-it-works" tone="white">
+        <SectionHeading
+          eyebrow="How it works"
+          title={[{ text: "From " }, { text: "problem", accent: true }, { text: " to production." }]}
+          body={processIntro}
+          className="mb-14"
+        />
+        <ProcessSteps />
+      </Section>
 
-      {/* Global contact modal */}
-      <BookCallModal />
-
-      {/* Page structure */}
-      <Nav />
-
-      <main id="main-content">
-        <Hero />
-        <MarqueeStrip />
-        <Services />
-        <Work />
-        <Process />
-        <About />
-        <Pricing />
-        <FAQ />
-        <FinalCTA />
-      </main>
-
-      <Footer />
+      <Proof />
+      <ZynkWorks />
+      <Ecosystem />
+      <QuoteBand {...home.quote} />
+      <WhyUs {...home.whyUs} />
+      <CTABand />
     </>
   );
 }

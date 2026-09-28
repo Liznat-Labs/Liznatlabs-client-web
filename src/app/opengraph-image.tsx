@@ -15,7 +15,8 @@ export default function OpengraphImage() {
           flexDirection: "column",
           justifyContent: "space-between",
           padding: "80px",
-          background: "#FFFFFF",
+          backgroundColor: "#F2EDFF",
+          backgroundImage: "radial-gradient(circle at 85% 0%, rgba(124,58,237,0.25) 0%, rgba(242,237,255,0) 60%)",
           color: "#0A0A0A",
           fontFamily: "sans-serif",
         }}
@@ -27,12 +28,12 @@ export default function OpengraphImage() {
           </svg>
           <span style={{ fontSize: 44 }}>Liznat Labs</span>
         </div>
-        <div style={{ display: "flex", flexDirection: "column", fontSize: 72, fontWeight: 700, lineHeight: 1.05 }}>
+        <div style={{ display: "flex", flexDirection: "column", fontSize: 72, fontWeight: 300, lineHeight: 1.05 }}>
           <span>Software crafted with intent,</span>
           <span style={{ color: "#6D28D9" }}>shipped with speed.</span>
         </div>
-        <span style={{ fontSize: 28, color: "#7C7C7C" }}>
-          Websites · Android apps · Custom software — Bengaluru
+        <span style={{ fontSize: 28, color: "#52525B" }}>
+          AI Applications · IT Solutions · IT Staffing · Zynk Works — Bengaluru
         </span>
       </div>
     ),

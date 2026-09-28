@@ -1,22 +1,17 @@
 "use client";
 
-import { motion, useScroll, useSpring, useReducedMotion } from "framer-motion";
+import { motion, useReducedMotion, useScroll, useSpring } from "framer-motion";
 
+/** Thin purple→cyan bar along the top edge that fills as the page scrolls. */
 export function ScrollProgress() {
+  const reduce = useReducedMotion();
   const { scrollYProgress } = useScroll();
-  const shouldReduceMotion = useReducedMotion();
-  const scaleX = useSpring(scrollYProgress, { stiffness: 300, damping: 40, mass: 0.2 });
-
-  if (shouldReduceMotion) return null;
-
+  const scaleX = useSpring(scrollYProgress, { stiffness: 140, damping: 30, restDelta: 0.001 });
   return (
     <motion.div
-      className="fixed left-0 right-0 top-0 z-[9999] h-[2px] origin-left"
-      style={{
-        scaleX,
-        background: "linear-gradient(to right, var(--accent), rgba(0,119,170,0.8))",
-      }}
       aria-hidden="true"
+      className="fixed inset-x-0 top-0 z-[60] h-[3px] origin-left"
+      style={{ scaleX: reduce ? scrollYProgress : scaleX, background: "linear-gradient(90deg, #7C3AED, #4F46E5, #0891B2)" }}
     />
   );
 }

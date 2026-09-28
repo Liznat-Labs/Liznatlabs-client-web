@@ -3,6 +3,10 @@
 import { motion, useReducedMotion } from "framer-motion";
 import { heroContent, type HeadlineLine } from "@/content/site";
 
+// Original Liznat Labs hero, kept as-is. Fonts: Plus Jakarta Sans (headline) and Geist (body).
+const JAKARTA = "var(--font-jakarta), system-ui, sans-serif";
+const GEIST = "var(--font-geist-sans), system-ui, sans-serif";
+
 const containerVariants = {
   hidden: {},
   visible: { transition: { staggerChildren: 0.1, delayChildren: 0.12 } },
@@ -75,6 +79,7 @@ function PillBtn({
         className="group"
         style={base}
         onClick={(e) => {
+          if (!href.startsWith("#")) return;
           e.preventDefault();
           document.querySelector(href)?.scrollIntoView({ behavior: "smooth" });
         }}
@@ -100,9 +105,10 @@ function HeadlineRenderer({ lines }: { lines: HeadlineLine[] }) {
             seg.italic && seg.accent ? (
               <span
                 key={si}
-                className="font-fraunces italic gradient-text"
+                className="italic legacy-gradient-text"
                 style={{
                   fontWeight: 700,
+                  fontFamily: JAKARTA,
                   filter: "drop-shadow(0 2px 12px rgba(255,255,255,0.9))",
                 }}
               >
@@ -111,9 +117,9 @@ function HeadlineRenderer({ lines }: { lines: HeadlineLine[] }) {
             ) : (
               <span
                 key={si}
-                className="font-fraunces"
                 style={{
                   fontWeight: 700,
+                  fontFamily: JAKARTA,
                   color: "#0A0A0A",
                   textShadow: "0 2px 24px rgba(255,255,255,0.95), 0 0 40px rgba(255,255,255,0.7)",
                 }}
@@ -128,7 +134,7 @@ function HeadlineRenderer({ lines }: { lines: HeadlineLine[] }) {
   );
 }
 
-export function Hero() {
+export function LegacyHero() {
   const shouldReduceMotion = useReducedMotion();
 
   return (
@@ -192,9 +198,9 @@ export function Hero() {
           {/* Subhead */}
           <motion.div variants={itemVariants}>
             <p
-              className="font-geist"
               style={{
                 fontSize: "clamp(1rem, 1.6vw, 1.2rem)",
+                fontFamily: GEIST,
                 lineHeight: 1.6,
                 fontWeight: 500,
                 color: "#0A0A0A",
@@ -208,12 +214,8 @@ export function Hero() {
 
           {/* CTA row */}
           <motion.div variants={itemVariants} style={{ display: "flex", flexWrap: "wrap", gap: "1rem", alignItems: "center" }}>
-            <PillBtn
-              label="Book a call"
-              primary
-              onClick={() => window.dispatchEvent(new CustomEvent("open-book-call"))}
-            />
-            <PillBtn label="View our work" href="#work" />
+            <PillBtn label="Book a call" primary href="/contact" />
+            <PillBtn label="View our work" href="/work" />
           </motion.div>
         </motion.div>
       </div>
