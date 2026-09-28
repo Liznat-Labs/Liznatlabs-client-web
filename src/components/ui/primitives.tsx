@@ -101,7 +101,7 @@ export function Eyebrow({ children, variant = "pill", light = false }: { childre
   return (
     <span
       className={`kicker inline-flex w-fit items-center gap-2 rounded-full border px-3 py-1.5 ${
-        light ? "border-white/25 bg-white/5 text-white/85" : "border-line bg-white text-ink-soft"
+        light ? "border-white/35 bg-white/5 text-white/85" : "border-line bg-white text-ink-soft"
       }`}
     >
       <span className={`h-1.5 w-1.5 rounded-full ${light ? "bg-brand-lt" : "bg-brand"}`} aria-hidden="true" />
@@ -140,7 +140,7 @@ export function SectionHeading({
         <WordReveal segments={title} accent={accent} light={light} />
       </Tag>
       {body && (
-        <p className={`max-w-2xl ${light ? "text-white/75" : "text-ink-soft"}`} style={{ fontSize: "1rem", lineHeight: 1.75 }}>
+        <p className={`max-w-2xl ${light ? "text-white/85" : "text-ink-soft"}`} style={{ fontSize: "1rem", lineHeight: 1.75 }}>
           {body}
         </p>
       )}
@@ -195,10 +195,10 @@ const buttonClass: Record<ButtonVariant, string> = {
   brand: "rounded-full bg-brand px-6 py-3 text-sm font-semibold text-white hover:bg-brand-dk",
   dark: "rounded-full bg-ink px-6 py-3 text-sm font-semibold text-white hover:bg-brand",
   white: "rounded-full bg-white px-6 py-3 text-sm font-semibold text-ink hover:bg-lilac",
-  outline: "rounded-full border-2 border-ink/30 bg-white/70 px-6 py-[10px] text-sm font-semibold text-ink hover:border-brand hover:text-brand",
+  outline: "rounded-full border-2 border-ink/30 bg-white/90 px-6 py-[10px] text-sm font-semibold text-ink hover:border-brand hover:text-brand",
   "outline-light": "rounded-full border-2 border-white/35 px-6 py-[10px] text-sm font-semibold text-white hover:border-white hover:bg-white/10",
   link: "text-sm font-semibold text-ink underline decoration-brand-lt decoration-2 underline-offset-[6px] hover:text-brand",
-  "link-light": "text-sm font-semibold text-white underline decoration-white/40 decoration-2 underline-offset-[6px] hover:decoration-white",
+  "link-light": "text-sm font-semibold text-white underline decoration-white/70 decoration-2 underline-offset-[6px] hover:decoration-white",
 };
 
 export function Button({
@@ -237,9 +237,9 @@ export type CardTone = "white" | "canvas" | "lilac" | "ice" | "mist" | "night" |
 const cardTone: Record<CardTone, string> = {
   white: "bg-white border-line",
   canvas: "bg-canvas border-line",
-  lilac: "bg-lilac border-[#E9E4FB]",
-  ice: "bg-ice border-[#E7E7EC]",
-  mist: "bg-mist border-[#E9E4FB]",
+  lilac: "bg-lilac border-[#D8CFF7]",
+  ice: "bg-ice border-[#D4D4DC]",
+  mist: "bg-mist border-[#D8CFF7]",
   night: "bg-night border-night text-white",
   brand: "bg-brand border-brand text-white",
 };
@@ -282,7 +282,7 @@ export function Tile({
         <div aria-hidden="true" className="pointer-events-none absolute -right-20 -top-20 h-64 w-64 rounded-full bg-brand opacity-40 blur-[80px]" />
       )}
       {index && (
-        <span aria-hidden="true" className={`absolute right-5 top-5 font-mono text-xs ${dark ? "text-white/40" : "text-ink/30"}`}>
+        <span aria-hidden="true" className={`absolute right-5 top-5 font-mono text-xs ${dark ? "text-white/85" : "text-ink/60"}`}>
           {index}
         </span>
       )}
@@ -332,14 +332,14 @@ export function CardGrid({
             <Tile tone={tone} index={numbered ? String(i + 1).padStart(2, "0") : undefined} className="h-full">
               <div className="flex h-full flex-col gap-3 p-6 md:p-7">
                 {item.kicker && (
-                  <span className={`kicker ${dark ? "text-white/70" : kickerColor === "cyan" ? "text-cyan-dk" : "text-brand"}`}>{item.kicker}</span>
+                  <span className={`kicker ${dark ? "text-white/85" : kickerColor === "cyan" ? "text-cyan-dk" : "text-brand"}`}>{item.kicker}</span>
                 )}
                 {item.title && (
                   <h3 className={`font-display ${dark ? "text-white" : "text-ink"}`} style={{ fontSize: "1.2rem", fontWeight: 600, lineHeight: 1.3 }}>
                     {item.title}
                   </h3>
                 )}
-                <p className={dark ? "text-white/80" : "text-ink-soft"} style={{ fontSize: "0.9rem", lineHeight: 1.75 }}>
+                <p className={dark ? "text-white/90" : "text-ink-soft"} style={{ fontSize: "0.9rem", lineHeight: 1.75 }}>
                   {item.body}
                 </p>
                 {item.points && <div className="pt-2"><CheckList points={item.points} light={dark} /></div>}

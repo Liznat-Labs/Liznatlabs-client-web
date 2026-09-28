@@ -21,13 +21,13 @@ export function Footer() {
           <Link href="/" aria-label="Liznat Labs, home" className="text-white" style={{ "--ink": "#FFFFFF" } as React.CSSProperties}>
             <LogoLockup size={22} />
           </Link>
-          <p className="max-w-sm text-white/80" style={{ fontSize: "0.92rem", lineHeight: 1.7 }}>
+          <p className="max-w-sm text-white/90" style={{ fontSize: "0.92rem", lineHeight: 1.7 }}>
             {brand.statement}
           </p>
         </div>
 
         <div className="flex flex-col gap-4">
-          <span className="kicker !text-[0.66rem] text-white/70">Reach out to us</span>
+          <span className="kicker !text-[0.66rem] text-white/85">Reach out to us</span>
           <a href={`mailto:${brand.email}`} className="flex items-start gap-3 text-sm hover:text-brand-lt">
             <Icon d="M4 6h16v12H4z M4 7l8 6 8-6" />
             {brand.email}
@@ -47,7 +47,7 @@ export function Footer() {
         </div>
 
         <nav className="flex flex-col gap-4" aria-label="Footer navigation">
-          <span className="kicker !text-[0.66rem] text-white/70">Navigation</span>
+          <span className="kicker !text-[0.66rem] text-white/85">Navigation</span>
           <ul className="flex flex-col gap-2.5" role="list">
             {[...navLinks, { label: "Contact", href: "/contact" }].map((l) => (
               <li key={l.href}>
@@ -65,7 +65,7 @@ export function Footer() {
       </div>
 
       <div className="shell relative">
-        <div className="flex flex-col gap-3 border-t border-white/15 py-6 text-[0.72rem] tracking-wide text-white/70 md:flex-row md:items-center md:justify-between">
+        <div className="flex flex-col gap-3 border-t border-white/35 py-6 text-[0.72rem] tracking-wide text-white/85 md:flex-row md:items-center md:justify-between">
           <span>© {new Date().getFullYear()} Liznat Labs — Bengaluru, India</span>
           <span className="flex gap-6">
             <Link href="/privacy" className="hover:text-white">Privacy</Link>

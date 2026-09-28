@@ -71,7 +71,7 @@ export function WhatWeDo() {
               <div className="flex flex-col gap-4">
                 <span className="kicker text-brand-lt">{ai.kicker}</span>
                 <h3 className="font-display font-bold" style={{ fontSize: "clamp(1.6rem, 2.6vw, 2.1rem)", lineHeight: 1.15, letterSpacing: "-0.02em" }}>{ai.title}</h3>
-                <p className="text-white/75" style={{ lineHeight: 1.75 }}>{ai.body}</p>
+                <p className="text-white/85" style={{ lineHeight: 1.75 }}>{ai.body}</p>
               </div>
               <AssistantVisual className="w-full" />
               {ai.points && <CheckList points={ai.points} light />}
@@ -103,7 +103,7 @@ export function WhatWeDo() {
           <Tile tone="brand" className="h-full">
             <LMark className="-bottom-8 -right-6 h-40 w-40" color="rgba(255,255,255,0.10)" />
             <div className="flex h-full flex-col gap-4 p-7 md:p-8">
-              <span className="kicker text-white/75">{c.engagement.eyebrow}</span>
+              <span className="kicker text-white/85">{c.engagement.eyebrow}</span>
               <h3 className="font-display text-2xl font-bold">{c.engagement.title}</h3>
               <p className="text-white/85" style={{ fontSize: "0.95rem", lineHeight: 1.75 }}>{c.engagement.body}</p>
               <CheckList points={c.engagement.models} light />

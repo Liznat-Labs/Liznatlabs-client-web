@@ -35,7 +35,7 @@ function CapabilityHub({ items }: { items: typeof c.capabilities.items }) {
     );
   };
   return (
-    <div className="grid-lines relative rounded-[22px] border border-line bg-white/60 p-6 md:p-10">
+    <div className="grid-lines relative rounded-[22px] border border-line bg-white/90 p-6 md:p-10">
       <div className="grid grid-cols-1 items-center gap-5 md:grid-cols-[1fr_auto_1fr]">
         <div className="flex flex-col gap-5">{card(0)}{card(3)}</div>
         <Reveal className="relative z-10 mx-auto my-4 flex h-52 w-52 flex-col items-center justify-center rounded-full text-center text-white shadow-[0_20px_50px_rgba(76,29,149,0.35)]" >
@@ -43,7 +43,7 @@ function CapabilityHub({ items }: { items: typeof c.capabilities.items }) {
           <div className="absolute -inset-3 animate-spin-slow rounded-full border border-dashed border-brand-lt" aria-hidden="true" />
           <span className="kicker relative !text-[0.58rem] text-brand-lt">Integration core</span>
           <span className="relative mt-1 text-xl font-semibold tracking-wide">LIZNAT LABS</span>
-          <span className="kicker relative mt-1 !text-[0.58rem] text-white/75">AI + Engineering</span>
+          <span className="kicker relative mt-1 !text-[0.58rem] text-white/85">AI + Engineering</span>
         </Reveal>
         <div className="flex flex-col gap-5">{card(1)}{card(2)}</div>
       </div>
@@ -69,8 +69,8 @@ export default function AboutPage() {
               <Reveal as="li" key={t.title} delay={i * 0.08}>
                 <Tile tone={tone} className="h-full">
                   <div className="flex h-full flex-col gap-2 p-6">
-                    <span className={`kicker !text-[0.62rem] ${dark ? "text-white/70" : "text-brand"}`}>{num}</span>
-                    <span className={`kicker !text-[0.6rem] ${dark ? "text-white/70" : "text-ink-soft"}`}>{label}</span>
+                    <span className={`kicker !text-[0.62rem] ${dark ? "text-white/85" : "text-brand"}`}>{num}</span>
+                    <span className={`kicker !text-[0.6rem] ${dark ? "text-white/85" : "text-ink-soft"}`}>{label}</span>
                     <h3 className={`mt-1 text-lg font-semibold ${dark ? "text-white" : "text-ink"}`}>{t.title}</h3>
                     <p className={dark ? "text-white/85" : "text-ink-soft"} style={{ fontSize: "0.88rem", lineHeight: 1.65 }}>{t.body}</p>
                   </div>

@@ -6,7 +6,7 @@ import { contactPage } from "@/content/site";
 type Status = "idle" | "sending" | "success" | "error";
 
 const inputCls =
-  "w-full rounded-xl border border-brand-lt bg-white px-4 py-3.5 text-ink placeholder:text-ink-soft/60 outline-none transition-[border-color,box-shadow] focus:border-brand focus:shadow-[0_0_0_3px_rgba(109,40,217,0.12)]";
+  "w-full rounded-xl border border-brand-lt bg-white px-4 py-3.5 text-ink placeholder:text-ink-soft/80 outline-none transition-[border-color,box-shadow] focus:border-brand focus:shadow-[0_0_0_3px_rgba(109,40,217,0.12)]";
 
 function Field({ id, label, children }: { id: string; label: string; children: React.ReactNode }) {
   return (

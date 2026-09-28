@@ -29,7 +29,7 @@ export function Beliefs({ items }: { items: Card[] }) {
               }
             }}
             className={`flex items-center gap-5 rounded-2xl border px-6 py-5 text-left transition-colors ${
-              active === i ? "border-brand bg-white shadow-[0_10px_30px_rgba(109,40,217,0.1)]" : "border-line bg-white/60 hover:border-brand-lt"
+              active === i ? "border-brand bg-white shadow-[0_10px_30px_rgba(109,40,217,0.1)]" : "border-line bg-white/90 hover:border-brand-lt"
             }`}
           >
             <span className={`text-sm font-semibold ${active === i ? "text-cyan" : "text-brand"}`}>{String(i + 1).padStart(2, "0")}</span>

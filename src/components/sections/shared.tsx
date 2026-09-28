@@ -137,7 +137,7 @@ export function QuoteBand({ quote, byline, cta }: { quote: string; byline: strin
         className="absolute inset-x-0 -inset-y-[15%]"
         style={{ y, backgroundImage: "url('/cta-bg.png')", backgroundSize: "cover", backgroundPosition: "center" }}
       />
-      <div aria-hidden="true" className="absolute inset-0 bg-white/60" />
+      <div aria-hidden="true" className="absolute inset-0 bg-white/90" />
       <div className="shell relative flex min-h-[460px] flex-col items-center justify-center gap-6 py-24 text-center">
         <Reveal>
           <p
@@ -268,7 +268,7 @@ export function CTABand({
             <h2 className="relative max-w-2xl font-display font-bold" style={{ fontSize: "clamp(2.2rem, 5vw, 3.8rem)", lineHeight: 1.05, letterSpacing: "-0.03em" }}>
               <Segments segments={title} light />
             </h2>
-            <p className="relative max-w-xl text-white/75" style={{ lineHeight: 1.75 }}>{body}</p>
+            <p className="relative max-w-xl text-white/85" style={{ lineHeight: 1.75 }}>{body}</p>
             <div className="relative flex flex-wrap gap-3 pt-2">
               <Button href="/contact" variant="white">{ctaBand.primary}</Button>
               {secondary && <Button href={secondary.href} variant="outline-light">{secondary.label}</Button>}

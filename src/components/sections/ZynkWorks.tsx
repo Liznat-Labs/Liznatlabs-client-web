@@ -62,7 +62,7 @@ function AppHub({ stage }: { stage: number }) {
         <div className="absolute left-1/2 top-1/2 h-[30%] w-[30%] -translate-x-1/2 -translate-y-1/2">
           <div className="relative flex h-full w-full flex-col items-center justify-center rounded-full bg-night text-center text-white shadow-[0_20px_50px_rgba(76,29,149,0.4)]">
             <span className="absolute inset-0 rounded-full" style={{ background: "radial-gradient(circle at 30% 25%, rgba(124,58,237,0.7), transparent 65%)" }} />
-            {!reduce && <span className="absolute -inset-2 animate-ping rounded-full border border-brand-lt/60 [animation-duration:2.6s]" />}
+            {!reduce && <span className="absolute -inset-2 animate-ping rounded-full border border-brand-lt [animation-duration:2.6s]" />}
             <span className="relative font-display text-[clamp(0.95rem,2.4vw,1.35rem)] font-bold leading-tight">Zynk<br />Works</span>
           </div>
         </div>
@@ -96,7 +96,7 @@ function Principles({ stage, story }: { stage: number; story: boolean }) {
           <div
             key={p.title}
             className={`flex gap-4 rounded-card border p-5 transition-[background-color,border-color,opacity,transform] duration-500 ${
-              active ? "border-brand-lt bg-white opacity-100 shadow-[0_12px_30px_rgba(76,29,149,0.10)]" : "border-line bg-white/50 opacity-55"
+              active ? "border-brand-lt bg-white opacity-100 shadow-[0_12px_30px_rgba(76,29,149,0.10)]" : "border-line bg-white/90 opacity-75"
             } ${story && active ? "translate-x-2" : ""}`}
           >
             <span className={`font-mono text-xs ${active ? "text-brand" : "text-ink-soft"}`}>{String(i + 1).padStart(2, "0")}</span>

@@ -20,9 +20,9 @@ export default function WorkPage() {
       <ZynkWorks />
 
       <Section id="projects">
-        <ul className="border-t border-brand-lt/60" role="list">
+        <ul className="border-t border-brand-lt" role="list">
           {workContent.map((w, i) => (
-            <Reveal as="li" key={w.title} delay={i * 0.05} className="border-b border-brand-lt/60">
+            <Reveal as="li" key={w.title} delay={i * 0.05} className="border-b border-brand-lt">
               <a
                 href={w.url}
                 target="_blank"
@@ -51,7 +51,7 @@ export default function WorkPage() {
           ))}
         </ul>
 
-        <div className="mt-20 border-y border-brand-lt/60 py-12">
+        <div className="mt-20 border-y border-brand-lt py-12">
           <StatsRow stats={c.stats} color="brand" />
         </div>
 

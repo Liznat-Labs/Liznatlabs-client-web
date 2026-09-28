@@ -52,7 +52,7 @@ export default function ServicesPage() {
             <Tile tone="night" className="h-full">
               <LMark className="-bottom-8 -right-6 h-40 w-40" />
               <div className="flex h-full min-h-[340px] flex-col gap-4 p-7 md:p-8">
-                <span className="kicker text-white/75">{lead.kicker}</span>
+                <span className="kicker text-white/85">{lead.kicker}</span>
                 <h3 className="font-display font-bold" style={{ fontSize: "clamp(1.7rem, 2.6vw, 2.2rem)", lineHeight: 1.15 }}>{lead.title}</h3>
                 <p className="text-white/85" style={{ lineHeight: 1.75 }}>{lead.body}</p>
                 <div className="mt-auto flex items-end justify-between gap-4 pt-6">
@@ -63,7 +63,7 @@ export default function ServicesPage() {
           </Reveal>
           {products.map((p, i) => (
             <Reveal key={p.title} delay={(i % 2) * 0.08}>
-              <Tile tone={productTones[i]} className="h-full border-brand-lt/70">
+              <Tile tone={productTones[i]} className="h-full border-brand-lt">
                 <div className="flex h-full flex-col gap-3 p-6 md:p-7">
                   <span className="kicker text-brand">{p.kicker}</span>
                   <h3 className="text-xl font-semibold text-ink" style={{ lineHeight: 1.3 }}>{p.title}</h3>
@@ -75,7 +75,7 @@ export default function ServicesPage() {
           ))}
         </div>
 
-        <div className="mt-24 border-t border-brand-lt/60 pt-20">
+        <div className="mt-24 border-t border-brand-lt pt-20">
           <SectionHeading eyebrow={ai.capabilitiesEyebrow} eyebrowVariant="plain" title={ai.capabilitiesTitle} body={ai.capabilitiesBody} size="md" className="mb-12" />
           <div className="flex flex-col gap-4">
             {ai.capabilities.map((cap, i) => {
@@ -120,7 +120,7 @@ export default function ServicesPage() {
         <SectionHeading eyebrow={it.eyebrow} eyebrowVariant="plain" title={it.title} body={it.body} className="mb-12" />
         <CardGrid items={it.items} cols={3} tones={["lilac", "ice", "mist", "white", "lilac", "ice"]} />
 
-        <div className="mt-24 border-t border-brand-lt/60 pt-20">
+        <div className="mt-24 border-t border-brand-lt pt-20">
           <SectionHeading eyebrow={it.stackEyebrow} eyebrowVariant="plain" title={it.stackTitle} body={it.stackBody} size="md" className="mb-12" />
           <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-4">
             {it.stack.map((g, i) => (
@@ -130,7 +130,7 @@ export default function ServicesPage() {
                     <span className="kicker text-brand">{g.group}</span>
                     <ul className="flex flex-wrap gap-2" role="list">
                       {g.items.map((t) => (
-                        <li key={t} className="rounded-full border border-brand-lt/70 bg-white px-3 py-1.5 text-xs font-semibold text-ink-soft">{t}</li>
+                        <li key={t} className="rounded-full border border-brand-lt bg-white px-3 py-1.5 text-xs font-semibold text-ink-soft">{t}</li>
                       ))}
                     </ul>
                   </div>
@@ -146,7 +146,7 @@ export default function ServicesPage() {
         <SectionHeading eyebrow={st.eyebrow} eyebrowVariant="plain" title={st.title} body={st.body} className="mb-12" />
         <CardGrid items={st.roles} cols={4} numbered tones={["night", "white", "mist", "lilac"]} />
 
-        <div className="mt-24 border-t border-brand-lt/60 pt-20">
+        <div className="mt-24 border-t border-brand-lt pt-20">
           <SectionHeading eyebrow={st.segmentsEyebrow} eyebrowVariant="plain" title={st.segmentsTitle} body={st.segmentsBody} size="md" className="mb-12" />
           <CardGrid items={st.segments} cols={4} tones={["white", "lilac", "mist", "white"]} />
         </div>

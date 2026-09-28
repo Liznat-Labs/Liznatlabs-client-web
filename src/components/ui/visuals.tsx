@@ -14,7 +14,7 @@ function WindowChrome({ title }: { title: string }) {
 /** A knowledge-assistant chat window: question, cited answer, typing cursor. */
 export function AssistantVisual({ className = "" }: { className?: string }) {
   return (
-    <div aria-hidden="true" className={`overflow-hidden rounded-xl border border-white/15 bg-white text-left shadow-[0_20px_50px_rgba(0,0,0,0.35)] ${className}`}>
+    <div aria-hidden="true" className={`overflow-hidden rounded-xl border border-white/35 bg-white text-left shadow-[0_20px_50px_rgba(0,0,0,0.35)] ${className}`}>
       <WindowChrome title="assistant.liznatlabs.app" />
       <div className="flex flex-col gap-3 p-4 text-[0.72rem] leading-relaxed">
         <div className="ml-auto max-w-[75%] rounded-2xl rounded-br-sm bg-ink px-3.5 py-2 text-white">
@@ -56,7 +56,7 @@ export function ArchitectureVisual({ className = "" }: { className?: string }) {
     "M440 63 H470 V103", "M440 143 H470 V103", "M440 103 H470", "M385 166 V205",
   ];
   return (
-    <div aria-hidden="true" className={`grid-lines relative overflow-hidden rounded-xl border border-white/15 bg-white ${className}`}>
+    <div aria-hidden="true" className={`grid-lines relative overflow-hidden rounded-xl border border-white/35 bg-white ${className}`}>
       <svg viewBox="0 0 560 260" className="h-full w-full">
         {flows.map((d, i) => (
           <g key={d}>

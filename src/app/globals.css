@@ -8,8 +8,8 @@
   --brand-dk: #4c1d95;
   --cyan: #0891b2;
   --ink: #0a0a0a;
-  --ink-soft: #52525b;
-  --line: #e4e4ea;
+  --ink-soft: #3f3f46;
+  --line: #d4d4dc;
   /* Legacy names used by the legal pages */
   --text: var(--ink);
   --muted: var(--ink-soft);
@@ -46,7 +46,7 @@ body {
   /* Small uppercase label, in Liznat's mono */
   .kicker {
     font-family: var(--font-geist-mono), monospace;
-    font-weight: 500;
+    font-weight: 600;
     font-size: 0.68rem;
     letter-spacing: 0.18em;
     text-transform: uppercase;
