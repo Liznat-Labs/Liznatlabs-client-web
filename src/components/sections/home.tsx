@@ -180,7 +180,7 @@ export function Talent() {
 export function Proof() {
   const c = home.proof;
   return (
-    <Section id="proof" tone="lilac" tight>
+    <Section id="proof" tone="white" tight>
       <div className="grid grid-cols-1 items-end gap-10 lg:grid-cols-[0.8fr_2fr]">
         <SectionHeading eyebrow={c.eyebrow} title={c.title} size="md" />
         <StatsRow stats={c.stats} />

@@ -52,7 +52,7 @@ export function Nav() {
     <>
       <header
         className={`fixed inset-x-0 top-0 z-50 transition-[background-color,border-color,color] duration-500 ${
-          dark ? "border-b border-transparent text-white" : "border-b border-line/80 bg-[#EFE9FF]/85 text-ink backdrop-blur-xl"
+          dark ? "border-b border-transparent text-white" : "border-b border-line/80 bg-white/85 text-ink backdrop-blur-xl"
         }`}
       >
         <nav className="shell flex items-center justify-between" style={{ height: NAV_H }} aria-label="Main navigation">

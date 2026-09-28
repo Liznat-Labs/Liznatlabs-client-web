@@ -152,10 +152,10 @@ export type Tone = "canvas" | "white" | "surface" | "lilac" | "ice" | "night";
 
 // No plain white bands: every tone is a soft tint so white cards stand out
 const sectionTone: Record<Tone, string> = {
-  canvas: "tint-lavender",
-  white: "tint-sky",
+  canvas: "bg-white",
+  white: "bg-white",
   surface: "tint-mint",
-  lilac: "tint-periwinkle",
+  lilac: "tint-mint",
   ice: "tint-mint",
   night: "bg-night text-white",
 };
@@ -237,9 +237,9 @@ export type CardTone = "white" | "canvas" | "lilac" | "ice" | "mist" | "night" |
 const cardTone: Record<CardTone, string> = {
   white: "bg-white border-line",
   canvas: "bg-canvas border-line",
-  lilac: "bg-lilac border-[#E2D6FF]",
-  ice: "bg-ice border-[#CDEBF3]",
-  mist: "bg-mist border-[#DCDFFB]",
+  lilac: "bg-lilac border-[#E9E4FB]",
+  ice: "bg-ice border-[#E7E7EC]",
+  mist: "bg-mist border-[#E9E4FB]",
   night: "bg-night border-night text-white",
   brand: "bg-brand border-brand text-white",
 };
@@ -395,8 +395,8 @@ export function StatsRow({ stats, color = "gradient" }: { stats: Stat[]; color?:
 export function Glow({ className = "" }: { className?: string }) {
   return (
     <div aria-hidden="true" className={`pointer-events-none absolute inset-0 ${className}`}>
-      <div className="absolute -left-32 top-10 h-72 w-72 rounded-full bg-brand/10 blur-[90px]" />
-      <div className="absolute -right-24 bottom-0 h-72 w-72 rounded-full bg-cyan/10 blur-[90px]" />
+      <div className="absolute -left-32 top-10 h-72 w-72 rounded-full bg-brand/5 blur-[90px]" />
+      <div className="absolute -right-24 bottom-0 h-72 w-72 rounded-full bg-brand/5 blur-[90px]" />
     </div>
   );
 }

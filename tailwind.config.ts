@@ -6,11 +6,11 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        canvas: "#EFE9FF",
+        canvas: "#FFFFFF",
         surface: "#F5F5F5",
-        lilac: "#F2EDFF",
-        ice: "#E8F6FA",
-        mist: "#EEF0FF",
+        lilac: "#F5F3FF",
+        ice: "#F4F4F6",
+        mist: "#F5F3FF",
         brand: "#6D28D9",
         "brand-dk": "#4C1D95",
         "brand-lt": "#C4B5FD",
@@ -26,7 +26,7 @@ const config: Config = {
         cream: "#0A0A0A",
         accent: "#6D28D9",
         muted: "#52525B",
-        bg: "#EFE9FF",
+        bg: "#FFFFFF",
       },
       fontFamily: {
         sans: ["var(--font-geist-sans)", "system-ui", "sans-serif"],

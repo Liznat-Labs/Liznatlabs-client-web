@@ -175,7 +175,7 @@ export function MarqueeStrip() {
     </span>
   );
   return (
-    <section aria-label="What we build" className="tint-periwinkle overflow-hidden border-y border-[#E2DCFB] py-8">
+    <section aria-label="What we build" className="overflow-hidden border-y border-line bg-white py-8">
       <motion.div style={{ skewX }} aria-hidden="true">
         <div className={`flex w-max ${reduce ? "" : "animate-marquee"}`}>
           {row}
