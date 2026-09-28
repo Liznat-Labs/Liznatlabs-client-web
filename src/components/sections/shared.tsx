@@ -1,7 +1,7 @@
 "use client";
 
-import { useState } from "react";
-import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
+import { useRef, useState } from "react";
+import { AnimatePresence, motion, useReducedMotion, useScroll, useSpring, useTransform, useVelocity } from "framer-motion";
 import { ctaBand, marqueeItems, processSteps, whyUs, workContent, type Segment } from "@/content/site";
 import { Button, Glow, LMark, Reveal, Section, SectionHeading, Segments, Tile, type CardTone } from "@/components/ui/primitives";
 
@@ -125,11 +125,18 @@ export function WorkGrid({ limit, cols = 3 }: { limit?: number; cols?: 3 | 4 }) 
 // ─── Quote band over Liznat's studio photo ───────────────────────────────────
 
 export function QuoteBand({ quote, byline, cta }: { quote: string; byline: string; cta: { label: string; href: string } }) {
+  const ref = useRef<HTMLElement>(null);
+  const reduce = useReducedMotion();
+  const { scrollYProgress } = useScroll({ target: ref, offset: ["start end", "end start"] });
+  const y = useTransform(scrollYProgress, [0, 1], reduce ? ["0%", "0%"] : ["-12%", "12%"]);
   return (
-    <section
-      className="relative overflow-hidden"
-      style={{ backgroundImage: "url('/cta-bg.png')", backgroundSize: "cover", backgroundPosition: "center" }}
-    >
+    <section ref={ref} className="relative overflow-hidden">
+      {/* Photo moves slower than the page for a parallax effect */}
+      <motion.div
+        aria-hidden="true"
+        className="absolute inset-x-0 -inset-y-[15%]"
+        style={{ y, backgroundImage: "url('/cta-bg.png')", backgroundSize: "cover", backgroundPosition: "center" }}
+      />
       <div aria-hidden="true" className="absolute inset-0 bg-white/60" />
       <div className="shell relative flex min-h-[460px] flex-col items-center justify-center gap-6 py-24 text-center">
         <Reveal>
@@ -153,6 +160,10 @@ export function QuoteBand({ quote, byline, cta }: { quote: string; byline: strin
 
 export function MarqueeStrip() {
   const reduce = useReducedMotion();
+  const { scrollY } = useScroll();
+  const velocity = useSpring(useVelocity(scrollY), { damping: 50, stiffness: 300 });
+  // Lean the words in the direction of scroll, harder the faster you go
+  const skewX = useTransform(velocity, [-2000, 0, 2000], reduce ? [0, 0, 0] : [10, 0, -10], { clamp: true });
   const row = (
     <span className="flex shrink-0 items-center">
       {marqueeItems.map((item) => (
@@ -165,10 +176,12 @@ export function MarqueeStrip() {
   );
   return (
     <section aria-label="What we build" className="tint-periwinkle overflow-hidden border-y border-[#E2DCFB] py-8">
-      <div className={`flex w-max ${reduce ? "" : "animate-marquee"}`} aria-hidden="true">
-        {row}
-        {row}
-      </div>
+      <motion.div style={{ skewX }} aria-hidden="true">
+        <div className={`flex w-max ${reduce ? "" : "animate-marquee"}`}>
+          {row}
+          {row}
+        </div>
+      </motion.div>
       <ul className="sr-only">
         {marqueeItems.map((m) => <li key={m}>{m}</li>)}
       </ul>
@@ -237,12 +250,17 @@ export function CTABand({
   body?: string;
   secondary?: { label: string; href: string } | null;
 }) {
+  const ref = useRef<HTMLDivElement>(null);
+  const reduce = useReducedMotion();
+  const { scrollYProgress } = useScroll({ target: ref, offset: ["start end", "center center"] });
+  const scale = useTransform(scrollYProgress, [0, 1], reduce ? [1, 1] : [0.88, 1]);
+  const radius = useTransform(scrollYProgress, [0, 1], reduce ? [24, 24] : [48, 24]);
   return (
     <section className="tint-lavender relative overflow-hidden py-24 md:py-28">
       <Glow />
-      <div className="shell relative">
+      <div className="shell relative" ref={ref}>
         <Reveal>
-          <div className="relative flex flex-col items-start gap-6 overflow-hidden rounded-[24px] bg-night px-7 py-14 text-white md:px-14 md:py-16">
+          <motion.div style={{ scale, borderRadius: radius }} className="relative flex flex-col items-start gap-6 overflow-hidden bg-night px-7 py-14 text-white md:px-14 md:py-16">
             <div aria-hidden="true" className="absolute -right-24 -top-32 h-96 w-96 rounded-full bg-brand opacity-50 blur-[100px]" />
             <div aria-hidden="true" className="absolute -bottom-40 right-40 h-80 w-80 rounded-full bg-cyan opacity-30 blur-[100px]" />
             <LMark className="-bottom-10 right-8 h-56 w-56 md:h-72 md:w-72" />
@@ -255,7 +273,7 @@ export function CTABand({
               <Button href="/contact" variant="white">{ctaBand.primary}</Button>
               {secondary && <Button href={secondary.href} variant="outline-light">{secondary.label}</Button>}
             </div>
-          </div>
+          </motion.div>
         </Reveal>
       </div>
     </section>
