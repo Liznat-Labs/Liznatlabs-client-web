@@ -11,7 +11,7 @@ const NAV_H = 76;
 
 export function Nav() {
   const pathname = usePathname();
-  const [overDark, setOverDark] = useState(true);
+  const [overDark, setOverDark] = useState(false);
   const [open, setOpen] = useState(false);
 
   // Light-on-dark while the nav sits over a [data-nav-dark] hero, dark-on-light otherwise
