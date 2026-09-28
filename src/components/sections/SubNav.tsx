@@ -2,8 +2,8 @@
 
 import { useEffect, useState } from "react";
 
-/** Sticky in-page navigation that highlights the section in view. */
-export function SubNav({ items }: { items: { label: string; href: string }[] }) {
+/** Sticky pill navigation that highlights the section in view. */
+export function SubNav({ label, items }: { label?: string; items: { label: string; href: string }[] }) {
   const [active, setActive] = useState(items[0]?.href);
 
   useEffect(() => {
@@ -22,22 +22,32 @@ export function SubNav({ items }: { items: { label: string; href: string }[] }) 
   }, [items]);
 
   return (
-    <nav aria-label="On this page" className="sticky top-[76px] z-40 border-y hairline bg-[rgba(5,6,10,0.8)] backdrop-blur-xl">
-      <ul className="shell flex gap-2 overflow-x-auto py-3 [scrollbar-width:none]" role="list">
-        {items.map((i) => (
-          <li key={i.href} className="shrink-0">
-            <a
-              href={i.href}
-              aria-current={active === i.href ? "true" : undefined}
-              className={`block rounded-full px-4 py-2 font-mono text-xs tracking-wide transition-colors ${
-                active === i.href ? "bg-[rgba(61,124,255,0.15)] text-pearl" : "text-pearl-dim hover:text-pearl"
-              }`}
-            >
-              {i.label}
-            </a>
-          </li>
-        ))}
-      </ul>
+    <nav aria-label="On this page" className="sticky top-[84px] z-40 bg-transparent">
+      <div className="shell py-3">
+        <ul
+          className="flex w-fit max-w-full items-center gap-1 overflow-x-auto rounded-full border border-teal-lt bg-white/90 p-1.5 shadow-[0_8px_24px_rgba(23,52,61,0.08)] backdrop-blur [scrollbar-width:none]"
+          role="list"
+        >
+          {label && (
+            <li className="kicker hidden shrink-0 border-r border-line px-4 !text-[0.62rem] text-teal md:block" aria-hidden="true">
+              {label}
+            </li>
+          )}
+          {items.map((i) => (
+            <li key={i.href} className="shrink-0">
+              <a
+                href={i.href}
+                aria-current={active === i.href ? "true" : undefined}
+                className={`block rounded-full px-4 py-2 text-xs font-semibold tracking-wide transition-colors ${
+                  active === i.href ? "bg-teal text-white" : "text-ink-soft hover:text-teal"
+                }`}
+              >
+                {i.label}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
     </nav>
   );
 }

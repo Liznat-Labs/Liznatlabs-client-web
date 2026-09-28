@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { brand, contactPage as c } from "@/content/site";
-import { Reveal, SectionHeading } from "@/components/ui/primitives";
+import { Reveal, Section } from "@/components/ui/primitives";
+import { PageHero } from "@/components/sections/PageHero";
 import { ContactForm } from "@/components/sections/ContactForm";
 
 export const metadata: Metadata = {
@@ -10,34 +11,34 @@ export const metadata: Metadata = {
 
 export default function ContactPage() {
   return (
-    <section className="relative">
-      <div className="shell grid grid-cols-1 gap-16 pb-32 pt-40 md:pt-48 lg:grid-cols-[1fr_1.15fr]">
-        <div className="flex flex-col gap-10">
-          <SectionHeading as="h1" size="lg" eyebrow={c.eyebrow} title={c.title} />
-          <Reveal delay={0.1} className="flex flex-col gap-4">
-            <p className="text-2xl font-light text-pearl">{c.lead}</p>
-            <p className="max-w-md text-pearl-dim" style={{ lineHeight: 1.8 }}>{c.body}</p>
-          </Reveal>
-          <Reveal delay={0.15}>
-            <dl className="flex flex-col border-t hairline">
-              {[
-                { k: "Email", v: <a href={`mailto:${brand.email}`} className="text-pearl hover:text-blue-bright">{brand.email}</a> },
-                { k: "WhatsApp", v: <a href={brand.whatsapp} target="_blank" rel="noopener noreferrer" className="text-pearl hover:text-blue-bright">Message us</a> },
-                { k: "Office", v: <span className="text-pearl">{brand.location}</span> },
-              ].map((row) => (
-                <div key={row.k} className="flex flex-wrap items-baseline justify-between gap-4 border-b hairline py-5">
-                  <dt className="font-mono text-xs uppercase tracking-[0.2em] text-muted">{row.k}</dt>
-                  <dd>{row.v}</dd>
-                </div>
-              ))}
+    <>
+      <PageHero eyebrow={c.eyebrow} title={c.title} compact />
+      <Section tone="white">
+        <div className="grid grid-cols-1 gap-14 lg:grid-cols-[0.9fr_1.2fr] lg:gap-20">
+          <Reveal className="flex flex-col gap-6">
+            <h2 className="font-light text-teal" style={{ fontSize: "clamp(2rem, 3.6vw, 2.8rem)", lineHeight: 1.12, letterSpacing: "-0.02em" }}>{c.lead}</h2>
+            <p className="max-w-md text-ink-soft" style={{ lineHeight: 1.8 }}>{c.body}</p>
+            <dl className="flex flex-col gap-3 pt-2 text-sm">
+              <div className="flex flex-wrap gap-2">
+                <dt className="kicker !text-[0.64rem] text-ink-soft">Email ·</dt>
+                <dd><a href={`mailto:${brand.email}`} className="font-semibold text-teal hover:text-coral-tx">{brand.email}</a></dd>
+              </div>
+              <div className="flex flex-wrap gap-2">
+                <dt className="kicker !text-[0.64rem] text-ink-soft">WhatsApp ·</dt>
+                <dd><a href={brand.whatsapp} target="_blank" rel="noopener noreferrer" className="font-semibold text-teal hover:text-coral-tx">Message us</a></dd>
+              </div>
+              <div className="flex flex-wrap gap-2">
+                <dt className="kicker !text-[0.64rem] text-ink-soft">Office ·</dt>
+                <dd className="text-ink-soft">{brand.location}</dd>
+              </div>
             </dl>
+            <span className="kicker !text-[0.64rem] text-ink-soft">{brand.tagline}</span>
           </Reveal>
-          <span className="font-mono text-xs uppercase tracking-[0.2em] text-muted">{brand.tagline}</span>
+          <Reveal delay={0.08}>
+            <ContactForm />
+          </Reveal>
         </div>
-        <Reveal delay={0.1} className="relative">
-          <ContactForm />
-        </Reveal>
-      </div>
-    </section>
+      </Section>
+    </>
   );
 }

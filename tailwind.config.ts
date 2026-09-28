@@ -1,24 +1,30 @@
 import type { Config } from "tailwindcss";
 
 const config: Config = {
-  content: [
-    "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
-    "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
-  ],
+  content: ["./src/components/**/*.{ts,tsx}", "./src/app/**/*.{ts,tsx}"],
   theme: {
     extend: {
       colors: {
-        bg: "#05060A",
-        "bg-2": "#0A0C14",
-        pearl: "#F4F6FB",
-        "pearl-dim": "#AAB1C4",
-        muted: "#7A8299",
-        blue: "#3D7CFF",
-        "blue-bright": "#6AA8FF",
-        chrome: "#C8D0E0",
-        // Aliases kept for the legal pages
-        cream: "#F4F6FB",
-        accent: "#6AA8FF",
+        canvas: "#FAFAF7",
+        sky: "#E4F0F3",
+        soft: "#FAFEED",
+        pink: "#FFD4D1",
+        coral: "#E37C78",
+        "coral-tx": "#D95F5B",
+        "coral-dp": "#B8332D",
+        red: "#D33A33",
+        teal: "#006078",
+        "teal-dk": "#004858",
+        "teal-lt": "#82BAC4",
+        ink: "#17343D",
+        "ink-soft": "#354A53",
+        obsidian: "#05060A",
+        line: "#CFE0E5",
+        // Aliases used by the legal pages
+        cream: "#17343D",
+        accent: "#006078",
+        muted: "#354A53",
+        bg: "#FAFAF7",
       },
       fontFamily: {
         sans: ["var(--font-sora)", "system-ui", "sans-serif"],
@@ -26,21 +32,23 @@ const config: Config = {
         fraunces: ["var(--font-sora)", "system-ui", "sans-serif"],
         geist: ["var(--font-sora)", "system-ui", "sans-serif"],
       },
-      maxWidth: { shell: "1280px" },
+      borderRadius: { card: "18px" },
       keyframes: {
-        marquee: { from: { transform: "translateX(0)" }, to: { transform: "translateX(-50%)" } },
         "scroll-line": {
           "0%": { transform: "scaleY(0)", transformOrigin: "top" },
           "50%": { transform: "scaleY(1)", transformOrigin: "top" },
           "51%": { transform: "scaleY(1)", transformOrigin: "bottom" },
           "100%": { transform: "scaleY(0)", transformOrigin: "bottom" },
         },
-        pulse: { "0%,100%": { opacity: "1" }, "50%": { opacity: "0.35" } },
+        float: { "0%,100%": { transform: "translateY(0)" }, "50%": { transform: "translateY(-14px)" } },
+        twinkle: { "0%,100%": { opacity: "0.25", transform: "scale(0.8)" }, "50%": { opacity: "1", transform: "scale(1)" } },
+        "spin-slow": { to: { transform: "rotate(360deg)" } },
       },
       animation: {
-        marquee: "marquee 40s linear infinite",
         "scroll-line": "scroll-line 2.2s cubic-bezier(.65,.05,.36,1) infinite",
-        "pulse-soft": "pulse 2.4s ease-in-out infinite",
+        float: "float 7s ease-in-out infinite",
+        twinkle: "twinkle 3.5s ease-in-out infinite",
+        "spin-slow": "spin-slow 40s linear infinite",
       },
     },
   },

@@ -8,8 +8,8 @@ export function Beliefs({ items }: { items: Card[] }) {
   const [active, setActive] = useState(0);
   const current = items[active];
   return (
-    <div className="grid grid-cols-1 gap-4 lg:grid-cols-[1fr_1.3fr]">
-      <div role="tablist" aria-label="Our convictions" aria-orientation="vertical" className="flex flex-col border-t hairline">
+    <div className="grid grid-cols-1 gap-4 lg:grid-cols-[1fr_1.25fr]">
+      <div role="tablist" aria-label="Our convictions" aria-orientation="vertical" className="flex flex-col gap-3">
         {items.map((b, i) => (
           <button
             key={b.title}
@@ -18,6 +18,7 @@ export function Beliefs({ items }: { items: Card[] }) {
             id={`belief-tab-${i}`}
             aria-selected={active === i}
             aria-controls="belief-panel"
+            tabIndex={active === i ? 0 : -1}
             onClick={() => setActive(i)}
             onKeyDown={(e) => {
               if (e.key === "ArrowDown" || e.key === "ArrowUp") {
@@ -27,16 +28,21 @@ export function Beliefs({ items }: { items: Card[] }) {
                 document.getElementById(`belief-tab-${next}`)?.focus();
               }
             }}
-            tabIndex={active === i ? 0 : -1}
-            className={`flex items-center gap-6 border-b hairline py-6 text-left transition-colors ${active === i ? "text-pearl" : "text-pearl-dim hover:text-pearl"}`}
+            className={`flex items-center gap-5 rounded-2xl border px-6 py-5 text-left transition-colors ${
+              active === i ? "border-teal bg-white shadow-[0_10px_30px_rgba(0,96,120,0.1)]" : "border-line bg-white/60 hover:border-teal-lt"
+            }`}
           >
-            <span className={`font-mono text-sm ${active === i ? "text-blue-bright" : "text-muted"}`}>{String(i + 1).padStart(2, "0")}</span>
-            <span className="text-xl font-light md:text-2xl">{b.title}</span>
+            <span className={`text-sm font-semibold ${active === i ? "text-coral" : "text-teal"}`}>{String(i + 1).padStart(2, "0")}</span>
+            <span className={`font-semibold ${active === i ? "text-teal" : "text-ink"}`}>{b.title}</span>
           </button>
         ))}
       </div>
-      <div id="belief-panel" role="tabpanel" aria-labelledby={`belief-tab-${active}`} className="glass relative min-h-[320px] overflow-hidden rounded-[18px] p-10 md:p-14">
-        <div aria-hidden="true" className="absolute -right-24 -top-24 h-72 w-72 rounded-full bg-blue opacity-20 blur-[90px]" />
+      <div
+        id="belief-panel"
+        role="tabpanel"
+        aria-labelledby={`belief-tab-${active}`}
+        className="relative min-h-[300px] overflow-hidden rounded-card border border-teal-lt border-l-4 border-l-teal bg-sky p-8 md:p-12"
+      >
         <AnimatePresence mode="wait">
           <motion.div
             key={active}
@@ -44,13 +50,11 @@ export function Beliefs({ items }: { items: Card[] }) {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -12 }}
             transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
-            className="relative flex flex-col gap-6"
+            className="flex flex-col gap-5"
           >
-            <span className="eyebrow">Conviction {String(active + 1).padStart(2, "0")}</span>
-            <h3 className="font-extralight text-pearl" style={{ fontSize: "clamp(1.9rem, 3.4vw, 3rem)", lineHeight: 1.1, letterSpacing: "-0.02em" }}>
-              {current.title}
-            </h3>
-            <p className="max-w-lg text-pearl-dim" style={{ fontSize: "1.05rem", lineHeight: 1.8 }}>{current.body}</p>
+            <span className="kicker text-teal">Conviction {String(active + 1).padStart(2, "0")}</span>
+            <h3 className="font-light text-ink" style={{ fontSize: "clamp(1.8rem, 3vw, 2.6rem)", lineHeight: 1.15, letterSpacing: "-0.02em" }}>{current.title}</h3>
+            <p className="max-w-lg text-ink-soft" style={{ fontSize: "1.02rem", lineHeight: 1.8 }}>{current.body}</p>
           </motion.div>
         </AnimatePresence>
       </div>

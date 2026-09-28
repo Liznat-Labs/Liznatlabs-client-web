@@ -1,7 +1,7 @@
 import { home, processIntro } from "@/content/site";
-import { Section, SectionHeading, StatsRow } from "@/components/ui/primitives";
-import { CTABand, ProcessSteps, WhyUs } from "@/components/sections/shared";
-import { Ecosystem, Enterprise, Hero, IntelligenceLayer, Talent, WhatWeDo, WhoWeAre } from "@/components/sections/home";
+import { Section, SectionHeading, Sparkles } from "@/components/ui/primitives";
+import { CTABand, ProcessSteps, QuoteBand, Ribbon, WhyUs } from "@/components/sections/shared";
+import { Ecosystem, Enterprise, Hero, Proof, Talent, WhatWeDo, WhoWeAre } from "@/components/sections/home";
 
 export default function HomePage() {
   return (
@@ -9,27 +9,25 @@ export default function HomePage() {
       <Hero />
       <WhoWeAre />
       <WhatWeDo />
-      <IntelligenceLayer />
       <Enterprise />
       <Talent />
 
-      <Section id="how-it-works">
+      <Section id="how-it-works" tone="sky">
+        <Sparkles count={6} />
         <SectionHeading
           eyebrow="How it works"
-          title={[{ text: "From problem to " }, { text: "production", accent: true }, { text: "." }]}
+          title={[{ text: "From " }, { text: "problem", accent: true }, { text: " to production." }]}
           body={processIntro}
-          className="mb-20"
+          className="mb-14"
         />
         <ProcessSteps />
       </Section>
 
-      <Section id="proof">
-        <SectionHeading eyebrow={home.proof.eyebrow} title={home.proof.title} className="mb-16" />
-        <StatsRow stats={home.proof.stats} />
-      </Section>
-
+      <Proof />
       <Ecosystem />
+      <QuoteBand {...home.quote} />
       <WhyUs {...home.whyUs} />
+      <Ribbon />
       <CTABand />
     </>
   );

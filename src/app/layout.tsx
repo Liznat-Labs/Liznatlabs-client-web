@@ -2,7 +2,6 @@ import type { Metadata, Viewport } from "next";
 import { Sora, Space_Grotesk } from "next/font/google";
 import { Nav } from "@/components/layout/Nav";
 import { Footer } from "@/components/layout/Footer";
-import { ParticleField } from "@/components/ui/ParticleField";
 import "./globals.css";
 
 const sora = Sora({
@@ -51,22 +50,21 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#05060A",
+  themeColor: "#FAFAF7",
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" className={`${sora.variable} ${spaceGrotesk.variable}`}>
-      <body className="bg-bg text-pearl antialiased">
+      <body className="bg-canvas text-ink antialiased">
         <a
           href="#main"
-          className="fixed left-4 top-4 z-[100] -translate-y-24 rounded-full bg-blue px-4 py-2 font-mono text-xs text-white transition-transform focus:translate-y-0"
+          className="fixed left-4 top-4 z-[100] -translate-y-24 rounded-full bg-teal px-4 py-2 font-mono text-xs text-white transition-transform focus:translate-y-0"
         >
           Skip to content
         </a>
-        <ParticleField />
         <Nav />
-        <main id="main" className="relative z-10">
+        <main id="main" className="relative">
           {children}
         </main>
         <Footer />

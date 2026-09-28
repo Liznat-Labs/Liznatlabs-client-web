@@ -6,12 +6,12 @@ import { contactPage } from "@/content/site";
 type Status = "idle" | "sending" | "success" | "error";
 
 const inputCls =
-  "w-full rounded-xl border hairline bg-[rgba(10,12,20,0.6)] px-4 py-3.5 text-pearl placeholder:text-muted outline-none transition-colors focus:border-blue-bright";
+  "w-full rounded-xl border border-teal-lt bg-white px-4 py-3.5 text-ink placeholder:text-ink-soft/60 outline-none transition-[border-color,box-shadow] focus:border-teal focus:shadow-[0_0_0_3px_rgba(0,96,120,0.12)]";
 
 function Field({ id, label, children }: { id: string; label: string; children: React.ReactNode }) {
   return (
     <div className="flex flex-col gap-2">
-      <label htmlFor={id} className="font-mono text-xs uppercase tracking-[0.18em] text-pearl-dim">{label}</label>
+      <label htmlFor={id} className="kicker !text-[0.64rem] text-teal">{label}</label>
       {children}
     </div>
   );
@@ -48,10 +48,10 @@ export function ContactForm() {
 
   if (status === "success") {
     return (
-      <div className="glass flex flex-col items-start gap-6 rounded-[18px] p-10" role="status">
-        <span className="flex h-12 w-12 items-center justify-center rounded-full border border-blue-bright text-blue-bright shadow-[0_0_24px_rgba(61,124,255,0.4)]">✓</span>
-        <p className="text-2xl font-light text-pearl">{contactPage.success}</p>
-        <button type="button" onClick={() => setStatus("idle")} className="font-mono text-xs uppercase tracking-[0.18em] text-blue-bright hover:text-pearl">
+      <div className="flex flex-col items-start gap-6 rounded-card border border-teal-lt bg-sky p-10" role="status">
+        <span className="flex h-12 w-12 items-center justify-center rounded-full bg-teal text-white">✓</span>
+        <p className="text-2xl font-light text-ink">{contactPage.success}</p>
+        <button type="button" onClick={() => setStatus("idle")} className="kicker text-teal hover:text-coral-tx">
           Send another message
         </button>
       </div>
@@ -59,7 +59,7 @@ export function ContactForm() {
   }
 
   return (
-    <form onSubmit={onSubmit} className="glass relative flex flex-col gap-6 rounded-[18px] p-7 md:p-10">
+    <form onSubmit={onSubmit} className="relative flex flex-col gap-6">
       <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
         <Field id="c-name" label="Name *">
           <input id="c-name" name="name" type="text" required autoComplete="name" maxLength={200} className={inputCls} />
@@ -92,12 +92,12 @@ export function ContactForm() {
         <input id="c-website" name="company_website" type="text" tabIndex={-1} autoComplete="off" />
       </div>
 
-      {status === "error" && <p role="alert" className="text-sm text-[#ff8a8a]">{error}</p>}
+      {status === "error" && <p role="alert" className="text-sm text-coral-dp">{error}</p>}
 
       <button
         type="submit"
         disabled={status === "sending"}
-        className="group inline-flex items-center justify-center gap-2.5 self-start rounded-full bg-pearl px-7 py-3.5 font-mono text-sm tracking-wide text-bg transition-colors hover:bg-blue-bright disabled:opacity-60"
+        className="group inline-flex items-center justify-center gap-2.5 self-start rounded-full bg-teal px-7 py-3.5 text-sm font-semibold text-white shadow-[0_8px_24px_rgba(0,96,120,0.25)] transition-colors hover:bg-teal-dk disabled:opacity-60"
       >
         {status === "sending" ? "Sending…" : "Send message"}
         <span aria-hidden="true" className="transition-transform group-hover:translate-x-1">→</span>

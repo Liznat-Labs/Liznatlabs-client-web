@@ -54,7 +54,7 @@ export const home = {
 
   whoWeAre: {
     eyebrow: "Who we are",
-    title: [{ text: "A studio that " }, { text: "ships", accent: true }, { text: ", not slides." }] as Segment[],
+    title: [{ text: "A studio that ships, " }, { text: "not slides.", accent: true }] as Segment[],
     body: [
       "Liznat Labs is a deep tech studio from Bengaluru. We combine applied Artificial Intelligence with serious software engineering and a bench of senior engineers — so ideas leave the whiteboard and start running your business.",
       "Agents, language models, vision and automation, designed as one system — then built, deployed and looked after with the same care as the rest of your infrastructure.",
@@ -70,7 +70,7 @@ export const home = {
 
   whatWeDo: {
     eyebrow: "What we do",
-    title: [{ text: "Three practices, " }, { text: "one result", accent: true }, { text: "." }] as Segment[],
+    title: [{ text: "Three " }, { text: "practices", accent: true }, { text: ", one result." }] as Segment[],
     items: [
       {
         kicker: "01 — AI Applications",
@@ -140,7 +140,7 @@ export const home = {
 
   proof: {
     eyebrow: "Proof",
-    title: [{ text: "Results, " }, { text: "not promises", accent: true }, { text: "." }] as Segment[],
+    title: [{ text: "Results", accent: true }, { text: ", not promises." }] as Segment[],
     stats: [
       { value: "5", label: "Products shipped & live" },
       { value: "2–4", label: "Weeks to a first release" },
@@ -151,14 +151,22 @@ export const home = {
 
   ecosystem: {
     eyebrow: "Work",
-    title: [{ text: "Already " }, { text: "live", accent: true }, { text: "." }] as Segment[],
-    body: "Not concepts — real products in production, used every day. Every one of them is a live link.",
+    title: [{ text: "Products " }, { text: "already live", accent: true }, { text: "." }] as Segment[],
+    body: "Not concepts — real products in production, used every day, across commerce, fintech, SaaS and events.",
     cta: "See all work",
+  },
+
+  ecosystemImages: ["/work/azha-packaging.png", "/work/loan-manager.png", "/work/devfest.png"],
+
+  quote: {
+    quote: "Not concepts — products in production, used every day.",
+    byline: "Liznat Labs · A deep tech studio",
+    cta: { label: "See the work", href: "/work" },
   },
 
   whyUs: {
     eyebrow: "Why Liznat Labs",
-    title: [{ text: "Built by people who " }, { text: "ship", accent: true }, { text: "." }] as Segment[],
+    title: [{ text: "Built by a team that has " }, { text: "shipped", accent: true }, { text: " before." }] as Segment[],
     body: "Founded in 2026 in Bengaluru to build production-grade software that solves real operational problems for growing businesses.",
   },
 };
