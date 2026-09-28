@@ -174,6 +174,43 @@ export const home = {
   },
 };
 
+// ─── Product: Zynk Works ──────────────────────────────────────────────────────
+
+export const zynk = {
+  eyebrow: "Our product · In development",
+  name: "Zynk Works",
+  title: [{ text: "One platform. " }, { text: "Every app", accent: true }, { text: " a small business needs." }] as Segment[],
+  body: "Zynk Works brings every business application into one place — from hiring your first employee to running payroll, sales, marketing and finance. Each app works on its own, and they all talk to each other.",
+  principles: [
+    { title: "Pick only what you need", body: "Need just HR? Take just HR. Add sales, marketing or finance later — each app switches on the features your plan includes." },
+    { title: "Connected by default", body: "Apps share data automatically. HR payroll flows straight into billing, ERP and the CFO dashboard — no exports, no re-typing." },
+    { title: "Built for small businesses", body: "Simple to set up, priced for growing teams, and designed for businesses anywhere in the world." },
+  ] as Card[],
+  apps: [
+    { name: "HR & Payroll", live: true },
+    { name: "Hiring" },
+    { name: "Accounting & Finance" },
+    { name: "CFO Suite" },
+    { name: "Billing" },
+    { name: "Sales & CRM" },
+    { name: "Marketing" },
+    { name: "Social" },
+    { name: "ERP & Operations" },
+    { name: "Voice Agents" },
+  ] as { name: string; live?: boolean }[],
+  hr: {
+    kicker: "Available now",
+    name: "zynkworks-hr",
+    title: "Attendance that takes care of itself.",
+    body: "The first Zynk Works app is live. Your team checks in with their face at the door — hours, leave and payroll follow from that, with no cards, registers or month-end timesheet chasing.",
+    points: ["Face check-in attendance", "Leave and working hours", "Payroll from attendance", "Free trial for up to 10 staff"],
+    url: "https://hr.zynkworks.com",
+    host: "hr.zynkworks.com",
+    image: "/work/zynkworks-hr.png",
+  },
+  cta: "Get early access",
+};
+
 // ─── Shared blocks ────────────────────────────────────────────────────────────
 
 export const processIntro =
@@ -566,7 +603,7 @@ export const contactPage = {
   title: [{ text: "Book a " }, { text: "strategy call", accent: true }, { text: "." }] as Segment[],
   lead: "Tell us what you're trying to build.",
   body: "AI in production, an enterprise platform, or a team to ship it — we'll come prepared with ideas, not a sales script.",
-  interests: [...disciplines, "Something else"],
+  interests: [...disciplines, "Zynk Works", "Something else"],
   messagePlaceholder: "What are you building, and where are you stuck?",
   success: "Thanks — your message is in. We'll reply within 24 hours.",
 };

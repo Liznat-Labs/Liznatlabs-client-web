@@ -238,7 +238,7 @@ export function CTABand({
   secondary?: { label: string; href: string } | null;
 }) {
   return (
-    <section className="tint-lavender relative py-24 md:py-28">
+    <section className="tint-lavender relative overflow-hidden py-24 md:py-28">
       <Glow />
       <div className="shell relative">
         <Reveal>

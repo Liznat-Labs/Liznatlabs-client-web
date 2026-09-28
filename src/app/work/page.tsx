@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { workContent, workPage as c } from "@/content/site";
 import { Button, Reveal, Section, Segments, StatsRow, Tile } from "@/components/ui/primitives";
 import { PageHero } from "@/components/sections/PageHero";
+import { ZynkWorks } from "@/components/sections/ZynkWorks";
 
 export const metadata: Metadata = {
   title: "Work",
@@ -16,6 +17,7 @@ export default function WorkPage() {
   return (
     <>
       <PageHero eyebrow={c.eyebrow} title={c.title} body={c.body} />
+      <ZynkWorks />
 
       <Section id="projects">
         <ul className="border-t border-brand-lt/60" role="list">
